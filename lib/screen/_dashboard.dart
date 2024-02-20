@@ -65,6 +65,7 @@ class _DashboardState extends State<Dashboard> {
     bool isDark = Theme.of(context).brightness == Brightness.dark;
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         title: const Text("AMDM Calculator"),
         // actions: [
         //   Switch(
@@ -113,7 +114,7 @@ class _DashboardState extends State<Dashboard> {
         ),
       ),
       floatingActionButton: Theme(
-        data: Theme.of(context).copyWith(splashColor: Colors.blue), // For Test
+        data: Theme.of(context).copyWith(splashColor: Colors.blue,), // For Test
         child: FloatingActionButton(
           child: const Icon(Icons.add),
           onPressed: () {},
