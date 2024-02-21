@@ -147,7 +147,13 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                               await _storeOnboardInfo();
                               gotoDashboard();
                             },
-                            child: const Text("START"),
+                            child: const Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text("START CONSTRUCTING BEAM"),
+                                Icon(Icons.arrow_forward_ios_rounded, size: 15, color: Colors.white,)
+                              ],
+                            ),
                           ),
                         )
                       : Padding(
@@ -178,7 +184,12 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                                     curve: Curves.easeIn,
                                   );
                                 },
-                                child: const Text("NEXT"),
+                                child: const Row(
+                                  children: [
+                                    Text("NEXT"),
+                                    Icon(Icons.arrow_forward_ios_rounded, size: 15, color: Colors.white,)
+                                  ],
+                                ),
                               ),
                             ],
                           ),

@@ -51,33 +51,12 @@ class _DashboardState extends State<Dashboard> {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              // Image.asset(
-              //   "assets/images/profile_pic.png",
-              //   width: 200,
-              //   height: 200,
-              // ),
-              addVerticalSpace(10),
-              Text(
-                "Your Name",
-                style: textTheme.headlineMedium?.copyWith(
-                    color: isDark ? Colors.white : Colors.black,
-                    fontWeight: FontWeight.bold),
+              Image.asset(
+                "assets/images/onboarding/image1.png",
+                width: 200,
+                height: 200,
               ),
               addVerticalSpace(10),
-              Text(
-                "@yourusername",
-                style: textTheme.titleMedium,
-              ),
-              addVerticalSpace(10),
-              const Text(
-                "This is a simple Status",
-              ),
-              addVerticalSpace(20),
-              const TextField(),
-              addVerticalSpace(20),
-              ElevatedButton(child: const Text("Just Click"), onPressed: () {}),
-              addVerticalSpace(20),
-              ElevatedButton(child: const Text("Click Me"), onPressed: () {}),
             ],
           ),
         ),
