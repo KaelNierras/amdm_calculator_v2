@@ -9,7 +9,6 @@ import 'package:shared_preferences/shared_preferences.dart';
 import './screen/_dashboard.dart';
 import 'screen/onboarding/onboarding_screen.dart';
 import 'theme/theme_constants.dart';
-import 'theme/theme_manager.dart';
 
 int? isViewed;
 
@@ -21,8 +20,6 @@ void main() async {
   runApp(const MyApp());
 }
 
-ThemeManager _themeManager = ThemeManager();
-
 class MyApp extends StatefulWidget {
   const MyApp({super.key});
 
@@ -32,22 +29,10 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  @override
-  void dispose() {
-    _themeManager.removeListener(themeListener);
-    super.dispose();
-  }
 
   @override
   void initState() {
-    _themeManager.addListener(themeListener);
     super.initState();
-  }
-
-  themeListener() {
-    if (mounted) {
-      setState(() {});
-    }
   }
 
   @override
@@ -56,9 +41,7 @@ class _MyAppState extends State<MyApp> {
       debugShowCheckedModeBanner: false,
       title: 'AMDM Calculator',
       theme: lightTheme,
-      darkTheme: darkTheme,
-      themeMode: _themeManager.themeMode,
-      home: isViewed != 0 ?const OnboardingScreen() : const Dashboard(),
+      home: isViewed != 0 ? const OnboardingScreen() : const Dashboard(),
     );
   }
 }

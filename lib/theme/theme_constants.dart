@@ -6,6 +6,10 @@ const colorAccent = Colors.orange;
 ThemeData lightTheme = ThemeData(
   brightness: Brightness.light,
   primaryColor: colorPrimary,
+  appBarTheme: const AppBarTheme(
+    color: colorPrimary, // Change this to your desired color
+    foregroundColor: Colors.white
+  ),
   floatingActionButtonTheme: const FloatingActionButtonThemeData(
     backgroundColor: colorAccent
   ),

@@ -4,9 +4,9 @@ import 'package:flutter_native_splash/flutter_native_splash.dart';
 
 //Functions
 import '../../utils/helper_widget.dart';
-
-//Screens
-
+import '../widgets/custom_dropdown.dart';
+import '../widgets/custom_floating_action_button.dart';
+import '../widgets/custom_info_alert.dart';
 
 class Dashboard extends StatefulWidget {
   const Dashboard({super.key});
@@ -16,57 +16,141 @@ class Dashboard extends StatefulWidget {
 }
 
 class _DashboardState extends State<Dashboard> {
-  
   @override
   initState() {
     super.initState();
     initialization();
   }
 
+  //Splash Screen Initialization
   void initialization() async {
     await Future.delayed(const Duration(seconds: 1));
     FlutterNativeSplash.remove();
   }
 
+  //Values of Dropdowns
+  String supportA = 'Select Support',
+      supportC = 'Select Support',
+      loadA = 'Select Load',
+      loadB = 'Select Load';
+
+  //List options
+  List<String> supportList = [
+        'Select Support',
+        'Fixed Support',
+        'Simple Support',
+        'Simple Support with Overhang',
+      ],
+      loadList = [
+        'Select Load',
+        'OVERHANG A',
+        'SPAN AB',
+        'SPAN BC',
+        'OVERHANG C'
+      ];
+
+  //Widgets Load
+  Widget loadDropdowns(List<String> loadList) {
+    return Column(
+      children: [
+        CustomDropdown(
+          label: 'LOAD',
+          items: loadList,
+          initalValue: 'Select Load',
+          onChanged: (selectedItem) {
+            setState(() {
+              loadA = selectedItem!;
+            });
+            print('LOAD A: $supportC');
+          },
+        ),
+        addVerticalSpace(8),
+        CustomDropdown(
+          label: 'LOAD',
+          items: loadList,
+          initalValue: 'Select Load',
+          onChanged: (selectedItem) {
+            setState(() {
+              loadB = selectedItem!;
+            });
+            print('LOAD B: $supportC');
+          },
+        ),
+      ],
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
-    TextTheme textTheme = Theme.of(context).textTheme;
-    bool isDark = Theme.of(context).brightness == Brightness.dark;
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        title: const Text("AMDM Calculator"),
-        // actions: [
-        //   Switch(
-        //       value: _themeManager.themeMode == ThemeMode.dark,
-        //       onChanged: (newValue) {
-        //         _themeManager.toggleTheme(newValue);
-        //       })
-        // ],
+        title: Row(
+          children: [
+            const Icon(
+              Icons.calculate,
+              color: Colors.white,
+              size: 30,
+            ),
+            addHorizontalSpace(8),
+            const Text("AMDM Calculator"),
+          ],
+        ),
       ),
       body: Center(
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Image.asset(
-                "assets/images/onboarding/image1.png",
-                width: 200,
-                height: 200,
-              ),
+              (supportA == 'Select Support' ||
+                      supportC == 'Select Support' ||
+                      loadA == 'Select Load' ||
+                      loadB == 'Select Load')
+                  ? const InfoAlert(
+                      text:
+                          "Please select a support and\nload to display free body diagram.",
+                    )
+                  : Image.asset(
+                      "assets/images/onboarding/image1.png",
+                      width: 200,
+                      height: 200,
+                    ),
               addVerticalSpace(10),
+              const Divider(),
+              CustomDropdown(
+                label: 'SUPPORT A',
+                items: supportList,
+                initalValue: 'Select Support',
+                onChanged: (selectedItem) {
+                  setState(() {
+                    supportA = selectedItem!;
+                  });
+                  print('Support A: $supportA');
+                },
+              ),
+              addVerticalSpace(8),
+              CustomDropdown(
+                label: 'SUPPORT C',
+                items: supportList,
+                initalValue: 'Select Support',
+                onChanged: (selectedItem) {
+                  setState(() {
+                    supportC = selectedItem!;
+                  });
+                  print('Support C: $supportC');
+                },
+              ),
+              loadDropdowns(loadList),
             ],
           ),
         ),
       ),
-      floatingActionButton: Theme(
-        data: Theme.of(context).copyWith(splashColor: Colors.blue,), // For Test
-        child: FloatingActionButton(
-          child: const Icon(Icons.add),
-          onPressed: () {},
-        ),
+      floatingActionButton: CustomFloatingActionButton(
+        onPressed: () {
+          // Add your onPressed logic here
+        },
       ),
     );
   }
