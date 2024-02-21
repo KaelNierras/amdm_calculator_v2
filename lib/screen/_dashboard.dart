@@ -490,7 +490,6 @@ class _DashboardState extends State<Dashboard> {
                               fontWeight: FontWeight.bold,
                             )),
                         Card(
-                          
                           child: Padding(
                             padding: const EdgeInsets.all(0),
                             child: Column(
@@ -509,13 +508,13 @@ class _DashboardState extends State<Dashboard> {
                                         children: [
                                           Image.asset(
                                             loadAB,
-                                            width: 150,
-                                            height: 150,
+                                            width: 160,
+                                            height: 160,
                                           ),
                                           Image.asset(
                                             loadBC,
-                                            width: 150,
-                                            height: 150,
+                                            width: 160,
+                                            height: 160,
                                           ),
                                         ],
                                       )
@@ -532,18 +531,18 @@ class _DashboardState extends State<Dashboard> {
                                         children: [
                                           Image.asset(
                                             loadAB,
-                                            width: 100,
-                                            height: 100,
+                                            width: 110,
+                                            height: 110,
                                           ),
                                           Image.asset(
                                             loadBC,
-                                            width: 100,
-                                            height: 100,
+                                            width: 110,
+                                            height: 110,
                                           ),
                                           Image.asset(
                                             overhangC,
-                                            width: 100,
-                                            height: 100,
+                                            width: 110,
+                                            height: 110,
                                           ),
                                         ],
                                       )
@@ -559,18 +558,47 @@ class _DashboardState extends State<Dashboard> {
                                         children: [
                                           Image.asset(
                                             overhangA,
-                                            width: 100,
-                                            height: 100,
+                                            width: 110,
+                                            height: 110,
                                           ),
                                           Image.asset(
                                             loadAB,
-                                            width: 100,
-                                            height: 100,
+                                            width: 110,
+                                            height: 110,
                                           ),
                                           Image.asset(
                                             loadBC,
-                                            width: 100,
-                                            height: 100,
+                                            width: 110,
+                                            height: 110,
+                                          ),
+                                        ],
+                                      )
+                                    : Container(),
+                                    (supportA == 'Simple Support with Overhang' &&
+                                            supportC == 'Simple Support with Overhang')
+                                    ? Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          Image.asset(
+                                            overhangA,
+                                            width: 85,
+                                            height: 85,
+                                          ),
+                                          Image.asset(
+                                            loadAB,
+                                            width: 85,
+                                            height: 85,
+                                          ),
+                                          Image.asset(
+                                            loadBC,
+                                            width: 85,
+                                            height: 85,
+                                          ),
+                                          Image.asset(
+                                            overhangC,
+                                            width: 85,
+                                            height: 85,
                                           ),
                                         ],
                                       )
