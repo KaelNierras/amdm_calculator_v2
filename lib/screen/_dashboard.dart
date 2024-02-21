@@ -21,6 +21,15 @@ class _DashboardState extends State<Dashboard> {
   initState() {
     super.initState();
     initialization();
+    loadAB = (supportA == 'Simple Support')
+        ? simpleSupportForSpanABPaths.first.toString()
+        : fixedSupportForSpanABPaths.first.toString();
+    loadBC = (supportA == 'Simple Support')
+        ? simpleSupportForSpanBCPaths.first.toString()
+        : fixedSupportForSpanBCPaths.first.toString();
+    overhangA = overhangAPaths.first.toString();
+    overhangC = overhangCPaths.first.toString();
+    isUpdated = false;
   }
 
   //Splash Screen Initialization
@@ -28,27 +37,6 @@ class _DashboardState extends State<Dashboard> {
     await Future.delayed(const Duration(seconds: 1));
     FlutterNativeSplash.remove();
   }
-
-  //Values of Dropdowns
-  String supportA = 'Fixed Support',
-      supportC = 'Fixed Support',
-      loadAB = '',
-      loadBC = '',
-      overhangA = '',
-      overhangC = '';
-
-
-  //List options
-  List<String> supportList = [
-    'Fixed Support',
-    'Simple Support',
-    'Simple Support with Overhang',
-  ];
-  final List<String> imageLoadPaths = [
-    'assets/images/onboarding/image1.png',
-    'assets/images/onboarding/image2.png',
-    'assets/images/onboarding/image3.png',
-  ];
 
   final List<String> simpleSupportForSpanABPaths = [
         for (var i = 1; i <= 18; i++)
@@ -65,10 +53,41 @@ class _DashboardState extends State<Dashboard> {
       overhangCPaths = [
         for (var i = 1; i <= 18; i++)
           'assets/images/OVERHANG C/OVERHANG C $i.png',
+      ],
+      fixedSupportForSpanABPaths = [
+        for (var i = 1; i <= 18; i++)
+          'assets/images/FIXED SUPPORTED FOR SPAN AB/FIXED SPAN AB $i.png',
+      ],
+      fixedSupportForSpanBCPaths = [
+        for (var i = 1; i <= 18; i++)
+          'assets/images/FIXED SUPPORTED FOR SPAN BC/FIXED SPAN BC $i.png',
       ];
 
-  //Span AB and BC
-  Widget spanABAndBC() {
+  //Bool
+  bool isUpdated = true;
+
+  //Values of Dropdowns
+  String supportA = 'Fixed Support',
+      supportC = 'Fixed Support',
+      loadAB = '',
+      loadBC = '',
+      overhangA = '',
+      overhangC = '';
+
+  //List options
+  List<String> supportList = [
+    'Fixed Support',
+    'Simple Support',
+    'Simple Support with Overhang',
+  ];
+  final List<String> imageLoadPaths = [
+    'assets/images/onboarding/image1.png',
+    'assets/images/onboarding/image2.png',
+    'assets/images/onboarding/image3.png',
+  ];
+
+  //Simple Span AB and BC
+  Widget simpleSpanABAndBC() {
     return Column(
       children: [
         CustomDropdownImage(
@@ -79,6 +98,7 @@ class _DashboardState extends State<Dashboard> {
           onChanged: (selectedItem) {
             setState(() {
               loadAB = selectedItem!;
+              isUpdated = true;
             });
           },
         ),
@@ -91,6 +111,106 @@ class _DashboardState extends State<Dashboard> {
           onChanged: (selectedItem) {
             setState(() {
               loadBC = selectedItem!;
+              isUpdated = true;
+            });
+          },
+        ),
+      ],
+    );
+  }
+
+  //Fixed Span AB and BC
+  Widget fixedSpanABAndBC() {
+    return Column(
+      children: [
+        CustomDropdownImage(
+          label: 'LOAD IN: SPAN AB',
+          items: fixedSupportForSpanABPaths,
+          initalValue:
+              'assets/images/FIXED SUPPORTED FOR SPAN AB/FIXED SPAN AB 1.png',
+          onChanged: (selectedItem) {
+            setState(() {
+              loadAB = selectedItem!;
+              isUpdated = true;
+            });
+          },
+        ),
+        const Divider(),
+        CustomDropdownImage(
+          label: 'LOAD IN: SPAN BC',
+          items: fixedSupportForSpanBCPaths,
+          initalValue:
+              'assets/images/FIXED SUPPORTED FOR SPAN BC/FIXED SPAN BC 1.png',
+          onChanged: (selectedItem) {
+            setState(() {
+              loadBC = selectedItem!;
+              isUpdated = true;
+            });
+          },
+        ),
+      ],
+    );
+  }
+
+  //Fixed Span AB and Simple BC
+  Widget fixedSpanABAndSimpleBC() {
+    return Column(
+      children: [
+        CustomDropdownImage(
+          label: 'LOAD IN: SPAN AB',
+          items: fixedSupportForSpanABPaths,
+          initalValue:
+              'assets/images/FIXED SUPPORTED FOR SPAN AB/FIXED SPAN AB 1.png',
+          onChanged: (selectedItem) {
+            setState(() {
+              loadAB = selectedItem!;
+              isUpdated = true;
+            });
+          },
+        ),
+        const Divider(),
+        CustomDropdownImage(
+          label: 'LOAD IN: SPAN BC',
+          items: simpleSupportForSpanBCPaths,
+          initalValue:
+              'assets/images/SIMPLE SUPPORTED FOR SPAN BC/SIMPLE SPAN BC  1.png',
+          onChanged: (selectedItem) {
+            setState(() {
+              loadBC = selectedItem!;
+              isUpdated = true;
+            });
+          },
+        ),
+      ],
+    );
+  }
+
+  //Simple Span AB and Fixed BC
+  Widget simpleSpanABAndFixedBC() {
+    return Column(
+      children: [
+        CustomDropdownImage(
+          label: 'LOAD IN: SPAN AB',
+          items: simpleSupportForSpanABPaths,
+          initalValue:
+              'assets/images/SIMPLE SUPPORTED FOR SPAN AB/SIMPLE SPAN AB 1.png',
+          onChanged: (selectedItem) {
+            setState(() {
+              loadAB = selectedItem!;
+              isUpdated = true;
+            });
+          },
+        ),
+        const Divider(),
+        CustomDropdownImage(
+          label: 'LOAD IN: SPAN BC',
+          items: fixedSupportForSpanBCPaths,
+          initalValue:
+              'assets/images/FIXED SUPPORTED FOR SPAN BC/FIXED SPAN BC 1.png',
+          onChanged: (selectedItem) {
+            setState(() {
+              loadBC = selectedItem!;
+              isUpdated = true;
             });
           },
         ),
@@ -109,6 +229,7 @@ class _DashboardState extends State<Dashboard> {
           onChanged: (selectedItem) {
             setState(() {
               overhangA = selectedItem!;
+              isUpdated = true;
             });
           },
         ),
@@ -121,6 +242,7 @@ class _DashboardState extends State<Dashboard> {
           onChanged: (selectedItem) {
             setState(() {
               loadAB = selectedItem!;
+              isUpdated = true;
             });
           },
         ),
@@ -133,6 +255,7 @@ class _DashboardState extends State<Dashboard> {
           onChanged: (selectedItem) {
             setState(() {
               loadBC = selectedItem!;
+              isUpdated = true;
             });
           },
         ),
@@ -144,6 +267,7 @@ class _DashboardState extends State<Dashboard> {
           onChanged: (selectedItem) {
             setState(() {
               overhangC = selectedItem!;
+              isUpdated = true;
             });
           },
         ),
@@ -162,6 +286,7 @@ class _DashboardState extends State<Dashboard> {
           onChanged: (selectedItem) {
             setState(() {
               overhangA = selectedItem!;
+              isUpdated = true;
             });
           },
         ),
@@ -174,6 +299,7 @@ class _DashboardState extends State<Dashboard> {
           onChanged: (selectedItem) {
             setState(() {
               loadAB = selectedItem!;
+              isUpdated = true;
             });
           },
         ),
@@ -186,6 +312,7 @@ class _DashboardState extends State<Dashboard> {
           onChanged: (selectedItem) {
             setState(() {
               loadBC = selectedItem!;
+              isUpdated = true;
             });
           },
         ),
@@ -205,6 +332,7 @@ class _DashboardState extends State<Dashboard> {
           onChanged: (selectedItem) {
             setState(() {
               loadAB = selectedItem!;
+              isUpdated = true;
             });
           },
         ),
@@ -217,6 +345,7 @@ class _DashboardState extends State<Dashboard> {
           onChanged: (selectedItem) {
             setState(() {
               loadBC = selectedItem!;
+              isUpdated = true;
             });
           },
         ),
@@ -228,6 +357,7 @@ class _DashboardState extends State<Dashboard> {
           onChanged: (selectedItem) {
             setState(() {
               overhangC = selectedItem!;
+              isUpdated = true;
             });
           },
         ),
@@ -259,16 +389,108 @@ class _DashboardState extends State<Dashboard> {
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              (supportA != '' ||
-                      supportC != '')
+              (!isUpdated)
                   ? const InfoAlert(
                       text:
-                          "Please select a support and\nload to display free body diagram.",
-                    )
-                  : Image.asset(
-                      "assets/images/onboarding/image1.png",
-                      width: 200,
-                      height: 200,
+                          'Select individual load to update it\nto the free body diagram!')
+                  : Column(
+                      children: [
+                        const Text('Free body diagram of the structure',
+                            style: TextStyle(
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
+                            )),
+                        Card(
+                          
+                          child: Padding(
+                            padding: const EdgeInsets.all(0),
+                            child: Column(
+                              children: [
+                                (supportA == 'Fixed Support' &&
+                                            supportC == 'Fixed Support' ||
+                                        supportA == 'Simple Support' &&
+                                            supportC == 'Simple Support' ||
+                                        supportA == 'Fixed Support' &&
+                                            supportC == 'Simple Support' ||
+                                        supportA == 'Simple Support' &&
+                                            supportC == 'Fixed Support')
+                                    ? Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          Image.asset(
+                                            loadAB,
+                                            width: 150,
+                                            height: 150,
+                                          ),
+                                          Image.asset(
+                                            loadBC,
+                                            width: 150,
+                                            height: 150,
+                                          ),
+                                        ],
+                                      )
+                                    : Container(),
+                                (supportA == 'Fixed Support' &&
+                                            supportC ==
+                                                'Simple Support with Overhang' ||
+                                        supportA == 'Simple Support' &&
+                                            supportC ==
+                                                'Simple Support with Overhang')
+                                    ? Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          Image.asset(
+                                            loadAB,
+                                            width: 100,
+                                            height: 100,
+                                          ),
+                                          Image.asset(
+                                            loadBC,
+                                            width: 100,
+                                            height: 100,
+                                          ),
+                                          Image.asset(
+                                            overhangC,
+                                            width: 100,
+                                            height: 100,
+                                          ),
+                                        ],
+                                      )
+                                    : Container(),
+                                (supportA == 'Simple Support with Overhang' &&
+                                            supportC == 'Simple Support' ||
+                                        supportA ==
+                                                'Simple Support with Overhang' &&
+                                            supportC == 'Fixed Support')
+                                    ? Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          Image.asset(
+                                            overhangA,
+                                            width: 100,
+                                            height: 100,
+                                          ),
+                                          Image.asset(
+                                            loadAB,
+                                            width: 100,
+                                            height: 100,
+                                          ),
+                                          Image.asset(
+                                            loadBC,
+                                            width: 100,
+                                            height: 100,
+                                          ),
+                                        ],
+                                      )
+                                    : Container(),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
               addVerticalSpace(10),
               const Divider(),
@@ -288,6 +510,7 @@ class _DashboardState extends State<Dashboard> {
                                 onChanged: (selectedItem) {
                                   setState(() {
                                     supportA = selectedItem!;
+                                    isUpdated = false;
                                   });
                                 },
                               ),
@@ -299,6 +522,7 @@ class _DashboardState extends State<Dashboard> {
                                 onChanged: (selectedItem) {
                                   setState(() {
                                     supportC = selectedItem!;
+                                    isUpdated = false;
                                   });
                                 },
                               ),
@@ -312,15 +536,21 @@ class _DashboardState extends State<Dashboard> {
                           padding: const EdgeInsets.all(20),
                           child: Column(
                             children: [
+                              supportA == 'Simple Support' &&
+                                      supportC == 'Simple Support'
+                                  ? simpleSpanABAndBC()
+                                  : Container(),
                               supportA == 'Fixed Support' &&
-                                          supportC == 'Fixed Support' ||
-                                      supportA == 'Fixed Support' &&
-                                          supportC == 'Simple Support' ||
-                                      supportA == 'Simple Support' &&
-                                          supportC == 'Fixed Support' ||
-                                      supportA == 'Simple Support' &&
-                                          supportC == 'Simple Support'
-                                  ? spanABAndBC()
+                                      supportC == 'Fixed Support'
+                                  ? fixedSpanABAndBC()
+                                  : Container(),
+                              supportA == 'Simple Support' &&
+                                      supportC == 'Fixed Support'
+                                  ? simpleSpanABAndFixedBC()
+                                  : Container(),
+                              supportA == 'Fixed Support' &&
+                                      supportC == 'Simple Support'
+                                  ? fixedSpanABAndSimpleBC()
                                   : Container(),
                               supportA == 'Simple Support with Overhang' &&
                                       supportC == 'Simple Support with Overhang'

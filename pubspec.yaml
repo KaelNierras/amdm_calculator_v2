@@ -71,84 +71,22 @@ flutter:
       - assets/images/onboarding/image4.png
 
       #SIMPLE SPAN AB Images
-      - assets/images/SIMPLE SUPPORTED FOR SPAN AB/SIMPLE SPAN AB 1.png
-      - assets/images/SIMPLE SUPPORTED FOR SPAN AB/SIMPLE SPAN AB 2.png
-      - assets/images/SIMPLE SUPPORTED FOR SPAN AB/SIMPLE SPAN AB 3.png
-      - assets/images/SIMPLE SUPPORTED FOR SPAN AB/SIMPLE SPAN AB 4.png
-      - assets/images/SIMPLE SUPPORTED FOR SPAN AB/SIMPLE SPAN AB 5.png
-      - assets/images/SIMPLE SUPPORTED FOR SPAN AB/SIMPLE SPAN AB 6.png
-      - assets/images/SIMPLE SUPPORTED FOR SPAN AB/SIMPLE SPAN AB 7.png
-      - assets/images/SIMPLE SUPPORTED FOR SPAN AB/SIMPLE SPAN AB 8.png
-      - assets/images/SIMPLE SUPPORTED FOR SPAN AB/SIMPLE SPAN AB 9.png
-      - assets/images/SIMPLE SUPPORTED FOR SPAN AB/SIMPLE SPAN AB 10.png
-      - assets/images/SIMPLE SUPPORTED FOR SPAN AB/SIMPLE SPAN AB 11.png
-      - assets/images/SIMPLE SUPPORTED FOR SPAN AB/SIMPLE SPAN AB 12.png
-      - assets/images/SIMPLE SUPPORTED FOR SPAN AB/SIMPLE SPAN AB 13.png
-      - assets/images/SIMPLE SUPPORTED FOR SPAN AB/SIMPLE SPAN AB 14.png
-      - assets/images/SIMPLE SUPPORTED FOR SPAN AB/SIMPLE SPAN AB 15.png
-      - assets/images/SIMPLE SUPPORTED FOR SPAN AB/SIMPLE SPAN AB 16.png
-      - assets/images/SIMPLE SUPPORTED FOR SPAN AB/SIMPLE SPAN AB 17.png
-      - assets/images/SIMPLE SUPPORTED FOR SPAN AB/SIMPLE SPAN AB 18.png
+      - assets/images/SIMPLE SUPPORTED FOR SPAN AB/
 
       #SIMPLE SPAN BC Images
-      - assets/images/SIMPLE SUPPORTED FOR SPAN BC/SIMPLE SPAN BC  1.png
-      - assets/images/SIMPLE SUPPORTED FOR SPAN BC/SIMPLE SPAN BC  2.png
-      - assets/images/SIMPLE SUPPORTED FOR SPAN BC/SIMPLE SPAN BC  3.png
-      - assets/images/SIMPLE SUPPORTED FOR SPAN BC/SIMPLE SPAN BC  4.png
-      - assets/images/SIMPLE SUPPORTED FOR SPAN BC/SIMPLE SPAN BC  5.png
-      - assets/images/SIMPLE SUPPORTED FOR SPAN BC/SIMPLE SPAN BC  6.png
-      - assets/images/SIMPLE SUPPORTED FOR SPAN BC/SIMPLE SPAN BC  7.png
-      - assets/images/SIMPLE SUPPORTED FOR SPAN BC/SIMPLE SPAN BC  8.png
-      - assets/images/SIMPLE SUPPORTED FOR SPAN BC/SIMPLE SPAN BC  9.png
-      - assets/images/SIMPLE SUPPORTED FOR SPAN BC/SIMPLE SPAN BC  10.png
-      - assets/images/SIMPLE SUPPORTED FOR SPAN BC/SIMPLE SPAN BC  11.png
-      - assets/images/SIMPLE SUPPORTED FOR SPAN BC/SIMPLE SPAN BC  12.png
-      - assets/images/SIMPLE SUPPORTED FOR SPAN BC/SIMPLE SPAN BC  13.png
-      - assets/images/SIMPLE SUPPORTED FOR SPAN BC/SIMPLE SPAN BC  14.png
-      - assets/images/SIMPLE SUPPORTED FOR SPAN BC/SIMPLE SPAN BC  15.png
-      - assets/images/SIMPLE SUPPORTED FOR SPAN BC/SIMPLE SPAN BC  16.png
-      - assets/images/SIMPLE SUPPORTED FOR SPAN BC/SIMPLE SPAN BC  17.png
-      - assets/images/SIMPLE SUPPORTED FOR SPAN BC/SIMPLE SPAN BC  18.png
+      - assets/images/SIMPLE SUPPORTED FOR SPAN BC/
+
+      #FIXED SPAN AB Images
+      - assets/images/FIXED SUPPORTED FOR SPAN AB/
+
+      #FIXED SPAN BC Images
+      - assets/images/FIXED SUPPORTED FOR SPAN BC/
 
       #OVERHANG A Images
-      - assets/images/OVERHANG A/OVERHANG A 1.png
-      - assets/images/OVERHANG A/OVERHANG A 2.png
-      - assets/images/OVERHANG A/OVERHANG A 3.png
-      - assets/images/OVERHANG A/OVERHANG A 4.png
-      - assets/images/OVERHANG A/OVERHANG A 5.png
-      - assets/images/OVERHANG A/OVERHANG A 6.png
-      - assets/images/OVERHANG A/OVERHANG A 7.png
-      - assets/images/OVERHANG A/OVERHANG A 8.png
-      - assets/images/OVERHANG A/OVERHANG A 9.png
-      - assets/images/OVERHANG A/OVERHANG A 10.png
-      - assets/images/OVERHANG A/OVERHANG A 11.png
-      - assets/images/OVERHANG A/OVERHANG A 12.png
-      - assets/images/OVERHANG A/OVERHANG A 13.png
-      - assets/images/OVERHANG A/OVERHANG A 14.png
-      - assets/images/OVERHANG A/OVERHANG A 15.png
-      - assets/images/OVERHANG A/OVERHANG A 16.png
-      - assets/images/OVERHANG A/OVERHANG A 17.png
-      - assets/images/OVERHANG A/OVERHANG A 18.png
+      - assets/images/OVERHANG A/
 
       #OVERHANG C Images
-      - assets/images/OVERHANG C/OVERHANG C 1.png
-      - assets/images/OVERHANG C/OVERHANG C 2.png
-      - assets/images/OVERHANG C/OVERHANG C 3.png
-      - assets/images/OVERHANG C/OVERHANG C 4.png
-      - assets/images/OVERHANG C/OVERHANG C 5.png
-      - assets/images/OVERHANG C/OVERHANG C 6.png
-      - assets/images/OVERHANG C/OVERHANG C 7.png
-      - assets/images/OVERHANG C/OVERHANG C 8.png
-      - assets/images/OVERHANG C/OVERHANG C 9.png
-      - assets/images/OVERHANG C/OVERHANG C 10.png
-      - assets/images/OVERHANG C/OVERHANG C 11.png
-      - assets/images/OVERHANG C/OVERHANG C 12.png
-      - assets/images/OVERHANG C/OVERHANG C 13.png
-      - assets/images/OVERHANG C/OVERHANG C 14.png
-      - assets/images/OVERHANG C/OVERHANG C 15.png
-      - assets/images/OVERHANG C/OVERHANG C 16.png
-      - assets/images/OVERHANG C/OVERHANG C 17.png
-      - assets/images/OVERHANG C/OVERHANG C 18.png
+      - assets/images/OVERHANG C/
       
 
   # An image asset can refer to one or more resolution-specific "variants", see
