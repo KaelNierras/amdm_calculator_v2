@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'dart:async';
+
 
 //Use the following import to have access to the onboarding_contents.dart file
 import '../../utils/size_config.dart';
@@ -53,6 +56,22 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
       height: 10,
       curve: Curves.easeIn,
       width: _currentPage == index ? 20 : 10,
+    );
+  }
+  
+
+  _storeOnboardInfo () async {
+    int isViewed = 0;
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    await prefs.setInt('onboard', isViewed);
+  }
+
+  void gotoDashboard() {
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(
+        builder: (context) => const Dashboard(),
+      ),
     );
   }
 
@@ -124,11 +143,9 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                       ? Padding(
                           padding: const EdgeInsets.all(30),
                           child: ElevatedButton(
-                            onPressed: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(builder: (context) => const Dashboard()),
-                              );
+                            onPressed: () async {
+                              await _storeOnboardInfo();
+                              gotoDashboard();
                             },
                             child: const Text("START"),
                           ),

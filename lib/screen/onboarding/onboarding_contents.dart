@@ -26,12 +26,12 @@ List<OnboardingContents> contents = [
     title: "Help us improve!",
     image: "assets/images/onboarding/image3.png",
     desc:
-        "It's important to note that our app is in its early stages. We value your insights and invite you to be a part of our development process.\nYour feedback and recommendations are highly encouraged, as we strive to enhance and refine this tool collaboratively. Feel free to share your thoughts with us, and thank you for being a part of its development.",
+        "It's important to note that our app is in its early stages. We value your insights and invite you to be\na part of our development process.\nYour feedback and recommendations are highly encouraged, as we strive to enhance and refine this tool collaboratively. Feel free to share your thoughts with us, and thank you for being a part of its development.",
   ),
   OnboardingContents(
     title: "About Us",
     image: "assets/images/onboarding/image4.png",
     desc:
-        "This calculator application was developed by this dynamic group of students: Charlemagne Abainza, Arnold Canonoy, Kent Raven Capin, Daryl Lamoste, and\nKyle Anthony Nierras.",
+        "This calculator application was developed\nby this dynamic group of students:\n\nCharlemagne Abainza, Arnold Canonoy,\nKent Raven Capin, Daryl Lamoste, and\nKyle Anthony Nierras.",
   ),
 ];

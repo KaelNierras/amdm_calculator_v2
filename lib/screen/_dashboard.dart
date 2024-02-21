@@ -1,54 +1,12 @@
 // ignore_for_file: library_private_types_in_public_api
 import 'package:flutter/material.dart';
+import 'package:flutter_native_splash/flutter_native_splash.dart';
 
-
+//Functions
 import '../../utils/helper_widget.dart';
-import '../theme/theme_constants.dart';
-import '../theme/theme_manager.dart';
 
-import './onboarding/onboarding_screen.dart';
+//Screens
 
-ThemeManager _themeManager = ThemeManager();
-
-class MyApp extends StatefulWidget {
-  const MyApp({super.key});
-
-  // This widget is the root of your application.
-  @override
-  _MyAppState createState() => _MyAppState();
-}
-
-class _MyAppState extends State<MyApp> {
-  @override
-  void dispose() {
-    _themeManager.removeListener(themeListener);
-    super.dispose();
-  }
-
-  @override
-  void initState() {
-    _themeManager.addListener(themeListener);
-    super.initState();
-  }
-
-  themeListener() {
-    if (mounted) {
-      setState(() {});
-    }
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'AMDM Calculator',
-      theme: lightTheme,
-      darkTheme: darkTheme,
-      themeMode: _themeManager.themeMode,
-      home: const OnboardingScreen(),
-    );
-  }
-}
 
 class Dashboard extends StatefulWidget {
   const Dashboard({super.key});
@@ -58,6 +16,17 @@ class Dashboard extends StatefulWidget {
 }
 
 class _DashboardState extends State<Dashboard> {
+  
+  @override
+  initState() {
+    super.initState();
+    initialization();
+  }
+
+  void initialization() async {
+    await Future.delayed(const Duration(seconds: 1));
+    FlutterNativeSplash.remove();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -82,11 +51,11 @@ class _DashboardState extends State<Dashboard> {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Image.asset(
-                "assets/images/profile_pic.png",
-                width: 200,
-                height: 200,
-              ),
+              // Image.asset(
+              //   "assets/images/profile_pic.png",
+              //   width: 200,
+              //   height: 200,
+              // ),
               addVerticalSpace(10),
               Text(
                 "Your Name",
