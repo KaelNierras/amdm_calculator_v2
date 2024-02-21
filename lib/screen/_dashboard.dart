@@ -61,7 +61,6 @@ class _DashboardState extends State<Dashboard> {
             setState(() {
               loadA = selectedItem!;
             });
-            print('LOAD A: $supportC');
           },
         ),
         addVerticalSpace(8),
@@ -73,7 +72,6 @@ class _DashboardState extends State<Dashboard> {
             setState(() {
               loadB = selectedItem!;
             });
-            print('LOAD B: $supportC');
           },
         ),
       ],
@@ -127,7 +125,6 @@ class _DashboardState extends State<Dashboard> {
                   setState(() {
                     supportA = selectedItem!;
                   });
-                  print('Support A: $supportA');
                 },
               ),
               addVerticalSpace(8),
@@ -139,7 +136,6 @@ class _DashboardState extends State<Dashboard> {
                   setState(() {
                     supportC = selectedItem!;
                   });
-                  print('Support C: $supportC');
                 },
               ),
               loadDropdowns(loadList),
