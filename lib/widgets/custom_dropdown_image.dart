@@ -48,7 +48,7 @@ class _CustomDropdownImageState extends State<CustomDropdownImage> {
                         value: item,
                         child: Row(
                           children: [
-                            Image.network(item, width: 50, height: 50), // Adjust the size as needed
+                            Image.asset(item, width: 50, height: 50), // Adjust the size as needed
                             const SizedBox(width: 10), // Add some spacing between the image and the text
                             Text(item.split('/').last.replaceAll('.png', '')), // Display the filename
                           ],

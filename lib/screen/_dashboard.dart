@@ -32,8 +32,11 @@ class _DashboardState extends State<Dashboard> {
   //Values of Dropdowns
   String supportA = 'Fixed Support',
       supportC = 'Fixed Support',
-      loadA = '',
-      loadB = '';
+      loadAB = '',
+      loadBC = '',
+      overhangA = '',
+      overhangC = '';
+
 
   //List options
   List<String> supportList = [
@@ -75,11 +78,11 @@ class _DashboardState extends State<Dashboard> {
               'assets/images/SIMPLE SUPPORTED FOR SPAN AB/SIMPLE SPAN AB 1.png',
           onChanged: (selectedItem) {
             setState(() {
-              loadB = selectedItem!;
+              loadAB = selectedItem!;
             });
           },
         ),
-        addVerticalSpace(8),
+        const Divider(),
         CustomDropdownImage(
           label: 'LOAD IN: SPAN BC',
           items: simpleSupportForSpanBCPaths,
@@ -87,7 +90,7 @@ class _DashboardState extends State<Dashboard> {
               'assets/images/SIMPLE SUPPORTED FOR SPAN BC/SIMPLE SPAN BC  1.png',
           onChanged: (selectedItem) {
             setState(() {
-              loadB = selectedItem!;
+              loadBC = selectedItem!;
             });
           },
         ),
@@ -105,11 +108,11 @@ class _DashboardState extends State<Dashboard> {
           initalValue: 'assets/images/OVERHANG A/OVERHANG A 1.png',
           onChanged: (selectedItem) {
             setState(() {
-              loadB = selectedItem!;
+              overhangA = selectedItem!;
             });
           },
         ),
-        addVerticalSpace(8),
+        const Divider(),
         CustomDropdownImage(
           label: 'LOAD IN: SPAN AB',
           items: simpleSupportForSpanABPaths,
@@ -117,11 +120,11 @@ class _DashboardState extends State<Dashboard> {
               'assets/images/SIMPLE SUPPORTED FOR SPAN AB/SIMPLE SPAN AB 1.png',
           onChanged: (selectedItem) {
             setState(() {
-              loadB = selectedItem!;
+              loadAB = selectedItem!;
             });
           },
         ),
-        addVerticalSpace(8),
+        const Divider(),
         CustomDropdownImage(
           label: 'LOAD IN: SPAN BC',
           items: simpleSupportForSpanBCPaths,
@@ -129,18 +132,18 @@ class _DashboardState extends State<Dashboard> {
               'assets/images/SIMPLE SUPPORTED FOR SPAN BC/SIMPLE SPAN BC  1.png',
           onChanged: (selectedItem) {
             setState(() {
-              loadB = selectedItem!;
+              loadBC = selectedItem!;
             });
           },
         ),
-        addVerticalSpace(8),
+        const Divider(),
         CustomDropdownImage(
           label: 'LOAD IN: OVERHANG C',
           items: overhangCPaths,
           initalValue: 'assets/images/OVERHANG C/OVERHANG C 1.png',
           onChanged: (selectedItem) {
             setState(() {
-              loadB = selectedItem!;
+              overhangC = selectedItem!;
             });
           },
         ),
@@ -158,11 +161,11 @@ class _DashboardState extends State<Dashboard> {
           initalValue: 'assets/images/OVERHANG A/OVERHANG A 1.png',
           onChanged: (selectedItem) {
             setState(() {
-              loadB = selectedItem!;
+              overhangA = selectedItem!;
             });
           },
         ),
-        addVerticalSpace(8),
+        const Divider(),
         CustomDropdownImage(
           label: 'LOAD IN: SPAN AB',
           items: simpleSupportForSpanABPaths,
@@ -170,11 +173,11 @@ class _DashboardState extends State<Dashboard> {
               'assets/images/SIMPLE SUPPORTED FOR SPAN AB/SIMPLE SPAN AB 1.png',
           onChanged: (selectedItem) {
             setState(() {
-              loadB = selectedItem!;
+              loadAB = selectedItem!;
             });
           },
         ),
-        addVerticalSpace(8),
+        const Divider(),
         CustomDropdownImage(
           label: 'LOAD IN: SPAN BC',
           items: simpleSupportForSpanBCPaths,
@@ -182,7 +185,7 @@ class _DashboardState extends State<Dashboard> {
               'assets/images/SIMPLE SUPPORTED FOR SPAN BC/SIMPLE SPAN BC  1.png',
           onChanged: (selectedItem) {
             setState(() {
-              loadB = selectedItem!;
+              loadBC = selectedItem!;
             });
           },
         ),
@@ -201,11 +204,11 @@ class _DashboardState extends State<Dashboard> {
               'assets/images/SIMPLE SUPPORTED FOR SPAN AB/SIMPLE SPAN AB 1.png',
           onChanged: (selectedItem) {
             setState(() {
-              loadB = selectedItem!;
+              loadAB = selectedItem!;
             });
           },
         ),
-        addVerticalSpace(8),
+        const Divider(),
         CustomDropdownImage(
           label: 'LOAD IN: SPAN BC',
           items: simpleSupportForSpanBCPaths,
@@ -213,18 +216,18 @@ class _DashboardState extends State<Dashboard> {
               'assets/images/SIMPLE SUPPORTED FOR SPAN BC/SIMPLE SPAN BC  1.png',
           onChanged: (selectedItem) {
             setState(() {
-              loadB = selectedItem!;
+              loadBC = selectedItem!;
             });
           },
         ),
-        addVerticalSpace(8),
+        const Divider(),
         CustomDropdownImage(
           label: 'LOAD IN: OVERHANG C',
           items: overhangCPaths,
           initalValue: 'assets/images/OVERHANG C/OVERHANG C 1.png',
           onChanged: (selectedItem) {
             setState(() {
-              loadB = selectedItem!;
+              overhangC = selectedItem!;
             });
           },
         ),
@@ -256,10 +259,8 @@ class _DashboardState extends State<Dashboard> {
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              (supportA == 'Select Support' ||
-                      supportC == 'Select Support' ||
-                      loadA == 'Select Load' ||
-                      loadB == 'Select Load')
+              (supportA != '' ||
+                      supportC != '')
                   ? const InfoAlert(
                       text:
                           "Please select a support and\nload to display free body diagram.",
