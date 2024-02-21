@@ -37,10 +37,10 @@ class _DashboardState extends State<Dashboard> {
 
   //List options
   List<String> supportList = [
-        'Fixed Support',
-        'Simple Support',
-        'Simple Support with Overhang',
-      ];
+    'Fixed Support',
+    'Simple Support',
+    'Simple Support with Overhang',
+  ];
   final List<String> imageLoadPaths = [
     'assets/images/onboarding/image1.png',
     'assets/images/onboarding/image2.png',
@@ -48,21 +48,21 @@ class _DashboardState extends State<Dashboard> {
   ];
 
   final List<String> simpleSupportForSpanABPaths = [
-    for (var i = 1; i <= 18; i++)
-      'assets/images/SIMPLE SUPPORTED FOR SPAN AB/SIMPLE SPAN AB $i.png',
-  ],
-  simpleSupportForSpanBCPaths = [
-    for (var i = 1; i <= 18; i++)
-      'assets/images/SIMPLE SUPPORTED FOR SPAN BC/SIMPLE SPAN BC  $i.png',
-  ],
-  overhangAPaths = [
-    for (var i = 1; i <= 18; i++)
-      'assets/images/OVERHANG A/OVERHANG A $i.png',
-  ],
-  overhangCPaths = [
-    for (var i = 1; i <= 18; i++)
-      'assets/images/OVERHANG C/OVERHANG C $i.png',
-  ];
+        for (var i = 1; i <= 18; i++)
+          'assets/images/SIMPLE SUPPORTED FOR SPAN AB/SIMPLE SPAN AB $i.png',
+      ],
+      simpleSupportForSpanBCPaths = [
+        for (var i = 1; i <= 18; i++)
+          'assets/images/SIMPLE SUPPORTED FOR SPAN BC/SIMPLE SPAN BC  $i.png',
+      ],
+      overhangAPaths = [
+        for (var i = 1; i <= 18; i++)
+          'assets/images/OVERHANG A/OVERHANG A $i.png',
+      ],
+      overhangCPaths = [
+        for (var i = 1; i <= 18; i++)
+          'assets/images/OVERHANG C/OVERHANG C $i.png',
+      ];
 
   //Span AB and BC
   Widget spanABAndBC() {
@@ -71,7 +71,8 @@ class _DashboardState extends State<Dashboard> {
         CustomDropdownImage(
           label: 'LOAD IN: SPAN AB',
           items: simpleSupportForSpanABPaths,
-          initalValue: 'assets/images/SIMPLE SUPPORTED FOR SPAN AB/SIMPLE SPAN AB 1.png',
+          initalValue:
+              'assets/images/SIMPLE SUPPORTED FOR SPAN AB/SIMPLE SPAN AB 1.png',
           onChanged: (selectedItem) {
             setState(() {
               loadB = selectedItem!;
@@ -82,7 +83,8 @@ class _DashboardState extends State<Dashboard> {
         CustomDropdownImage(
           label: 'LOAD IN: SPAN BC',
           items: simpleSupportForSpanBCPaths,
-          initalValue: 'assets/images/SIMPLE SUPPORTED FOR SPAN BC/SIMPLE SPAN BC  1.png',
+          initalValue:
+              'assets/images/SIMPLE SUPPORTED FOR SPAN BC/SIMPLE SPAN BC  1.png',
           onChanged: (selectedItem) {
             setState(() {
               loadB = selectedItem!;
@@ -111,7 +113,8 @@ class _DashboardState extends State<Dashboard> {
         CustomDropdownImage(
           label: 'LOAD IN: SPAN AB',
           items: simpleSupportForSpanABPaths,
-          initalValue: 'assets/images/SIMPLE SUPPORTED FOR SPAN AB/SIMPLE SPAN AB 1.png',
+          initalValue:
+              'assets/images/SIMPLE SUPPORTED FOR SPAN AB/SIMPLE SPAN AB 1.png',
           onChanged: (selectedItem) {
             setState(() {
               loadB = selectedItem!;
@@ -122,7 +125,8 @@ class _DashboardState extends State<Dashboard> {
         CustomDropdownImage(
           label: 'LOAD IN: SPAN BC',
           items: simpleSupportForSpanBCPaths,
-          initalValue: 'assets/images/SIMPLE SUPPORTED FOR SPAN BC/SIMPLE SPAN BC  1.png',
+          initalValue:
+              'assets/images/SIMPLE SUPPORTED FOR SPAN BC/SIMPLE SPAN BC  1.png',
           onChanged: (selectedItem) {
             setState(() {
               loadB = selectedItem!;
@@ -162,7 +166,8 @@ class _DashboardState extends State<Dashboard> {
         CustomDropdownImage(
           label: 'LOAD IN: SPAN AB',
           items: simpleSupportForSpanABPaths,
-          initalValue: 'assets/images/SIMPLE SUPPORTED FOR SPAN AB/SIMPLE SPAN AB 1.png',
+          initalValue:
+              'assets/images/SIMPLE SUPPORTED FOR SPAN AB/SIMPLE SPAN AB 1.png',
           onChanged: (selectedItem) {
             setState(() {
               loadB = selectedItem!;
@@ -173,7 +178,8 @@ class _DashboardState extends State<Dashboard> {
         CustomDropdownImage(
           label: 'LOAD IN: SPAN BC',
           items: simpleSupportForSpanBCPaths,
-          initalValue: 'assets/images/SIMPLE SUPPORTED FOR SPAN BC/SIMPLE SPAN BC  1.png',
+          initalValue:
+              'assets/images/SIMPLE SUPPORTED FOR SPAN BC/SIMPLE SPAN BC  1.png',
           onChanged: (selectedItem) {
             setState(() {
               loadB = selectedItem!;
@@ -191,7 +197,8 @@ class _DashboardState extends State<Dashboard> {
         CustomDropdownImage(
           label: 'LOAD IN: SPAN AB',
           items: simpleSupportForSpanABPaths,
-          initalValue: 'assets/images/SIMPLE SUPPORTED FOR SPAN AB/SIMPLE SPAN AB 1.png',
+          initalValue:
+              'assets/images/SIMPLE SUPPORTED FOR SPAN AB/SIMPLE SPAN AB 1.png',
           onChanged: (selectedItem) {
             setState(() {
               loadB = selectedItem!;
@@ -202,7 +209,8 @@ class _DashboardState extends State<Dashboard> {
         CustomDropdownImage(
           label: 'LOAD IN: SPAN BC',
           items: simpleSupportForSpanBCPaths,
-          initalValue: 'assets/images/SIMPLE SUPPORTED FOR SPAN BC/SIMPLE SPAN BC  1.png',
+          initalValue:
+              'assets/images/SIMPLE SUPPORTED FOR SPAN BC/SIMPLE SPAN BC  1.png',
           onChanged: (selectedItem) {
             setState(() {
               loadB = selectedItem!;
@@ -264,58 +272,83 @@ class _DashboardState extends State<Dashboard> {
               addVerticalSpace(10),
               const Divider(),
               Expanded(
-                child: 
-                SingleChildScrollView(
-                child: Column(
-                  children: [
-                    CustomDropdownText(
-                      label: 'SUPPORT A',
-                      items: supportList,
-                      initalValue: 'Fixed Support',
-                      onChanged: (selectedItem) {
-                        setState(() {
-                          supportA = selectedItem!;
-                        });
-                      },
-                    ),
-                    addVerticalSpace(8),
-                    CustomDropdownText(
-                      label: 'SUPPORT C',
-                      items: supportList,
-                      initalValue: 'Fixed Support',
-                      onChanged: (selectedItem) {
-                        setState(() {
-                          supportC = selectedItem!;
-                        });
-                      },
-                    ),
-                    addVerticalSpace(8),
-                    supportA == 'Fixed Support' &&
-                            supportC == 'Fixed Support' || supportA == 'Fixed Support' &&
-                            supportC == 'Simple Support' || supportA == 'Simple Support' &&
-                            supportC == 'Fixed Support' || supportA == 'Simple Support' &&
-                            supportC == 'Simple Support'
-                        ? spanABAndBC()
-                        : Container(),
-                    supportA == 'Simple Support with Overhang' &&
-                            supportC == 'Simple Support with Overhang'
-                        ? overhangAAndSpanABAndSpanBCAndOverhangC()
-                        : Container(),
-                    supportA == 'Simple Support with Overhang' &&
-                            supportC == 'Simple Support' || supportA == 'Simple Support with Overhang' &&
-                            supportC == 'Fixed Support'
-                        ? overhangAAndSpanABAndSpanBC()
-                        : Container(),
-                    supportA == 'Simple Support' &&
-                            supportC == 'Simple Support with Overhang' || supportA == 'Fixed Support' &&
-                            supportC == 'Simple Support with Overhang'
-                        ? spanABAndSpanBCAndOverhangC()
-                        : Container(),
+                child: SingleChildScrollView(
+                  child: Column(
+                    children: [
+                      Card(
+                        child: Padding(
+                          padding: const EdgeInsets.all(20.0),
+                          child: Column(
+                            children: [
+                              CustomDropdownText(
+                                label: 'SUPPORT A',
+                                items: supportList,
+                                initalValue: 'Fixed Support',
+                                onChanged: (selectedItem) {
+                                  setState(() {
+                                    supportA = selectedItem!;
+                                  });
+                                },
+                              ),
+                              const Divider(),
+                              CustomDropdownText(
+                                label: 'SUPPORT C',
+                                items: supportList,
+                                initalValue: 'Fixed Support',
+                                onChanged: (selectedItem) {
+                                  setState(() {
+                                    supportC = selectedItem!;
+                                  });
+                                },
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                      addVerticalSpace(10),
+                      Card(
+                        child: Padding(
+                          padding: const EdgeInsets.all(20),
+                          child: Column(
+                            children: [
+                              supportA == 'Fixed Support' &&
+                                          supportC == 'Fixed Support' ||
+                                      supportA == 'Fixed Support' &&
+                                          supportC == 'Simple Support' ||
+                                      supportA == 'Simple Support' &&
+                                          supportC == 'Fixed Support' ||
+                                      supportA == 'Simple Support' &&
+                                          supportC == 'Simple Support'
+                                  ? spanABAndBC()
+                                  : Container(),
+                              supportA == 'Simple Support with Overhang' &&
+                                      supportC == 'Simple Support with Overhang'
+                                  ? overhangAAndSpanABAndSpanBCAndOverhangC()
+                                  : Container(),
+                              supportA == 'Simple Support with Overhang' &&
+                                          supportC == 'Simple Support' ||
+                                      supportA ==
+                                              'Simple Support with Overhang' &&
+                                          supportC == 'Fixed Support'
+                                  ? overhangAAndSpanABAndSpanBC()
+                                  : Container(),
+                              supportA == 'Simple Support' &&
+                                          supportC ==
+                                              'Simple Support with Overhang' ||
+                                      supportA == 'Fixed Support' &&
+                                          supportC ==
+                                              'Simple Support with Overhang'
+                                  ? spanABAndSpanBCAndOverhangC()
+                                  : Container(),
+                            ],
+                          ),
+                        ),
+                      ),
                       addVerticalSpace(20)
-                  ],
+                    ],
+                  ),
                 ),
-              ),)
-              
+              )
             ],
           ),
         ),

@@ -33,7 +33,15 @@ ThemeData lightTheme = ThemeData(
     ),
     filled: true,
     fillColor: Colors.grey.withOpacity(0.1)
-  )
+  ),
+  cardTheme: CardTheme(
+    color: Colors.white,
+    shadowColor: Colors.black.withOpacity(0.2),
+    elevation: 3,
+    shape: RoundedRectangleBorder(
+      borderRadius: BorderRadius.circular(15),
+    ),
+  ),
 );
 
 ThemeData darkTheme = ThemeData(
