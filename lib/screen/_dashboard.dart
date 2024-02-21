@@ -276,7 +276,7 @@ class _DashboardState extends State<Dashboard> {
   }
 
   //Overhang A, Span AB amd Span BC
-  Widget overhangAAndSpanABAndSpanBC() {
+  Widget overhangAAndSimpleSpanABAndSpanBC() {
     return Column(
       children: [
         CustomDropdownImage(
@@ -320,8 +320,53 @@ class _DashboardState extends State<Dashboard> {
     );
   }
 
+  //Overhang A, Span AB amd Span BC
+  Widget overhangAAndFixedSpanABAndSpanBC() {
+    return Column(
+      children: [
+        CustomDropdownImage(
+          label: 'LOAD IN: OVERHANG A',
+          items: overhangAPaths,
+          initalValue: 'assets/images/OVERHANG A/OVERHANG A 1.png',
+          onChanged: (selectedItem) {
+            setState(() {
+              overhangA = selectedItem!;
+              isUpdated = true;
+            });
+          },
+        ),
+        const Divider(),
+        CustomDropdownImage(
+          label: 'LOAD IN: SPAN AB',
+          items: fixedSupportForSpanABPaths,
+          initalValue:
+              'assets/images/FIXED SUPPORTED FOR SPAN AB/FIXED SPAN AB 1.png',
+          onChanged: (selectedItem) {
+            setState(() {
+              loadAB = selectedItem!;
+              isUpdated = true;
+            });
+          },
+        ),
+        const Divider(),
+        CustomDropdownImage(
+          label: 'LOAD IN: SPAN BC',
+          items: fixedSupportForSpanBCPaths,
+          initalValue:
+              'assets/images/FIXED SUPPORTED FOR SPAN BC/FIXED SPAN BC 1.png',
+          onChanged: (selectedItem) {
+            setState(() {
+              loadBC = selectedItem!;
+              isUpdated = true;
+            });
+          },
+        ),
+      ],
+    );
+  }
+
   //Span AB, Span BC and Overhang C
-  Widget spanABAndSpanBCAndOverhangC() {
+  Widget simpleSpanABAndSpanBCAndOverhangC() {
     return Column(
       children: [
         CustomDropdownImage(
@@ -342,6 +387,50 @@ class _DashboardState extends State<Dashboard> {
           items: simpleSupportForSpanBCPaths,
           initalValue:
               'assets/images/SIMPLE SUPPORTED FOR SPAN BC/SIMPLE SPAN BC  1.png',
+          onChanged: (selectedItem) {
+            setState(() {
+              loadBC = selectedItem!;
+              isUpdated = true;
+            });
+          },
+        ),
+        const Divider(),
+        CustomDropdownImage(
+          label: 'LOAD IN: OVERHANG C',
+          items: overhangCPaths,
+          initalValue: 'assets/images/OVERHANG C/OVERHANG C 1.png',
+          onChanged: (selectedItem) {
+            setState(() {
+              overhangC = selectedItem!;
+              isUpdated = true;
+            });
+          },
+        ),
+      ],
+    );
+  }
+
+  Widget fixedSpanABAndSpanBCAndOverhangC() {
+    return Column(
+      children: [
+        CustomDropdownImage(
+          label: 'LOAD IN: SPAN AB',
+          items: fixedSupportForSpanABPaths,
+          initalValue:
+              'assets/images/FIXED SUPPORTED FOR SPAN AB/FIXED SPAN AB 1.png',
+          onChanged: (selectedItem) {
+            setState(() {
+              loadAB = selectedItem!;
+              isUpdated = true;
+            });
+          },
+        ),
+        const Divider(),
+        CustomDropdownImage(
+          label: 'LOAD IN: SPAN BC',
+          items: fixedSupportForSpanBCPaths,
+          initalValue:
+              'assets/images/FIXED SUPPORTED FOR SPAN BC/FIXED SPAN BC 1.png',
           onChanged: (selectedItem) {
             setState(() {
               loadBC = selectedItem!;
@@ -557,19 +646,22 @@ class _DashboardState extends State<Dashboard> {
                                   ? overhangAAndSpanABAndSpanBCAndOverhangC()
                                   : Container(),
                               supportA == 'Simple Support with Overhang' &&
-                                          supportC == 'Simple Support' ||
-                                      supportA ==
-                                              'Simple Support with Overhang' &&
+                                          supportC == 'Simple Support' 
+                                  ? overhangAAndSimpleSpanABAndSpanBC()
+                                  : Container(),
+                              supportA =='Simple Support with Overhang' &&
                                           supportC == 'Fixed Support'
-                                  ? overhangAAndSpanABAndSpanBC()
+                                  ? overhangAAndFixedSpanABAndSpanBC()
                                   : Container(),
                               supportA == 'Simple Support' &&
                                           supportC ==
-                                              'Simple Support with Overhang' ||
-                                      supportA == 'Fixed Support' &&
+                                              'Simple Support with Overhang'
+                                  ? simpleSpanABAndSpanBCAndOverhangC()
+                                  : Container(),
+                              supportA == 'Fixed Support' &&
                                           supportC ==
                                               'Simple Support with Overhang'
-                                  ? spanABAndSpanBCAndOverhangC()
+                                  ? fixedSpanABAndSpanBCAndOverhangC()
                                   : Container(),
                             ],
                           ),
