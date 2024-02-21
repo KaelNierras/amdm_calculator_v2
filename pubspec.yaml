@@ -63,10 +63,24 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
       - assets/images/amdm_logo.png
+
+      # Onboarding images
       - assets/images/onboarding/image1.png
       - assets/images/onboarding/image2.png
       - assets/images/onboarding/image3.png
       - assets/images/onboarding/image4.png
+
+      #SIMPLE SPAN AB Images
+      - assets/images/SIMPLE SUPPORTED FOR SPAN AB/
+
+      #SIMPLE SPAN BC Images
+      - assets/images/SIMPLE SUPPORTED FOR SPAN BC/
+
+      #OVERHANG A Images
+      - assets/images/OVERHANG A/
+
+      #OVERHANG C Images
+      - assets/images/OVERHANG C/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
@@ -81,10 +95,10 @@ flutter:
   # example:
 
   fonts:
-    - family: Mulish
-      fonts:
-        - asset: assets/fonts/Mulish-Light.ttf
-        - asset: assets/fonts/Mulish-SemiBold.ttf
+      - family: Mulish
+        fonts:
+          - asset: assets/fonts/Mulish-Light.ttf
+          - asset: assets/fonts/Mulish-SemiBold.ttf
   #   - family: Schyler
   #     fonts:
   #       - asset: fonts/Schyler-Regular.ttf

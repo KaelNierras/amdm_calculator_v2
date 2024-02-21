@@ -46,7 +46,13 @@ class _CustomDropdownImageState extends State<CustomDropdownImage> {
                     items: widget.items.map((item) {
                       return DropdownMenuItem<String>(
                         value: item,
-                        child: Image.network(item), // Use Image.network to load images from URLs
+                        child: Row(
+                          children: [
+                            Image.network(item, width: 50, height: 50), // Adjust the size as needed
+                            const SizedBox(width: 10), // Add some spacing between the image and the text
+                            Text(item.split('/').last.replaceAll('.png', '')), // Display the filename
+                          ],
+                        ),
                       );
                     }).toList(),
                     onChanged: (value) {
