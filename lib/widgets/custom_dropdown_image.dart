@@ -4,19 +4,19 @@ import 'package:flutter/material.dart';
 
 import '../utils/helper_widget.dart';
 
-class CustomDropdown extends StatefulWidget {
+class CustomDropdownImage extends StatefulWidget {
   final String label;
-  final List<String> items;
+  final List<String> items; // This should be a list of image URLs
   final ValueChanged<String?> onChanged;
   final String initalValue;
 
-  const CustomDropdown({super.key, required this.label, required this.items, required this.onChanged, required this.initalValue});
+  const CustomDropdownImage({super.key, required this.label, required this.items, required this.onChanged, required this.initalValue});
 
   @override
-  _CustomDropdownState createState() => _CustomDropdownState();
+  _CustomDropdownImageState createState() => _CustomDropdownImageState();
 }
 
-class _CustomDropdownState extends State<CustomDropdown> {
+class _CustomDropdownImageState extends State<CustomDropdownImage> {
   String? selectedItem;
 
   @override
@@ -46,7 +46,7 @@ class _CustomDropdownState extends State<CustomDropdown> {
                     items: widget.items.map((item) {
                       return DropdownMenuItem<String>(
                         value: item,
-                        child: Text(item),
+                        child: Image.network(item), // Use Image.network to load images from URLs
                       );
                     }).toList(),
                     onChanged: (value) {
