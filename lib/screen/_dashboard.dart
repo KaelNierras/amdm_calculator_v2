@@ -21,14 +21,14 @@ class _DashboardState extends State<Dashboard> {
   initState() {
     super.initState();
     initialization();
-    loadAB = (supportA == 'Simple Support')
+    loadABPath = (supportA == 'Simple Support')
         ? simpleSupportForSpanABPaths.first.toString()
         : fixedSupportForSpanABPaths.first.toString();
-    loadBC = (supportA == 'Simple Support')
+    loadBCPath = (supportA == 'Simple Support')
         ? simpleSupportForSpanBCPaths.first.toString()
         : fixedSupportForSpanBCPaths.first.toString();
-    overhangA = overhangAPaths.first.toString();
-    overhangC = overhangCPaths.first.toString();
+    overhangAPath = overhangAPaths.first.toString();
+    overhangCPath = overhangCPaths.first.toString();
     isUpdated = false;
   }
 
@@ -38,6 +38,7 @@ class _DashboardState extends State<Dashboard> {
     FlutterNativeSplash.remove();
   }
 
+  //List file path declaration
   final List<String> simpleSupportForSpanABPaths = [
         for (var i = 1; i <= 18; i++)
           'assets/images/SIMPLE SUPPORTED FOR SPAN AB/SIMPLE SPAN AB $i.png',
@@ -69,10 +70,14 @@ class _DashboardState extends State<Dashboard> {
   //Values of Dropdowns
   String supportA = 'Fixed Support',
       supportC = 'Fixed Support',
-      loadAB = '',
-      loadBC = '',
-      overhangA = '',
-      overhangC = '';
+      loadABPath = '',
+      loadBCPath = '',
+      overhangAPath = '',
+      overhangCPath = '',
+      loadABName = '',
+      loadBCName = '',
+      overhangAName = '',
+      overhangCName = '';
 
   //List options
   List<String> supportList = [
@@ -97,7 +102,8 @@ class _DashboardState extends State<Dashboard> {
               'assets/images/SIMPLE SUPPORTED FOR SPAN AB/SIMPLE SPAN AB 1.png',
           onChanged: (selectedItem) {
             setState(() {
-              loadAB = selectedItem!;
+              loadABPath = selectedItem[0]!;
+              loadABName = selectedItem[1]!;
               isUpdated = true;
             });
           },
@@ -110,7 +116,8 @@ class _DashboardState extends State<Dashboard> {
               'assets/images/SIMPLE SUPPORTED FOR SPAN BC/SIMPLE SPAN BC  1.png',
           onChanged: (selectedItem) {
             setState(() {
-              loadBC = selectedItem!;
+              loadBCPath = selectedItem[0]!;
+              loadBCName = selectedItem[1]!;
               isUpdated = true;
             });
           },
@@ -130,7 +137,8 @@ class _DashboardState extends State<Dashboard> {
               'assets/images/FIXED SUPPORTED FOR SPAN AB/FIXED SPAN AB 1.png',
           onChanged: (selectedItem) {
             setState(() {
-              loadAB = selectedItem!;
+              loadABPath = selectedItem[0]!;
+              loadABName = selectedItem[1]!;
               isUpdated = true;
             });
           },
@@ -143,7 +151,8 @@ class _DashboardState extends State<Dashboard> {
               'assets/images/FIXED SUPPORTED FOR SPAN BC/FIXED SPAN BC 1.png',
           onChanged: (selectedItem) {
             setState(() {
-              loadBC = selectedItem!;
+              loadBCPath = selectedItem[0]!;
+              loadBCName = selectedItem[1]!;
               isUpdated = true;
             });
           },
@@ -163,7 +172,8 @@ class _DashboardState extends State<Dashboard> {
               'assets/images/FIXED SUPPORTED FOR SPAN AB/FIXED SPAN AB 1.png',
           onChanged: (selectedItem) {
             setState(() {
-              loadAB = selectedItem!;
+              loadABPath = selectedItem[0]!;
+              loadABName = selectedItem[1]!;
               isUpdated = true;
             });
           },
@@ -176,7 +186,8 @@ class _DashboardState extends State<Dashboard> {
               'assets/images/SIMPLE SUPPORTED FOR SPAN BC/SIMPLE SPAN BC  1.png',
           onChanged: (selectedItem) {
             setState(() {
-              loadBC = selectedItem!;
+              loadBCPath = selectedItem[0]!;
+              loadBCName = selectedItem[1]!;
               isUpdated = true;
             });
           },
@@ -196,7 +207,8 @@ class _DashboardState extends State<Dashboard> {
               'assets/images/SIMPLE SUPPORTED FOR SPAN AB/SIMPLE SPAN AB 1.png',
           onChanged: (selectedItem) {
             setState(() {
-              loadAB = selectedItem!;
+              loadABPath = selectedItem[0]!;
+              loadABName = selectedItem[1]!;
               isUpdated = true;
             });
           },
@@ -209,7 +221,8 @@ class _DashboardState extends State<Dashboard> {
               'assets/images/FIXED SUPPORTED FOR SPAN BC/FIXED SPAN BC 1.png',
           onChanged: (selectedItem) {
             setState(() {
-              loadBC = selectedItem!;
+              loadBCPath = selectedItem[0]!;
+              loadBCName = selectedItem[1]!;
               isUpdated = true;
             });
           },
@@ -228,7 +241,8 @@ class _DashboardState extends State<Dashboard> {
           initalValue: 'assets/images/OVERHANG A/OVERHANG A 1.png',
           onChanged: (selectedItem) {
             setState(() {
-              overhangA = selectedItem!;
+              overhangAPath = selectedItem[0]!;
+              overhangAName = selectedItem[1]!;
               isUpdated = true;
             });
           },
@@ -241,7 +255,8 @@ class _DashboardState extends State<Dashboard> {
               'assets/images/SIMPLE SUPPORTED FOR SPAN AB/SIMPLE SPAN AB 1.png',
           onChanged: (selectedItem) {
             setState(() {
-              loadAB = selectedItem!;
+              loadABPath = selectedItem[0]!;
+              loadABName = selectedItem[1]!;
               isUpdated = true;
             });
           },
@@ -254,7 +269,8 @@ class _DashboardState extends State<Dashboard> {
               'assets/images/SIMPLE SUPPORTED FOR SPAN BC/SIMPLE SPAN BC  1.png',
           onChanged: (selectedItem) {
             setState(() {
-              loadBC = selectedItem!;
+              loadBCPath = selectedItem[0]!;
+              loadBCName = selectedItem[1]!;
               isUpdated = true;
             });
           },
@@ -266,7 +282,8 @@ class _DashboardState extends State<Dashboard> {
           initalValue: 'assets/images/OVERHANG C/OVERHANG C 1.png',
           onChanged: (selectedItem) {
             setState(() {
-              overhangC = selectedItem!;
+              overhangCPath = selectedItem[0]!;
+              overhangCName = selectedItem[1]!;
               isUpdated = true;
             });
           },
@@ -285,7 +302,8 @@ class _DashboardState extends State<Dashboard> {
           initalValue: 'assets/images/OVERHANG A/OVERHANG A 1.png',
           onChanged: (selectedItem) {
             setState(() {
-              overhangA = selectedItem!;
+              overhangAPath = selectedItem[0]!;
+              overhangAName = selectedItem[1]!;
               isUpdated = true;
             });
           },
@@ -298,7 +316,8 @@ class _DashboardState extends State<Dashboard> {
               'assets/images/SIMPLE SUPPORTED FOR SPAN AB/SIMPLE SPAN AB 1.png',
           onChanged: (selectedItem) {
             setState(() {
-              loadAB = selectedItem!;
+              loadABPath = selectedItem[0]!;
+              loadABName = selectedItem[1]!;
               isUpdated = true;
             });
           },
@@ -311,7 +330,8 @@ class _DashboardState extends State<Dashboard> {
               'assets/images/SIMPLE SUPPORTED FOR SPAN BC/SIMPLE SPAN BC  1.png',
           onChanged: (selectedItem) {
             setState(() {
-              loadBC = selectedItem!;
+              loadBCPath = selectedItem[0]!;
+              loadBCName = selectedItem[1]!;
               isUpdated = true;
             });
           },
@@ -330,7 +350,8 @@ class _DashboardState extends State<Dashboard> {
           initalValue: 'assets/images/OVERHANG A/OVERHANG A 1.png',
           onChanged: (selectedItem) {
             setState(() {
-              overhangA = selectedItem!;
+              overhangAPath = selectedItem[0]!;
+              overhangAName = selectedItem[1]!;
               isUpdated = true;
             });
           },
@@ -343,7 +364,8 @@ class _DashboardState extends State<Dashboard> {
               'assets/images/FIXED SUPPORTED FOR SPAN AB/FIXED SPAN AB 1.png',
           onChanged: (selectedItem) {
             setState(() {
-              loadAB = selectedItem!;
+              loadABPath = selectedItem[0]!;
+              loadABName = selectedItem[1]!;
               isUpdated = true;
             });
           },
@@ -356,7 +378,8 @@ class _DashboardState extends State<Dashboard> {
               'assets/images/FIXED SUPPORTED FOR SPAN BC/FIXED SPAN BC 1.png',
           onChanged: (selectedItem) {
             setState(() {
-              loadBC = selectedItem!;
+              loadBCPath = selectedItem[0]!;
+              loadBCName = selectedItem[1]!;
               isUpdated = true;
             });
           },
@@ -376,7 +399,8 @@ class _DashboardState extends State<Dashboard> {
               'assets/images/SIMPLE SUPPORTED FOR SPAN AB/SIMPLE SPAN AB 1.png',
           onChanged: (selectedItem) {
             setState(() {
-              loadAB = selectedItem!;
+              loadABPath = selectedItem[0]!;
+              loadABName = selectedItem[1]!;
               isUpdated = true;
             });
           },
@@ -389,7 +413,8 @@ class _DashboardState extends State<Dashboard> {
               'assets/images/SIMPLE SUPPORTED FOR SPAN BC/SIMPLE SPAN BC  1.png',
           onChanged: (selectedItem) {
             setState(() {
-              loadBC = selectedItem!;
+              loadBCPath = selectedItem[0]!;
+              loadBCName = selectedItem[1]!;
               isUpdated = true;
             });
           },
@@ -401,7 +426,8 @@ class _DashboardState extends State<Dashboard> {
           initalValue: 'assets/images/OVERHANG C/OVERHANG C 1.png',
           onChanged: (selectedItem) {
             setState(() {
-              overhangC = selectedItem!;
+              overhangCPath = selectedItem[0]!;
+              overhangCName = selectedItem[1]!;
               isUpdated = true;
             });
           },
@@ -420,7 +446,8 @@ class _DashboardState extends State<Dashboard> {
               'assets/images/FIXED SUPPORTED FOR SPAN AB/FIXED SPAN AB 1.png',
           onChanged: (selectedItem) {
             setState(() {
-              loadAB = selectedItem!;
+              loadABPath = selectedItem[0]!;
+              loadABName = selectedItem[1]!;
               isUpdated = true;
             });
           },
@@ -433,7 +460,8 @@ class _DashboardState extends State<Dashboard> {
               'assets/images/FIXED SUPPORTED FOR SPAN BC/FIXED SPAN BC 1.png',
           onChanged: (selectedItem) {
             setState(() {
-              loadBC = selectedItem!;
+              loadBCPath = selectedItem[0]!;
+              loadBCName = selectedItem[1]!;
               isUpdated = true;
             });
           },
@@ -445,7 +473,8 @@ class _DashboardState extends State<Dashboard> {
           initalValue: 'assets/images/OVERHANG C/OVERHANG C 1.png',
           onChanged: (selectedItem) {
             setState(() {
-              overhangC = selectedItem!;
+              overhangCPath = selectedItem[0]!;
+              overhangCName = selectedItem[1]!;
               isUpdated = true;
             });
           },
@@ -494,6 +523,7 @@ class _DashboardState extends State<Dashboard> {
                             padding: const EdgeInsets.all(0),
                             child: Column(
                               children: [
+                                //Two image Free body diagram
                                 (supportA == 'Fixed Support' &&
                                             supportC == 'Fixed Support' ||
                                         supportA == 'Simple Support' &&
@@ -507,18 +537,19 @@ class _DashboardState extends State<Dashboard> {
                                             MainAxisAlignment.center,
                                         children: [
                                           Image.asset(
-                                            loadAB,
+                                            loadABPath,
                                             width: 160,
                                             height: 160,
                                           ),
                                           Image.asset(
-                                            loadBC,
+                                            loadBCPath,
                                             width: 160,
                                             height: 160,
                                           ),
                                         ],
                                       )
                                     : Container(),
+                                //Three image free body diagram awith Overhang C  
                                 (supportA == 'Fixed Support' &&
                                             supportC ==
                                                 'Simple Support with Overhang' ||
@@ -530,23 +561,24 @@ class _DashboardState extends State<Dashboard> {
                                             MainAxisAlignment.center,
                                         children: [
                                           Image.asset(
-                                            loadAB,
+                                            loadABPath,
                                             width: 110,
                                             height: 110,
                                           ),
                                           Image.asset(
-                                            loadBC,
+                                            loadBCPath,
                                             width: 110,
                                             height: 110,
                                           ),
                                           Image.asset(
-                                            overhangC,
+                                            overhangCPath,
                                             width: 110,
                                             height: 110,
                                           ),
                                         ],
                                       )
                                     : Container(),
+                                  //Three image free body diagram awith Overhang A
                                 (supportA == 'Simple Support with Overhang' &&
                                             supportC == 'Simple Support' ||
                                         supportA ==
@@ -557,23 +589,24 @@ class _DashboardState extends State<Dashboard> {
                                             MainAxisAlignment.center,
                                         children: [
                                           Image.asset(
-                                            overhangA,
+                                            overhangAPath,
                                             width: 110,
                                             height: 110,
                                           ),
                                           Image.asset(
-                                            loadAB,
+                                            loadABPath,
                                             width: 110,
                                             height: 110,
                                           ),
                                           Image.asset(
-                                            loadBC,
+                                            loadBCPath,
                                             width: 110,
                                             height: 110,
                                           ),
                                         ],
                                       )
                                     : Container(),
+                                    //Three image free body diagram awith Overhang A and C
                                     (supportA == 'Simple Support with Overhang' &&
                                             supportC == 'Simple Support with Overhang')
                                     ? Row(
@@ -581,22 +614,22 @@ class _DashboardState extends State<Dashboard> {
                                             MainAxisAlignment.center,
                                         children: [
                                           Image.asset(
-                                            overhangA,
+                                            overhangAPath,
                                             width: 85,
                                             height: 85,
                                           ),
                                           Image.asset(
-                                            loadAB,
+                                            loadABPath,
                                             width: 85,
                                             height: 85,
                                           ),
                                           Image.asset(
-                                            loadBC,
+                                            loadBCPath,
                                             width: 85,
                                             height: 85,
                                           ),
                                           Image.asset(
-                                            overhangC,
+                                            overhangCPath,
                                             width: 85,
                                             height: 85,
                                           ),

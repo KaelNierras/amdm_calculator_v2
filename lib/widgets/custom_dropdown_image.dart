@@ -7,7 +7,7 @@ import '../utils/helper_widget.dart';
 class CustomDropdownImage extends StatefulWidget {
   final String label;
   final List<String> items; // This should be a list of image URLs
-  final ValueChanged<String?> onChanged;
+  final ValueChanged<List<String?>> onChanged; // Changed to List<String?>
   final String initalValue;
 
   const CustomDropdownImage({super.key, required this.label, required this.items, required this.onChanged, required this.initalValue});
@@ -59,7 +59,8 @@ class _CustomDropdownImageState extends State<CustomDropdownImage> {
                       setState(() {
                         selectedItem = value;
                       });
-                      widget.onChanged(value);
+                      String displayFileName = value!.split('/').last.replaceAll('.png', '');
+                      widget.onChanged([value, displayFileName]); // Pass both values as a list
                     },
                   ),
                 ),
