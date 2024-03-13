@@ -39,13 +39,67 @@ class _DashboardState extends State<Dashboard> {
   }
 
   //List file path declaration
-  final List<String> simpleSupportForSpanABPaths = [
-        for (var i = 1; i <= 18; i++)
-          'assets/images/SIMPLE SUPPORTED FOR SPAN AB/SIMPLE SPAN AB $i.png',
+  final List<String> 
+  
+      simpleSupportForSpanABPaths = [
+
+        'assets/images/SIMPLE SUPPORTED FOR SPAN AB/SIMPLE SPAN AB 1.png',
+        'assets/images/SIMPLE SUPPORTED FOR SPAN AB/SIMPLE SPAN AB 2.png',
+        'assets/images/SIMPLE SUPPORTED FOR SPAN AB/SIMPLE SPAN AB 3.png',
+        'assets/images/SIMPLE SUPPORTED FOR SPAN AB/SIMPLE SPAN AB 4.png',
+        'assets/images/SIMPLE SUPPORTED FOR SPAN AB/SIMPLE SPAN AB 5.png',
+        'assets/images/SIMPLE SUPPORTED FOR SPAN AB/SIMPLE SPAN AB 6.1.png',
+        'assets/images/SIMPLE SUPPORTED FOR SPAN AB/SIMPLE SPAN AB 6.2.png',
+        'assets/images/SIMPLE SUPPORTED FOR SPAN AB/SIMPLE SPAN AB 7.1.png',
+        'assets/images/SIMPLE SUPPORTED FOR SPAN AB/SIMPLE SPAN AB 7.2.png',
+        'assets/images/SIMPLE SUPPORTED FOR SPAN AB/SIMPLE SPAN AB 8.png',
+        'assets/images/SIMPLE SUPPORTED FOR SPAN AB/SIMPLE SPAN AB 9.png',
+        'assets/images/SIMPLE SUPPORTED FOR SPAN AB/SIMPLE SPAN AB 10.1.png',
+        'assets/images/SIMPLE SUPPORTED FOR SPAN AB/SIMPLE SPAN AB 10.2.png',
+        'assets/images/SIMPLE SUPPORTED FOR SPAN AB/SIMPLE SPAN AB 11.png',
+        'assets/images/SIMPLE SUPPORTED FOR SPAN AB/SIMPLE SPAN AB 12.png',
+        'assets/images/SIMPLE SUPPORTED FOR SPAN AB/SIMPLE SPAN AB 13.1.png',
+        'assets/images/SIMPLE SUPPORTED FOR SPAN AB/SIMPLE SPAN AB 13.2.png',
+        'assets/images/SIMPLE SUPPORTED FOR SPAN AB/SIMPLE SPAN AB 13.2.png',
+        'assets/images/SIMPLE SUPPORTED FOR SPAN AB/SIMPLE SPAN AB 14.1.png',
+        'assets/images/SIMPLE SUPPORTED FOR SPAN AB/SIMPLE SPAN AB 14.2.png',
+        'assets/images/SIMPLE SUPPORTED FOR SPAN AB/SIMPLE SPAN AB 15.1.png',
+        'assets/images/SIMPLE SUPPORTED FOR SPAN AB/SIMPLE SPAN AB 15.2.png',
+        'assets/images/SIMPLE SUPPORTED FOR SPAN AB/SIMPLE SPAN AB 16.1.png',
+        'assets/images/SIMPLE SUPPORTED FOR SPAN AB/SIMPLE SPAN AB 16.2.png',
+        'assets/images/SIMPLE SUPPORTED FOR SPAN AB/SIMPLE SPAN AB 17.1.png',
+        'assets/images/SIMPLE SUPPORTED FOR SPAN AB/SIMPLE SPAN AB 17.2.png',
+        'assets/images/SIMPLE SUPPORTED FOR SPAN AB/SIMPLE SPAN AB 18.png',
       ],
       simpleSupportForSpanBCPaths = [
-        for (var i = 1; i <= 18; i++)
-          'assets/images/SIMPLE SUPPORTED FOR SPAN BC/SIMPLE SPAN BC  $i.png',
+        
+        'assets/images/SIMPLE SUPPORTED FOR SPAN BC/SIMPLE SPAN BC 1.png',
+        'assets/images/SIMPLE SUPPORTED FOR SPAN BC/SIMPLE SPAN BC 2.png',
+        'assets/images/SIMPLE SUPPORTED FOR SPAN BC/SIMPLE SPAN BC 3.png',
+        'assets/images/SIMPLE SUPPORTED FOR SPAN BC/SIMPLE SPAN BC 4.png',
+        'assets/images/SIMPLE SUPPORTED FOR SPAN BC/SIMPLE SPAN BC 5.png',
+        'assets/images/SIMPLE SUPPORTED FOR SPAN BC/SIMPLE SPAN BC 6.1.png',
+        'assets/images/SIMPLE SUPPORTED FOR SPAN BC/SIMPLE SPAN BC 6.2.png',
+        'assets/images/SIMPLE SUPPORTED FOR SPAN BC/SIMPLE SPAN BC 7.1.png',
+        'assets/images/SIMPLE SUPPORTED FOR SPAN BC/SIMPLE SPAN BC 7.2.png',
+        'assets/images/SIMPLE SUPPORTED FOR SPAN BC/SIMPLE SPAN BC 8.png',
+        'assets/images/SIMPLE SUPPORTED FOR SPAN BC/SIMPLE SPAN BC 9.png',
+        'assets/images/SIMPLE SUPPORTED FOR SPAN BC/SIMPLE SPAN BC 10.1.png',
+        'assets/images/SIMPLE SUPPORTED FOR SPAN BC/SIMPLE SPAN BC 10.2.png',
+        'assets/images/SIMPLE SUPPORTED FOR SPAN BC/SIMPLE SPAN BC 11.png',
+        'assets/images/SIMPLE SUPPORTED FOR SPAN BC/SIMPLE SPAN BC 12.png',
+        'assets/images/SIMPLE SUPPORTED FOR SPAN BC/SIMPLE SPAN BC 13.1.png',
+        'assets/images/SIMPLE SUPPORTED FOR SPAN BC/SIMPLE SPAN BC 13.2.png',
+        'assets/images/SIMPLE SUPPORTED FOR SPAN BC/SIMPLE SPAN BC 13.2.png',
+        'assets/images/SIMPLE SUPPORTED FOR SPAN BC/SIMPLE SPAN BC 14.1.png',
+        'assets/images/SIMPLE SUPPORTED FOR SPAN BC/SIMPLE SPAN BC 14.2.png',
+        'assets/images/SIMPLE SUPPORTED FOR SPAN BC/SIMPLE SPAN BC 15.1.png',
+        'assets/images/SIMPLE SUPPORTED FOR SPAN BC/SIMPLE SPAN BC 15.2.png',
+        'assets/images/SIMPLE SUPPORTED FOR SPAN BC/SIMPLE SPAN BC 16.1.png',
+        'assets/images/SIMPLE SUPPORTED FOR SPAN BC/SIMPLE SPAN BC 16.2.png',
+        'assets/images/SIMPLE SUPPORTED FOR SPAN BC/SIMPLE SPAN BC 17.1.png',
+        'assets/images/SIMPLE SUPPORTED FOR SPAN BC/SIMPLE SPAN BC 17.2.png',
+        'assets/images/SIMPLE SUPPORTED FOR SPAN BC/SIMPLE SPAN BC 18.png',
       ],
       overhangAPaths = [
         for (var i = 1; i <= 18; i++)
@@ -56,12 +110,64 @@ class _DashboardState extends State<Dashboard> {
           'assets/images/OVERHANG C/OVERHANG C $i.png',
       ],
       fixedSupportForSpanABPaths = [
-        for (var i = 1; i <= 18; i++)
-          'assets/images/FIXED SUPPORTED FOR SPAN AB/FIXED SPAN AB $i.png',
+        
+        'assets/images/FIXED SUPPORTED FOR SPAN AB/FIXED SPAN AB 1.png',
+        'assets/images/FIXED SUPPORTED FOR SPAN AB/FIXED SPAN AB 2.png',
+        'assets/images/FIXED SUPPORTED FOR SPAN AB/FIXED SPAN AB 3.png',
+        'assets/images/FIXED SUPPORTED FOR SPAN AB/FIXED SPAN AB 4.png',
+        'assets/images/FIXED SUPPORTED FOR SPAN AB/FIXED SPAN AB 5.png',
+        'assets/images/FIXED SUPPORTED FOR SPAN AB/FIXED SPAN AB 6.1.png',
+        'assets/images/FIXED SUPPORTED FOR SPAN AB/FIXED SPAN AB 6.2.png',
+        'assets/images/FIXED SUPPORTED FOR SPAN AB/FIXED SPAN AB 7.1.png',
+        'assets/images/FIXED SUPPORTED FOR SPAN AB/FIXED SPAN AB 7.2.png',
+        'assets/images/FIXED SUPPORTED FOR SPAN AB/FIXED SPAN AB 8.png',
+        'assets/images/FIXED SUPPORTED FOR SPAN AB/FIXED SPAN AB 9.png',
+        'assets/images/FIXED SUPPORTED FOR SPAN AB/FIXED SPAN AB 10.1.png',
+        'assets/images/FIXED SUPPORTED FOR SPAN AB/FIXED SPAN AB 10.2.png',
+        'assets/images/FIXED SUPPORTED FOR SPAN AB/FIXED SPAN AB 11.png',
+        'assets/images/FIXED SUPPORTED FOR SPAN AB/FIXED SPAN AB 12.png',
+        'assets/images/FIXED SUPPORTED FOR SPAN AB/FIXED SPAN AB 13.1.png',
+        'assets/images/FIXED SUPPORTED FOR SPAN AB/FIXED SPAN AB 13.2.png',
+        'assets/images/FIXED SUPPORTED FOR SPAN AB/FIXED SPAN AB 13.2.png',
+        'assets/images/FIXED SUPPORTED FOR SPAN AB/FIXED SPAN AB 14.1.png',
+        'assets/images/FIXED SUPPORTED FOR SPAN AB/FIXED SPAN AB 14.2.png',
+        'assets/images/FIXED SUPPORTED FOR SPAN AB/FIXED SPAN AB 15.1.png',
+        'assets/images/FIXED SUPPORTED FOR SPAN AB/FIXED SPAN AB 15.2.png',
+        'assets/images/FIXED SUPPORTED FOR SPAN AB/FIXED SPAN AB 16.1.png',
+        'assets/images/FIXED SUPPORTED FOR SPAN AB/FIXED SPAN AB 16.2.png',
+        'assets/images/FIXED SUPPORTED FOR SPAN AB/FIXED SPAN AB 17.1.png',
+        'assets/images/FIXED SUPPORTED FOR SPAN AB/FIXED SPAN AB 17.2.png',
+        'assets/images/FIXED SUPPORTED FOR SPAN AB/FIXED SPAN AB 18.png',
       ],
       fixedSupportForSpanBCPaths = [
-        for (var i = 1; i <= 18; i++)
-          'assets/images/FIXED SUPPORTED FOR SPAN BC/FIXED SPAN BC $i.png',
+        
+        'assets/images/FIXED SUPPORTED FOR SPAN BC/FIXED SPAN BC 1.png',
+        'assets/images/FIXED SUPPORTED FOR SPAN BC/FIXED SPAN BC 2.png',
+        'assets/images/FIXED SUPPORTED FOR SPAN BC/FIXED SPAN BC 3.png',
+        'assets/images/FIXED SUPPORTED FOR SPAN BC/FIXED SPAN BC 4.png',
+        'assets/images/FIXED SUPPORTED FOR SPAN BC/FIXED SPAN BC 5.png',
+        'assets/images/FIXED SUPPORTED FOR SPAN BC/FIXED SPAN BC 6.1.png',
+        'assets/images/FIXED SUPPORTED FOR SPAN BC/FIXED SPAN BC 6.2.png',
+        'assets/images/FIXED SUPPORTED FOR SPAN BC/FIXED SPAN BC 7.1.png',
+        'assets/images/FIXED SUPPORTED FOR SPAN BC/FIXED SPAN BC 7.2.png',
+        'assets/images/FIXED SUPPORTED FOR SPAN BC/FIXED SPAN BC 8.png',
+        'assets/images/FIXED SUPPORTED FOR SPAN BC/FIXED SPAN BC 9.png',
+        'assets/images/FIXED SUPPORTED FOR SPAN BC/FIXED SPAN BC 10.1.png',
+        'assets/images/FIXED SUPPORTED FOR SPAN BC/FIXED SPAN BC 10.2.png',
+        'assets/images/FIXED SUPPORTED FOR SPAN BC/FIXED SPAN BC 11.png',
+        'assets/images/FIXED SUPPORTED FOR SPAN BC/FIXED SPAN BC 12.png',
+        'assets/images/FIXED SUPPORTED FOR SPAN BC/FIXED SPAN BC 13.1.png',
+        'assets/images/FIXED SUPPORTED FOR SPAN BC/FIXED SPAN BC 13.2.png',
+        'assets/images/FIXED SUPPORTED FOR SPAN BC/FIXED SPAN BC 13.2.png',
+        'assets/images/FIXED SUPPORTED FOR SPAN BC/FIXED SPAN BC 14.1.png',
+        'assets/images/FIXED SUPPORTED FOR SPAN BC/FIXED SPAN BC 14.2.png',
+        'assets/images/FIXED SUPPORTED FOR SPAN BC/FIXED SPAN BC 15.1.png',
+        'assets/images/FIXED SUPPORTED FOR SPAN BC/FIXED SPAN BC 15.2.png',
+        'assets/images/FIXED SUPPORTED FOR SPAN BC/FIXED SPAN BC 16.1.png',
+        'assets/images/FIXED SUPPORTED FOR SPAN BC/FIXED SPAN BC 16.2.png',
+        'assets/images/FIXED SUPPORTED FOR SPAN BC/FIXED SPAN BC 17.1.png',
+        'assets/images/FIXED SUPPORTED FOR SPAN BC/FIXED SPAN BC 17.2.png',
+        'assets/images/FIXED SUPPORTED FOR SPAN BC/FIXED SPAN BC 18.png',
       ];
 
   //Bool
@@ -113,7 +219,7 @@ class _DashboardState extends State<Dashboard> {
           label: 'LOAD IN: SPAN BC',
           items: simpleSupportForSpanBCPaths,
           initalValue:
-              'assets/images/SIMPLE SUPPORTED FOR SPAN BC/SIMPLE SPAN BC  1.png',
+              'assets/images/SIMPLE SUPPORTED FOR SPAN BC/SIMPLE SPAN BC 1.png',
           onChanged: (selectedItem) {
             setState(() {
               loadBCPath = selectedItem[0]!;
@@ -183,7 +289,7 @@ class _DashboardState extends State<Dashboard> {
           label: 'LOAD IN: SPAN BC',
           items: simpleSupportForSpanBCPaths,
           initalValue:
-              'assets/images/SIMPLE SUPPORTED FOR SPAN BC/SIMPLE SPAN BC  1.png',
+              'assets/images/SIMPLE SUPPORTED FOR SPAN BC/SIMPLE SPAN BC 1.png',
           onChanged: (selectedItem) {
             setState(() {
               loadBCPath = selectedItem[0]!;
@@ -266,7 +372,7 @@ class _DashboardState extends State<Dashboard> {
           label: 'LOAD IN: SPAN BC',
           items: simpleSupportForSpanBCPaths,
           initalValue:
-              'assets/images/SIMPLE SUPPORTED FOR SPAN BC/SIMPLE SPAN BC  1.png',
+              'assets/images/SIMPLE SUPPORTED FOR SPAN BC/SIMPLE SPAN BC 1.png',
           onChanged: (selectedItem) {
             setState(() {
               loadBCPath = selectedItem[0]!;
@@ -327,7 +433,7 @@ class _DashboardState extends State<Dashboard> {
           label: 'LOAD IN: SPAN BC',
           items: simpleSupportForSpanBCPaths,
           initalValue:
-              'assets/images/SIMPLE SUPPORTED FOR SPAN BC/SIMPLE SPAN BC  1.png',
+              'assets/images/SIMPLE SUPPORTED FOR SPAN BC/SIMPLE SPAN BC 1.png',
           onChanged: (selectedItem) {
             setState(() {
               loadBCPath = selectedItem[0]!;
@@ -410,7 +516,7 @@ class _DashboardState extends State<Dashboard> {
           label: 'LOAD IN: SPAN BC',
           items: simpleSupportForSpanBCPaths,
           initalValue:
-              'assets/images/SIMPLE SUPPORTED FOR SPAN BC/SIMPLE SPAN BC  1.png',
+              'assets/images/SIMPLE SUPPORTED FOR SPAN BC/SIMPLE SPAN BC 1.png',
           onChanged: (selectedItem) {
             setState(() {
               loadBCPath = selectedItem[0]!;
