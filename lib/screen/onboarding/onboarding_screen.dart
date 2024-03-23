@@ -75,6 +75,8 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
     );
   }
 
+  
+
   @override
   Widget build(BuildContext context) {
     TextTheme textTheme = Theme.of(context).textTheme;

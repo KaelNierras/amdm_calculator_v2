@@ -8,6 +8,7 @@ import '../widgets/custom_dropdown_text.dart';
 import '../widgets/custom_dropdown_image.dart';
 import '../widgets/custom_floating_action_button.dart';
 import '../widgets/custom_info_alert.dart';
+import '_input_data.dart';
 
 class Dashboard extends StatefulWidget {
   const Dashboard({super.key});
@@ -589,6 +590,15 @@ class _DashboardState extends State<Dashboard> {
     );
   }
 
+  void gotoDataInput() {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => InputData(loadInAB: loadABName, loadInBC: loadBCName,),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -845,7 +855,7 @@ class _DashboardState extends State<Dashboard> {
       ),
       floatingActionButton: CustomFloatingActionButton(
         onPressed: () {
-          // Add your onPressed logic here
+         gotoDataInput();
         },
       ),
     );
