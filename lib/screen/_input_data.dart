@@ -2,7 +2,6 @@
 
 import 'package:amdm_calculator/widgets/custom_textfield_with_drop.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_native_splash/flutter_native_splash.dart';
 
 import '../utils/helper_widget.dart';
 import '../widgets/custom_dropdown_text.dart';
@@ -22,14 +21,7 @@ class _InputDataState extends State<InputData> {
   @override
   initState() {
     super.initState();
-    initialization();
     selectedMomentUnit = momentUnit.first;
-  }
-
-
-  //Splash Screen Initialization
-  void initialization() async {
-    FlutterNativeSplash.remove();
   }
 
   //Moment Unit Variable
