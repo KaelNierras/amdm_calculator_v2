@@ -1,4 +1,4 @@
-// ignore_for_file: library_private_types_in_public_api
+// ignore_for_file: library_private_types_in_public_api, constant_identifier_names, must_be_immutable
 
 import 'package:amdm_calculator/widgets/custom_textfield_with_drop.dart';
 import 'package:flutter/material.dart';
@@ -8,23 +8,45 @@ import '../widgets/custom_floating_action_button.dart';
 import '_calculation.dart';
 
 class InputData extends StatefulWidget {
-  final String loadInAB;
-  final String loadInBC;
-  final String loadInOverhangAName;
-  final String loadInOverhangCName;
+  String loadInAB;
+  String loadInBC;
+  String loadInOverhangAName;
+  String loadInOverhangCName;
 
-  const InputData(
+  InputData(
       {super.key,
       required this.loadInAB,
       required this.loadInBC,
       required this.loadInOverhangAName,
       required this.loadInOverhangCName});
 
+      
+
   @override
   _InputDataState createState() => _InputDataState();
 }
+enum Span {
+  FIXED_SPAN_AB_1,
+  SIMPLE_SPAN_AB_1,
+  FIXED_SPAN_BC_1,
+  SIMPLE_SPAN_BC_1,
+  FIXED_SPAN_AB_2,
+  SIMPLE_SPAN_AB_2,
+  FIXED_SPAN_BC_2,
+  SIMPLE_SPAN_BC_2,
+  // ... add the rest of the spans here
+}
+enum Loading {
+  loading1Combination,
+  loading2Combination,
+  loading5Combination,
+  loading7Combination,
+  loading17Combination,
+  loading18Combination,
+}
 
 class _InputDataState extends State<InputData> {
+  
   @override
   initState() {
     super.initState();
@@ -181,6 +203,8 @@ class _InputDataState extends State<InputData> {
   //Moment BC Load Variable
   String momentOverhangCValue = '';
   String selectedMomentOverhangCUnit = '';
+
+  
 
   //Overhang Header
   Widget overhangA() {
@@ -792,26 +816,189 @@ class _InputDataState extends State<InputData> {
     );
   }
 
-  void gotoCalculations() {
-    Map<String, Function> combinations = {
-      'FIXED SPAN AB 1FIXED SPAN BC 1': loading1Calculation,
-      'SIMPLE SPAN AB 1SIMPLE SPAN BC 1': loading1Calculation,
-      'SIMPLE SPAN AB 1FIXED SPAN BC 1': loading1Calculation,
-      'FIXED SPAN AB 1SIMPLE SPAN BC 1': loading1Calculation,
-      // Add more combinations here
-    };
+  Calculation loading2Calculation() {
+    return Calculation(
+      //Names of the load
+      loadInAB: widget.loadInAB,
+      loadInBC: widget.loadInAB,
+      loadInOverhangAName: widget.loadInOverhangAName,
+      loadInOverhangCName: widget.loadInOverhangCName,
 
-    String currentCombination = widget.loadInAB + widget.loadInBC;
+      //Moment Unit
+      selectedMomentUnit: selectedMomentUnit,
 
-    if (combinations.containsKey(currentCombination)) {
-      Navigator.push(
-        context,
-        MaterialPageRoute(
-          builder: (context) => combinations[currentCombination]!(),
-        ),
-      );
+      //Span AB
+      loadABValueP: loadABValueP,
+      lengthABValueL: lengthABValueL,
+
+      //Span BC
+      loadBCValueP: loadBCValueP,
+      lengthBCValueL: lengthBCValueL,
+    );
+  }
+
+  Calculation loading5Calculation() {
+    return Calculation(
+      //Names of the load
+      loadInAB: widget.loadInAB,
+      loadInBC: widget.loadInAB,
+      loadInOverhangAName: widget.loadInOverhangAName,
+      loadInOverhangCName: widget.loadInOverhangCName,
+
+      //Moment Unit
+      selectedMomentUnit: selectedMomentUnit,
+
+      //Span AB
+      loadABValueW: loadABValueW,
+      lengthABValueL: lengthABValueL,
+
+      //Span BC
+      loadBCValueW: loadBCValueW,
+      lengthBCValueL: lengthBCValueL,
+    );
+  }
+
+  Calculation loading7Calculation() {
+    return Calculation(
+      //Names of the load
+      loadInAB: widget.loadInAB,
+      loadInBC: widget.loadInAB,
+      loadInOverhangAName: widget.loadInOverhangAName,
+      loadInOverhangCName: widget.loadInOverhangCName,
+
+      //Moment Unit
+      selectedMomentUnit: selectedMomentUnit,
+
+      //Span AB
+      loadABValueW: loadABValueW,
+      lengthABValueL: lengthABValueL,
+      lengthABValueK: lengthABValueK,
+
+      //Span BC
+      loadBCValueW: loadBCValueW,
+      lengthBCValueL: lengthBCValueL,
+      lengthBCValueK: lengthBCValueK,
+    );
+  }
+
+  Calculation loading17Calculation() {
+    return Calculation(
+      //Names of the load
+      loadInAB: widget.loadInAB,
+      loadInBC: widget.loadInAB,
+      loadInOverhangAName: widget.loadInOverhangAName,
+      loadInOverhangCName: widget.loadInOverhangCName,
+
+      //Moment Unit
+      selectedMomentUnit: selectedMomentUnit,
+
+      //Span AB
+      loadABValueW: loadABValueW,
+      loadABValueW2: loadABValueW2,
+      lengthABValueL: lengthABValueL,
+
+      //Span BC
+      loadBCValueW: loadBCValueW,
+      loadBCValueW2: loadABValueW2,
+      lengthBCValueL: lengthBCValueL,
+    );
+  }
+
+  Calculation loading18Calculation() {
+    return Calculation(
+      //Names of the load
+      loadInAB: widget.loadInAB,
+      loadInBC: widget.loadInAB,
+      loadInOverhangAName: widget.loadInOverhangAName,
+      loadInOverhangCName: widget.loadInOverhangCName,
+
+      //Moment Unit
+      selectedMomentUnit: selectedMomentUnit,
+
+      //Span AB
+      momentABValue: momentABValue,
+      lengthABValueL: lengthABValueL,
+      lengthABValueK: lengthABValueK,
+
+      //Span BC
+      momentBCValue: momentBCValue,
+      lengthBCValueL: lengthBCValueL,
+      lengthBCValueK: lengthBCValueK,
+    );
+  }
+
+Map<Span, Map<Span, Loading>> combinations = {
+  Span.FIXED_SPAN_AB_1: {
+    Span.FIXED_SPAN_BC_1: Loading.loading1Combination,
+    Span.SIMPLE_SPAN_BC_1: Loading.loading1Combination,
+  },
+  Span.SIMPLE_SPAN_AB_1: {
+    Span.FIXED_SPAN_BC_1: Loading.loading1Combination,
+    Span.SIMPLE_SPAN_BC_1: Loading.loading1Combination,
+  },
+  Span.FIXED_SPAN_AB_2: {
+    Span.FIXED_SPAN_BC_2: Loading.loading2Combination,
+    Span.SIMPLE_SPAN_BC_2: Loading.loading2Combination,
+  },
+  // ... add the rest of the combinations here
+};
+
+Function getLoadingCalculation(Span spanAb, Span spanBc) {
+  Loading? loading = combinations[spanAb]![spanBc];
+  switch (loading) {
+    case Loading.loading1Combination:
+      return loading1Calculation;
+    case Loading.loading2Combination:
+      return loading2Calculation;
+    // ... add the rest of the cases here
+    default:
+      throw Exception('Invalid combination');
+  }
+}
+
+Span getSpanFromString(String span) {
+  for (Span s in Span.values) {
+    if (s.toString() == 'Span.$span') {
+      return s;
     }
   }
+  throw Exception('Invalid span');
+}
+
+void gotoCalculationsTwoCombination() {
+  Span spanAb = getSpanFromString(widget.loadInAB);
+  Span spanBc = getSpanFromString(widget.loadInBC);
+  Function calculationFunction = getLoadingCalculation(spanAb, spanBc);
+  Navigator.push(
+    context,
+    MaterialPageRoute(
+      builder: (context) => calculationFunction(),
+    ),
+  );
+}
+  
+
+void gotoCalculationsFourCombination() {
+  Map<String, Function> combinations = {
+    //Combination 1
+    'FIXED SPAN AB 1FIXED SPAN BC 1OVERHANG C 1OVERHANG D 1': loading1Calculation,
+    'SIMPLE SPAN AB 1SIMPLE SPAN BC 1OVERHANG C 1OVERHANG D 1': loading1Calculation,
+    'SIMPLE SPAN AB 1FIXED SPAN BC 1OVERHANG C 1OVERHANG D 1': loading1Calculation,
+    'FIXED SPAN AB 1SIMPLE SPAN BC 1OVERHANG C 1OVERHANG D 1': loading1Calculation,
+    // Add more combinations as needed
+  };
+
+  String currentCombination = widget.loadInAB + widget.loadInBC + widget.loadInOverhangAName + widget.loadInOverhangCName;
+
+  if (combinations.containsKey(currentCombination)) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => combinations[currentCombination]!(),
+      ),
+    );
+  }
+}
 
   @override
   Widget build(BuildContext context) {
@@ -1053,7 +1240,15 @@ class _InputDataState extends State<InputData> {
       ),
       floatingActionButton: CustomFloatingActionButton(
         onPressed: () {
-          gotoCalculations();
+          if(widget.loadInOverhangAName != '' && widget.loadInOverhangCName != '') {
+            widget.loadInAB = widget.loadInAB.replaceAll(' ', '_').toUpperCase();
+            widget.loadInBC = widget.loadInBC.replaceAll(' ', '_').toUpperCase();
+            gotoCalculationsFourCombination();
+          } else {
+            widget.loadInAB = widget.loadInAB.replaceAll(' ', '_').toUpperCase();
+            widget.loadInBC = widget.loadInBC.replaceAll(' ', '_').toUpperCase();
+            gotoCalculationsTwoCombination();
+          }
         },
       ),
     );
