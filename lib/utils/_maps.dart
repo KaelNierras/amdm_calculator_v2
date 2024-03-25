@@ -151,6 +151,9 @@ Map<Span, Map<Span, Loading>> combinations = {
     },
     
     Span.FIXED_SPAN_AB_2: {
+      Span.FIXED_SPAN_BC_1: Loading.loading1Combination,
+      Span.SIMPLE_SPAN_BC_1: Loading.loading1Combination,
+
       Span.FIXED_SPAN_BC_2: Loading.loading2Combination,
       Span.SIMPLE_SPAN_BC_2: Loading.loading2Combination,
 
@@ -222,6 +225,9 @@ Map<Span, Map<Span, Loading>> combinations = {
     },
 
     Span.SIMPLE_SPAN_AB_2: {
+      Span.FIXED_SPAN_BC_1: Loading.loading1Combination,
+      Span.SIMPLE_SPAN_BC_1: Loading.loading1Combination,
+
       Span.FIXED_SPAN_BC_2: Loading.loading2Combination,
       Span.SIMPLE_SPAN_BC_2: Loading.loading2Combination,
 

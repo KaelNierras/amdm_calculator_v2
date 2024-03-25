@@ -1,4 +1,4 @@
-// ignore_for_file: library_private_types_in_public_api
+// ignore_for_file: library_private_types_in_public_api, must_be_immutable
 
 import 'package:amdm_calculator/utils/helper_widget_function.dart';
 import 'package:flutter/material.dart';
@@ -7,10 +7,10 @@ import '../utils/_enum.dart';
 import '../utils/_maps.dart';
 
 class Calculation extends StatefulWidget {
-  final String loadInAB;
-  final String loadInBC;
-  final String loadInOverhangAName;
-  final String loadInOverhangCName;
+  String ?loadInAB;
+  String ?loadInBC;
+  String ?loadInOverhangAName;
+  String ?loadInOverhangCName;
 
   final String? selectedMomentUnit;
 
@@ -157,7 +157,7 @@ class Calculation extends StatefulWidget {
   final String? momentOverhangBCValue;
   final String? selectedMomentOverhangBCUnit;
 
-  const Calculation({
+  Calculation({
     super.key,
     required this.loadInAB,
     required this.loadInBC,
@@ -239,18 +239,13 @@ class Calculation extends StatefulWidget {
 }
 
 class _CalculationState extends State<Calculation> {
-
+  
   Widget loading1Combination() {
     return Column(
       children: [
-        const Text('Span AB:'),
         Text('Load P: ${widget.loadABValueP!}'),
         Text('Length L: ${widget.lengthABValueL!}'),
         Text('Length A: ${widget.lengthABValueA!}'),
-        const Text('Span BC:'),
-        Text('Load P: ${widget.loadBCValueP!}'),
-        Text('Length L: ${widget.lengthBCValueL!}'),
-        Text('Length A: ${widget.lengthBCValueA!}'),
       ],
     );
   }
@@ -258,12 +253,8 @@ class _CalculationState extends State<Calculation> {
   Widget loading2Combination() {
     return Column(
       children: [
-        const Text('Span AB:'),
         Text('Load P: ${widget.loadABValueP!}'),
         Text('Length L: ${widget.lengthABValueL!}'),
-        const Text('Span BC:'),
-        Text('Load P: ${widget.loadBCValueP!}'),
-        Text('Length L: ${widget.lengthBCValueL!}'),
       ],
     );
   }
@@ -271,12 +262,8 @@ class _CalculationState extends State<Calculation> {
   Widget loading5Combination() {
     return Column(
       children: [
-        const Text('Span AB:'),
         Text('Load W: ${widget.loadABValueW!}'),
         Text('Length L: ${widget.lengthABValueL!}'),
-        const Text('Span BC:'),
-        Text('Load W: ${widget.loadBCValueW!}'),
-        Text('Length L: ${widget.lengthBCValueL!}'),
       ],
     );
   }
@@ -284,14 +271,9 @@ class _CalculationState extends State<Calculation> {
   Widget loading7Combination() {
     return Column(
       children: [
-        const Text('Span AB:'),
         Text('Load W: ${widget.loadABValueW!}'),
         Text('Length L: ${widget.lengthABValueL!}'),
         Text('Length K: ${widget.lengthABValueK!}'),
-        const Text('Span BC:'),
-        Text('Load W: ${widget.loadBCValueW!}'),
-        Text('Length L: ${widget.lengthBCValueL!}'),
-        Text('Length K: ${widget.lengthBCValueK!}'),
       ],
     );
   }
@@ -299,14 +281,9 @@ class _CalculationState extends State<Calculation> {
   Widget loading17Combination() {
     return Column(
       children: [
-        const Text('Span AB:'),
         Text('Load W1: ${widget.loadABValueW!}'),
         Text('Load W2: ${widget.loadABValueW2!}'),
         Text('Length L: ${widget.lengthABValueL!}'),
-        const Text('Span BC:'),
-        Text('Load W: ${widget.loadBCValueW!}'),
-        Text('Load W2: ${widget.loadBCValueW2!}'),
-        Text('Length L: ${widget.lengthBCValueL!}'),
       ],
     );
   }
@@ -314,54 +291,215 @@ class _CalculationState extends State<Calculation> {
   Widget loading18Combination() {
     return Column(
       children: [
-        const Text('Span AB:'),
         Text('Moment M: ${widget.momentABValue!}'),
         Text('Length L: ${widget.lengthABValueL!}'),
         Text('Length K1: ${widget.lengthABValueK1!}'),
-        const Text('Span BC:'),
-        Text('Moment M: ${widget.momentBCValue!}'),
-        Text('Length L: ${widget.lengthBCValueL!}'),
-        Text('Length K1: ${widget.lengthBCValueK1!}'),
       ],
     );
   }
 
-Widget getLoadingCalculation(String spanAb, String spanBc) {
-    print(spanAb);
-    print(spanBc);
-    Span spanAB = getSpanFromString(spanAb);
-    Span spanBC = getSpanFromString(spanBc);
-    Loading? loading = combinations[spanAB]![spanBC];
-    switch (loading) {
-      case Loading.loading1Combination:
-        return loading1Combination();
-      case Loading.loading2Combination:
-        return loading2Combination();
-      // ... add the rest of the cases here
-      default:
-        throw Exception('Invalid combination');
-    }
+  @override
+  void initState() {
+    super.initState();
+    widget.loadInAB = widget.loadInAB!.replaceAll('_', ' ');
+    widget.loadInBC = widget.loadInBC!.replaceAll('_', ' ');
   }
-
-  Widget checkAndBuild(String valueP, String valueW, String contains, Widget Function() buildWidget) {
-  if (valueP.contains(contains) == true && valueW.contains(contains) == true) {
-    return buildWidget();
-  }
-  return const SizedBox.shrink();
-}
 
   @override
   Widget build(BuildContext context) {
+    final Map<String, Widget Function()> loadInOverhangAMap = {
+      'OVERHANG A 1': loading1Combination,
+      'OVERHANG A 2': loading2Combination,
+      'OVERHANG A 3': loading2Combination,
+      'OVERHANG A 4': loading2Combination,
+      'OVERHANG A 5': loading5Combination,
+      'OVERHANG A 6.1': loading5Combination,
+      'OVERHANG A 6.2': loading5Combination,
+      'OVERHANG A 7.1': loading7Combination,
+      'OVERHANG A 7.2': loading7Combination,
+      'OVERHANG A 8': loading7Combination,
+      'OVERHANG A 9': loading7Combination,
+      'OVERHANG A 14.1': loading7Combination,
+      'OVERHANG A 14.2': loading7Combination,
+      'OVERHANG A 16.1': loading7Combination,
+      'OVERHANG A 16.2': loading7Combination,
+      'OVERHANG A 10.1': loading5Combination,
+      'OVERHANG A 10.2': loading5Combination,
+      'OVERHANG A 11': loading5Combination,
+      'OVERHANG A 12': loading5Combination,
+      'OVERHANG A 13.1': loading5Combination,
+      'OVERHANG A 13.2': loading5Combination,
+      'OVERHANG A 15.1': loading5Combination,
+      'OVERHANG A 15.2': loading5Combination,
+      'OVERHANG A 17.1': loading17Combination,
+      'OVERHANG A 17.2': loading17Combination,
+      'OVERHANG A 18': loading18Combination,
+    };
+
+    final Map<String, Widget Function()> loadInABMap = {
+      'FIXED SPAN AB 1': loading1Combination,
+      'SIMPLE SPAN AB 1': loading1Combination,
+      'FIXED SPAN AB 2': loading2Combination,
+      'SIMPLE SPAN AB 2': loading2Combination,
+      'FIXED SPAN AB 3': loading2Combination,
+      'SIMPLE SPAN AB 3': loading2Combination,
+      'FIXED SPAN AB 4': loading2Combination,
+      'SIMPLE SPAN AB 4': loading2Combination,
+      'FIXED SPAN AB 5': loading5Combination,
+      'SIMPLE SPAN AB 5': loading5Combination,
+      'FIXED SPAN AB 6.1': loading5Combination,
+      'SIMPLE SPAN AB 6.1': loading5Combination,
+      'FIXED SPAN AB 6.2': loading5Combination,
+      'SIMPLE SPAN AB 6.2': loading5Combination,
+      'FIXED SPAN AB 7.1': loading7Combination,
+      'SIMPLE SPAN AB 7.1': loading7Combination,
+      'FIXED SPAN AB 7.2': loading7Combination,
+      'SIMPLE SPAN AB 7.2': loading7Combination,
+      'FIXED SPAN AB 8': loading7Combination,
+      'SIMPLE SPAN AB 8': loading7Combination,
+      'FIXED SPAN AB 9': loading7Combination,
+      'SIMPLE SPAN AB 9': loading7Combination,
+      'FIXED SPAN AB 14.1': loading7Combination,
+      'SIMPLE SPAN AB 14.1': loading7Combination,
+      'FIXED SPAN AB 14.2': loading7Combination,
+      'SIMPLE SPAN AB 14.2': loading7Combination,
+      'FIXED SPAN AB 16.1': loading7Combination,
+      'SIMPLE SPAN AB 16.1': loading7Combination,
+      'FIXED SPAN AB 16.2': loading7Combination,
+      'SIMPLE SPAN AB 16.2': loading7Combination,
+      'FIXED SPAN AB 10.1': loading5Combination,
+      'SIMPLE SPAN AB 10.1': loading5Combination,
+      'FIXED SPAN AB 10.2': loading5Combination,
+      'SIMPLE SPAN AB 10.2': loading5Combination,
+      'FIXED SPAN AB 11': loading5Combination,
+      'SIMPLE SPAN AB 11': loading5Combination,
+      'FIXED SPAN AB 12': loading5Combination,
+      'SIMPLE SPAN AB 12': loading5Combination,
+      'FIXED SPAN AB 13.1': loading5Combination,
+      'SIMPLE SPAN AB 13.1': loading5Combination,
+      'FIXED SPAN AB 13.2': loading5Combination,
+      'SIMPLE SPAN AB 13.2': loading5Combination,
+      'FIXED SPAN AB 15.1': loading5Combination,
+      'SIMPLE SPAN AB 15.1': loading5Combination,
+      'FIXED SPAN AB 15.2': loading5Combination,
+      'SIMPLE SPAN AB 15.2': loading5Combination,
+      'FIXED SPAN AB 17.1': loading17Combination,
+      'SIMPLE SPAN AB 17.1': loading17Combination,
+      'FIXED SPAN AB 17.2': loading17Combination,
+      'SIMPLE SPAN AB 17.2': loading17Combination,
+      'FIXED SPAN AB 18': loading18Combination,
+      'SIMPLE SPAN AB 18': loading18Combination,
+    };
+
+    final Map<String, Widget Function()> loadInBCMap = {
+      'FIXED SPAN BC 1': loading1Combination,
+      'SIMPLE SPAN BC 1': loading1Combination,
+      'FIXED SPAN BC 2': loading2Combination,
+      'SIMPLE SPAN BC 2': loading2Combination,
+      'FIXED SPAN BC 3': loading2Combination,
+      'SIMPLE SPAN BC 3': loading2Combination,
+      'FIXED SPAN BC 4': loading2Combination,
+      'SIMPLE SPAN BC 4': loading2Combination,
+      'FIXED SPAN BC 5': loading5Combination,
+      'SIMPLE SPAN BC 5': loading5Combination,
+      'FIXED SPAN BC 6.1': loading5Combination,
+      'SIMPLE SPAN BC 6.1': loading5Combination,
+      'FIXED SPAN BC 6.2': loading5Combination,
+      'SIMPLE SPAN BC 6.2': loading5Combination,
+      'FIXED SPAN BC 7.1': loading7Combination,
+      'SIMPLE SPAN BC 7.1': loading7Combination,
+      'FIXED SPAN BC 7.2': loading7Combination,
+      'SIMPLE SPAN BC 7.2': loading7Combination,
+      'FIXED SPAN BC 8': loading7Combination,
+      'SIMPLE SPAN BC 8': loading7Combination,
+      'FIXED SPAN BC 9': loading7Combination,
+      'SIMPLE SPAN BC 9': loading7Combination,
+      'FIXED SPAN BC 14.1': loading7Combination,
+      'SIMPLE SPAN BC 14.1': loading7Combination,
+      'FIXED SPAN BC 14.2': loading7Combination,
+      'SIMPLE SPAN BC 14.2': loading7Combination,
+      'FIXED SPAN BC 16.1': loading7Combination,
+      'SIMPLE SPAN BC 16.1': loading7Combination,
+      'FIXED SPAN BC 16.2': loading7Combination,
+      'SIMPLE SPAN BC 16.2': loading7Combination,
+      'FIXED SPAN BC 10.1': loading5Combination,
+      'SIMPLE SPAN BC 10.1': loading5Combination,
+      'FIXED SPAN BC 10.2': loading5Combination,
+      'SIMPLE SPAN BC 10.2': loading5Combination,
+      'FIXED SPAN BC 11': loading5Combination,
+      'SIMPLE SPAN BC 11': loading5Combination,
+      'FIXED SPAN BC 12': loading5Combination,
+      'SIMPLE SPAN BC 12': loading5Combination,
+      'FIXED SPAN BC 13.1': loading5Combination,
+      'SIMPLE SPAN BC 13.1': loading5Combination,
+      'FIXED SPAN BC 13.2': loading5Combination,
+      'SIMPLE SPAN BC 13.2': loading5Combination,
+      'FIXED SPAN BC 15.1': loading5Combination,
+      'SIMPLE SPAN BC 15.1': loading5Combination,
+      'FIXED SPAN BC 15.2': loading5Combination,
+      'SIMPLE SPAN BC 15.2': loading5Combination,
+      'FIXED SPAN BC 17.1': loading17Combination,
+      'SIMPLE SPAN BC 17.1': loading17Combination,
+      'FIXED SPAN BC 17.2': loading17Combination,
+      'SIMPLE SPAN BC 17.2': loading17Combination,
+      'FIXED SPAN BC 18': loading18Combination,
+      'SIMPLE SPAN BC 18': loading18Combination,
+    };
+
+    final Map<String, Widget Function()> loadInOverhangCMap = {
+      'OVERHANG C 1': loading1Combination,
+      'OVERHANG C 2': loading2Combination,
+      'OVERHANG C 3': loading2Combination,
+      'OVERHANG C 4': loading2Combination,
+      'OVERHANG C 5': loading5Combination,
+      'OVERHANG C 6.1': loading5Combination,
+      'OVERHANG C 6.2': loading5Combination,
+      'OVERHANG C 7.1': loading7Combination,
+      'OVERHANG C 7.2': loading7Combination,
+      'OVERHANG C 8': loading7Combination,
+      'OVERHANG C 9': loading7Combination,
+      'OVERHANG C 14.1': loading7Combination,
+      'OVERHANG C 14.2': loading7Combination,
+      'OVERHANG C 16.1': loading7Combination,
+      'OVERHANG C 16.2': loading7Combination,
+      'OVERHANG C 10.1': loading5Combination,
+      'OVERHANG C 10.2': loading5Combination,
+      'OVERHANG C 11': loading5Combination,
+      'OVERHANG C 12': loading5Combination,
+      'OVERHANG C 13.1': loading5Combination,
+      'OVERHANG C 13.2': loading5Combination,
+      'OVERHANG C 15.1': loading5Combination,
+      'OVERHANG C 15.2': loading5Combination,
+      'OVERHANG C 17.1': loading17Combination,
+      'OVERHANG C 17.2': loading17Combination,
+      'OVERHANG C 18': loading18Combination,
+    };
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Calculation'),
       ),
-      body:  Center(
+      body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const Text('Calculation'),
-            getLoadingCalculation(widget.loadInAB, widget.loadInBC)
+            Text(
+              widget.loadInAB!,
+              style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+            ),
+            addVerticalSpace(5),
+            if (loadInABMap.containsKey(widget.loadInAB)) ...[
+              loadInABMap[widget.loadInAB]!()
+            ],
+            addVerticalSpace(10),
+            Text(
+              widget.loadInBC!,
+              style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+            ),
+            addVerticalSpace(5),
+            if (loadInBCMap.containsKey(widget.loadInBC)) ...[
+              loadInBCMap[widget.loadInBC]!()
+            ],
           ],
         ),
       ),
