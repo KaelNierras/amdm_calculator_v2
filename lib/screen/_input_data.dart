@@ -702,7 +702,7 @@ class _InputDataState extends State<InputData> {
               }
             });
           },
-        ), 
+        ),
         addVerticalSpace(10),
         buildCustomTextfieldWithDropdown(
           label: 'Enter Length (L)',
@@ -769,7 +769,6 @@ class _InputDataState extends State<InputData> {
     );
   }
 
-
   Calculation loading1Calculation() {
     return Calculation(
       //Names of the load
@@ -816,6 +815,174 @@ class _InputDataState extends State<InputData> {
 
   @override
   Widget build(BuildContext context) {
+    final Map<String, Widget Function(String)> loadInOverhangAMap = {
+      'OVERHANG A 1': loading1Combination,
+      'OVERHANG A 2': loading2Combination,
+      'OVERHANG A 3': loading2Combination,
+      'OVERHANG A 4': loading2Combination,
+      'OVERHANG A 5': loading5Combination,
+      'OVERHANG A 6.1': loading5Combination,
+      'OVERHANG A 6.2': loading5Combination,
+      'OVERHANG A 7.1': loading7Combination,
+      'OVERHANG A 7.2': loading7Combination,
+      'OVERHANG A 8': loading7Combination,
+      'OVERHANG A 9': loading7Combination,
+      'OVERHANG A 14.1': loading7Combination,
+      'OVERHANG A 14.2': loading7Combination,
+      'OVERHANG A 16.1': loading7Combination,
+      'OVERHANG A 16.2': loading7Combination,
+      'OVERHANG A 10.1': loading5Combination,
+      'OVERHANG A 10.2': loading5Combination,
+      'OVERHANG A 11': loading5Combination,
+      'OVERHANG A 12': loading5Combination,
+      'OVERHANG A 13.1': loading5Combination,
+      'OVERHANG A 13.2': loading5Combination,
+      'OVERHANG A 15.1': loading5Combination,
+      'OVERHANG A 15.2': loading5Combination,
+      'OVERHANG A 17.1': loading17Combination,
+      'OVERHANG A 17.2': loading17Combination,
+      'OVERHANG A 18': loading18Combination,
+    };
+
+    final Map<String, Widget Function(String)> loadInABMap = {
+      'FIXED SPAN AB 1': loading1Combination,
+      'SIMPLE SPAN AB 1': loading1Combination,
+      'FIXED SPAN AB 2': loading2Combination,
+      'SIMPLE SPAN AB 2': loading2Combination,
+      'FIXED SPAN AB 3': loading2Combination,
+      'SIMPLE SPAN AB 3': loading2Combination,
+      'FIXED SPAN AB 4': loading2Combination,
+      'SIMPLE SPAN AB 4': loading2Combination,
+      'FIXED SPAN AB 5': loading5Combination,
+      'SIMPLE SPAN AB 5': loading5Combination,
+      'FIXED SPAN AB 6.1': loading5Combination,
+      'SIMPLE SPAN AB 6.1': loading5Combination,
+      'FIXED SPAN AB 6.2': loading5Combination,
+      'SIMPLE SPAN AB 6.2': loading5Combination,
+      'FIXED SPAN AB 7.1': loading7Combination,
+      'SIMPLE SPAN AB 7.1': loading7Combination,
+      'FIXED SPAN AB 7.2': loading7Combination,
+      'SIMPLE SPAN AB 7.2': loading7Combination,
+      'FIXED SPAN AB 8': loading7Combination,
+      'SIMPLE SPAN AB 8': loading7Combination,
+      'FIXED SPAN AB 9': loading7Combination,
+      'SIMPLE SPAN AB 9': loading7Combination,
+      'FIXED SPAN AB 14.1': loading7Combination,
+      'SIMPLE SPAN AB 14.1': loading7Combination,
+      'FIXED SPAN AB 14.2': loading7Combination,
+      'SIMPLE SPAN AB 14.2': loading7Combination,
+      'FIXED SPAN AB 16.1': loading7Combination,
+      'SIMPLE SPAN AB 16.1': loading7Combination,
+      'FIXED SPAN AB 16.2': loading7Combination,
+      'SIMPLE SPAN AB 16.2': loading7Combination,
+      'FIXED SPAN AB 10.1': loading5Combination,
+      'SIMPLE SPAN AB 10.1': loading5Combination,
+      'FIXED SPAN AB 10.2': loading5Combination,
+      'SIMPLE SPAN AB 10.2': loading5Combination,
+      'FIXED SPAN AB 11': loading5Combination,
+      'SIMPLE SPAN AB 11': loading5Combination,
+      'FIXED SPAN AB 12': loading5Combination,
+      'SIMPLE SPAN AB 12': loading5Combination,
+      'FIXED SPAN AB 13.1': loading5Combination,
+      'SIMPLE SPAN AB 13.1': loading5Combination,
+      'FIXED SPAN AB 13.2': loading5Combination,
+      'SIMPLE SPAN AB 13.2': loading5Combination,
+      'FIXED SPAN AB 15.1': loading5Combination,
+      'SIMPLE SPAN AB 15.1': loading5Combination,
+      'FIXED SPAN AB 15.2': loading5Combination,
+      'SIMPLE SPAN AB 15.2': loading5Combination,
+      'FIXED SPAN AB 17.1': loading17Combination,
+      'SIMPLE SPAN AB 17.1': loading17Combination,
+      'FIXED SPAN AB 17.2': loading17Combination,
+      'SIMPLE SPAN AB 17.2': loading17Combination,
+      'FIXED SPAN AB 18': loading18Combination,
+      'SIMPLE SPAN AB 18': loading18Combination,
+    };
+
+    final Map<String, Widget Function(String)> loadInBCMap = {
+      'FIXED SPAN BC 1': loading1Combination,
+      'SIMPLE SPAN BC 1': loading1Combination,
+      'FIXED SPAN BC 2': loading2Combination,
+      'SIMPLE SPAN BC 2': loading2Combination,
+      'FIXED SPAN BC 3': loading2Combination,
+      'SIMPLE SPAN BC 3': loading2Combination,
+      'FIXED SPAN BC 4': loading2Combination,
+      'SIMPLE SPAN BC 4': loading2Combination,
+      'FIXED SPAN BC 5': loading5Combination,
+      'SIMPLE SPAN BC 5': loading5Combination,
+      'FIXED SPAN BC 6.1': loading5Combination,
+      'SIMPLE SPAN BC 6.1': loading5Combination,
+      'FIXED SPAN BC 6.2': loading5Combination,
+      'SIMPLE SPAN BC 6.2': loading5Combination,
+      'FIXED SPAN BC 7.1': loading7Combination,
+      'SIMPLE SPAN BC 7.1': loading7Combination,
+      'FIXED SPAN BC 7.2': loading7Combination,
+      'SIMPLE SPAN BC 7.2': loading7Combination,
+      'FIXED SPAN BC 8': loading7Combination,
+      'SIMPLE SPAN BC 8': loading7Combination,
+      'FIXED SPAN BC 9': loading7Combination,
+      'SIMPLE SPAN BC 9': loading7Combination,
+      'FIXED SPAN BC 14.1': loading7Combination,
+      'SIMPLE SPAN BC 14.1': loading7Combination,
+      'FIXED SPAN BC 14.2': loading7Combination,
+      'SIMPLE SPAN BC 14.2': loading7Combination,
+      'FIXED SPAN BC 16.1': loading7Combination,
+      'SIMPLE SPAN BC 16.1': loading7Combination,
+      'FIXED SPAN BC 16.2': loading7Combination,
+      'SIMPLE SPAN BC 16.2': loading7Combination,
+      'FIXED SPAN BC 10.1': loading5Combination,
+      'SIMPLE SPAN BC 10.1': loading5Combination,
+      'FIXED SPAN BC 10.2': loading5Combination,
+      'SIMPLE SPAN BC 10.2': loading5Combination,
+      'FIXED SPAN BC 11': loading5Combination,
+      'SIMPLE SPAN BC 11': loading5Combination,
+      'FIXED SPAN BC 12': loading5Combination,
+      'SIMPLE SPAN BC 12': loading5Combination,
+      'FIXED SPAN BC 13.1': loading5Combination,
+      'SIMPLE SPAN BC 13.1': loading5Combination,
+      'FIXED SPAN BC 13.2': loading5Combination,
+      'SIMPLE SPAN BC 13.2': loading5Combination,
+      'FIXED SPAN BC 15.1': loading5Combination,
+      'SIMPLE SPAN BC 15.1': loading5Combination,
+      'FIXED SPAN BC 15.2': loading5Combination,
+      'SIMPLE SPAN BC 15.2': loading5Combination,
+      'FIXED SPAN BC 17.1': loading17Combination,
+      'SIMPLE SPAN BC 17.1': loading17Combination,
+      'FIXED SPAN BC 17.2': loading17Combination,
+      'SIMPLE SPAN BC 17.2': loading17Combination,
+      'FIXED SPAN BC 18': loading18Combination,
+      'SIMPLE SPAN BC 18': loading18Combination,
+    };
+
+    final Map<String, Widget Function(String)> loadInOverhangCMap = {
+      'OVERHANG C 1': loading1Combination,
+      'OVERHANG C 2': loading2Combination,
+      'OVERHANG C 3': loading2Combination,
+      'OVERHANG C 4': loading2Combination,
+      'OVERHANG C 5': loading5Combination,
+      'OVERHANG C 6.1': loading5Combination,
+      'OVERHANG C 6.2': loading5Combination,
+      'OVERHANG C 7.1': loading7Combination,
+      'OVERHANG C 7.2': loading7Combination,
+      'OVERHANG C 8': loading7Combination,
+      'OVERHANG C 9': loading7Combination,
+      'OVERHANG C 14.1': loading7Combination,
+      'OVERHANG C 14.2': loading7Combination,
+      'OVERHANG C 16.1': loading7Combination,
+      'OVERHANG C 16.2': loading7Combination,
+      'OVERHANG C 10.1': loading5Combination,
+      'OVERHANG C 10.2': loading5Combination,
+      'OVERHANG C 11': loading5Combination,
+      'OVERHANG C 12': loading5Combination,
+      'OVERHANG C 13.1': loading5Combination,
+      'OVERHANG C 13.2': loading5Combination,
+      'OVERHANG C 15.1': loading5Combination,
+      'OVERHANG C 15.2': loading5Combination,
+      'OVERHANG C 17.1': loading17Combination,
+      'OVERHANG C 17.2': loading17Combination,
+      'OVERHANG C 18': loading18Combination,
+    };
+    
     return Scaffold(
       appBar: AppBar(
         leading: const BackButton(
@@ -847,46 +1014,9 @@ class _InputDataState extends State<InputData> {
                     },
                   ),
                   if (widget.loadInOverhangAName != '') ...[overhangA()],
-                  if (widget.loadInOverhangAName == 'OVERHANG A 1') ...[
-                    loading1Combination('OverhangA')
-                  ],
-                  if (widget.loadInOverhangAName == 'OVERHANG A 2' ||
-                      widget.loadInOverhangAName == 'OVERHANG A 3' ||
-                      widget.loadInOverhangAName == 'OVERHANG A 4') ...[
-                    loading2Combination('OverhangA')
-                  ],
-                  if (widget.loadInOverhangAName == 'OVERHANG A 5' ||
-                      widget.loadInOverhangAName == 'OVERHANG A 6.1' ||
-                      widget.loadInOverhangAName == 'OVERHANG A 6.2') ...[
-                    loading5Combination('OverhangA')
-                  ],
-                  if (widget.loadInOverhangAName == 'OVERHANG A 7.1' ||
-                      widget.loadInOverhangAName == 'OVERHANG A 7.2' ||
-                      widget.loadInOverhangAName == 'OVERHANG A 8' ||
-                      widget.loadInOverhangAName == 'OVERHANG A 9' ||
-                      widget.loadInOverhangAName == 'OVERHANG A 14.1' ||
-                      widget.loadInOverhangAName == 'OVERHANG A 14.2' ||
-                      widget.loadInOverhangAName == 'OVERHANG A 16.1' ||
-                      widget.loadInOverhangAName == 'OVERHANG A 16.2') ...[
-                    loading7Combination('OverhangA')
-                  ],
-                  if (widget.loadInOverhangAName == 'OVERHANG A 10.1' ||
-                      widget.loadInOverhangAName == 'OVERHANG A 10.2' ||
-                      widget.loadInOverhangAName == 'OVERHANG A 11' ||
-                      widget.loadInOverhangAName == 'OVERHANG A 12' ||
-                      widget.loadInOverhangAName == 'OVERHANG A 13.1' ||
-                      widget.loadInOverhangAName == 'OVERHANG A 13.2' ||
-                      widget.loadInOverhangAName == 'OVERHANG A 15.1' ||
-                      widget.loadInOverhangAName == 'OVERHANG A 15.2') ...[
-                    loading5Combination('OverhangA')
-                  ],
-                  if (widget.loadInOverhangAName == 'OVERHANG A 17.1' ||
-                      widget.loadInOverhangAName == 'OVERHANG A 17.2') ...[
-                    loading17Combination('OverhangA')
-                  ],
-                  if (widget.loadInOverhangAName == 'OVERHANG A 18' ||
-                      widget.loadInOverhangAName == 'OVERHANG A 18') ...[
-                    loading18Combination('OverhangA')
+                  if (loadInOverhangAMap
+                      .containsKey(widget.loadInOverhangAName)) ...[
+                    loadInOverhangAMap[widget.loadInOverhangAName]!('OverhangA')
                   ],
                   addVerticalSpace(10),
                   const Divider(),
@@ -895,71 +1025,8 @@ class _InputDataState extends State<InputData> {
                     style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                   ),
                   addVerticalSpace(10),
-                  if (widget.loadInAB == 'FIXED SPAN AB 1' ||
-                      widget.loadInAB == 'SIMPLE SPAN AB 1') ...[
-                    loading1Combination('AB')
-                  ],
-                  if (widget.loadInAB == 'FIXED SPAN AB 2' ||
-                      widget.loadInAB == 'SIMPLE SPAN AB 2' ||
-                      widget.loadInAB == 'FIXED SPAN AB 3' ||
-                      widget.loadInAB == 'SIMPLE SPAN AB 3' ||
-                      widget.loadInAB == 'FIXED SPAN AB 4' ||
-                      widget.loadInAB == 'SIMPLE SPAN AB 4') ...[
-                    loading2Combination('AB')
-                  ],
-                  if (widget.loadInAB == 'FIXED SPAN AB 5' ||
-                      widget.loadInAB == 'SIMPLE SPAN AB 5' ||
-                      widget.loadInAB == 'FIXED SPAN AB 6.1' ||
-                      widget.loadInAB == 'SIMPLE SPAN AB 6.1' ||
-                      widget.loadInAB == 'FIXED SPAN AB 6.2' ||
-                      widget.loadInAB == 'SIMPLE SPAN AB 6.2') ...[
-                    loading5Combination('AB')
-                  ],
-                  if (widget.loadInAB == 'FIXED SPAN AB 7.1' ||
-                      widget.loadInAB == 'SIMPLE SPAN AB 7.1' ||
-                      widget.loadInAB == 'FIXED SPAN AB 7.2' ||
-                      widget.loadInAB == 'SIMPLE SPAN AB 7.2' ||
-                      widget.loadInAB == 'FIXED SPAN AB 8' ||
-                      widget.loadInAB == 'SIMPLE SPAN AB 8' ||
-                      widget.loadInAB == 'FIXED SPAN AB 9' ||
-                      widget.loadInAB == 'SIMPLE SPAN AB 9' ||
-                      widget.loadInAB == 'FIXED SPAN AB 14.1' ||
-                      widget.loadInAB == 'SIMPLE SPAN AB 14.1' ||
-                      widget.loadInAB == 'FIXED SPAN AB 14.2' ||
-                      widget.loadInAB == 'SIMPLE SPAN AB 14.2' ||
-                      widget.loadInAB == 'FIXED SPAN AB 16.1' ||
-                      widget.loadInAB == 'SIMPLE SPAN AB 16.1' ||
-                      widget.loadInAB == 'FIXED SPAN AB 16.2' ||
-                      widget.loadInAB == 'SIMPLE SPAN AB 16.2') ...[
-                    loading7Combination('AB')
-                  ],
-                  if (widget.loadInAB == 'FIXED SPAN AB 10.1' ||
-                      widget.loadInAB == 'SIMPLE SPAN AB 10.1' ||
-                      widget.loadInAB == 'FIXED SPAN AB 10.2' ||
-                      widget.loadInAB == 'SIMPLE SPAN AB 10.2' ||
-                      widget.loadInAB == 'FIXED SPAN AB 11' ||
-                      widget.loadInAB == 'SIMPLE SPAN AB 11' ||
-                      widget.loadInAB == 'FIXED SPAN AB 12' ||
-                      widget.loadInAB == 'SIMPLE SPAN AB 12' ||
-                      widget.loadInAB == 'FIXED SPAN AB 13.1' ||
-                      widget.loadInAB == 'SIMPLE SPAN AB 13.1' ||
-                      widget.loadInAB == 'FIXED SPAN AB 13.2' ||
-                      widget.loadInAB == 'SIMPLE SPAN AB 13.2' ||
-                      widget.loadInAB == 'FIXED SPAN AB 15.1' ||
-                      widget.loadInAB == 'SIMPLE SPAN AB 15.1' ||
-                      widget.loadInAB == 'FIXED SPAN AB 15.2' ||
-                      widget.loadInAB == 'SIMPLE SPAN AB 15.2') ...[
-                    loading5Combination('AB')
-                  ],
-                  if (widget.loadInAB == 'FIXED SPAN AB 17.1' ||
-                      widget.loadInAB == 'SIMPLE SPAN AB 17.1' ||
-                      widget.loadInAB == 'FIXED SPAN AB 17.2' ||
-                      widget.loadInAB == 'SIMPLE SPAN AB 17.2') ...[
-                    loading17Combination('AB')
-                  ],
-                  if (widget.loadInAB == 'FIXED SPAN AB 18' ||
-                      widget.loadInAB == 'SIMPLE SPAN AB 18') ...[
-                    loading18Combination('AB')
+                  if (loadInABMap.containsKey(widget.loadInAB)) ...[
+                    loadInABMap[widget.loadInAB]!('AB')
                   ],
                   addVerticalSpace(10),
                   const Divider(),
@@ -968,114 +1035,16 @@ class _InputDataState extends State<InputData> {
                     style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                   ),
                   addVerticalSpace(10),
-                  if (widget.loadInBC == 'FIXED SPAN BC 1' ||
-                      widget.loadInBC == 'SIMPLE SPAN BC 1') ...[
-                    loading1Combination('BC')
+                  if (loadInBCMap.containsKey(widget.loadInBC)) ...[
+                    loadInBCMap[widget.loadInBC]!('BC')
                   ],
-                  if (widget.loadInBC == 'FIXED SPAN BC 2' ||
-                      widget.loadInBC == 'SIMPLE SPAN BC 2' ||
-                      widget.loadInBC == 'FIXED SPAN BC 3' ||
-                      widget.loadInBC == 'SIMPLE SPAN BC 3' ||
-                      widget.loadInBC == 'FIXED SPAN BC 4' ||
-                      widget.loadInBC == 'SIMPLE SPAN BC 4') ...[
-                    loading2Combination('BC')
-                  ],
-                  if (widget.loadInBC == 'FIXED SPAN BC 5' ||
-                      widget.loadInBC == 'SIMPLE SPAN BC 5' ||
-                      widget.loadInBC == 'FIXED SPAN BC 6.1' ||
-                      widget.loadInBC == 'SIMPLE SPAN BC 6.1' ||
-                      widget.loadInBC == 'FIXED SPAN BC 6.2' ||
-                      widget.loadInBC == 'SIMPLE SPAN BC 6.2') ...[
-                    loading5Combination('BC')
-                  ],
-                  if (widget.loadInBC == 'FIXED SPAN BC 7.1' ||
-                      widget.loadInBC == 'SIMPLE SPAN BC 7.1' ||
-                      widget.loadInBC == 'FIXED SPAN BC 7.2' ||
-                      widget.loadInBC == 'SIMPLE SPAN BC 7.2' ||
-                      widget.loadInBC == 'FIXED SPAN BC 8' ||
-                      widget.loadInBC == 'SIMPLE SPAN BC 8' ||
-                      widget.loadInBC == 'FIXED SPAN BC 9' ||
-                      widget.loadInBC == 'SIMPLE SPAN BC 9' ||
-                      widget.loadInBC == 'FIXED SPAN BC 14.1' ||
-                      widget.loadInBC == 'SIMPLE SPAN BC 14.1' ||
-                      widget.loadInBC == 'FIXED SPAN BC 14.2' ||
-                      widget.loadInBC == 'SIMPLE SPAN BC 14.2' ||
-                      widget.loadInBC == 'FIXED SPAN BC 16.1' ||
-                      widget.loadInBC == 'SIMPLE SPAN BC 16.1' ||
-                      widget.loadInBC == 'FIXED SPAN BC 16.2' ||
-                      widget.loadInBC == 'SIMPLE SPAN BC 16.2') ...[
-                    loading7Combination('BC')
-                  ],
-                  if (widget.loadInBC == 'FIXED SPAN BC 10.1' ||
-                      widget.loadInBC == 'SIMPLE SPAN BC 10.1' ||
-                      widget.loadInBC == 'FIXED SPAN BC 10.2' ||
-                      widget.loadInBC == 'SIMPLE SPAN BC 10.2' ||
-                      widget.loadInBC == 'FIXED SPAN BC 11' ||
-                      widget.loadInBC == 'SIMPLE SPAN BC 11' ||
-                      widget.loadInBC == 'FIXED SPAN BC 12' ||
-                      widget.loadInBC == 'SIMPLE SPAN BC 12' ||
-                      widget.loadInBC == 'FIXED SPAN BC 13.1' ||
-                      widget.loadInBC == 'SIMPLE SPAN BC 13.1' ||
-                      widget.loadInBC == 'FIXED SPAN BC 13.2' ||
-                      widget.loadInBC == 'SIMPLE SPAN BC 13.2' ||
-                      widget.loadInBC == 'FIXED SPAN BC 15.1' ||
-                      widget.loadInBC == 'SIMPLE SPAN BC 15.1' ||
-                      widget.loadInBC == 'FIXED SPAN BC 15.2' ||
-                      widget.loadInBC == 'SIMPLE SPAN BC 15.2') ...[
-                    loading5Combination('BC')
-                  ],
-                  if (widget.loadInBC == 'FIXED SPAN BC 17.1' ||
-                      widget.loadInBC == 'SIMPLE SPAN BC 17.1' ||
-                      widget.loadInBC == 'FIXED SPAN BC 17.2' ||
-                      widget.loadInBC == 'SIMPLE SPAN BC 17.2') ...[
-                    loading17Combination('BC')
-                  ],
-                  if (widget.loadInBC == 'FIXED SPAN BC 18' ||
-                      widget.loadInBC == 'SIMPLE SPAN BC 18') ...[
-                    loading18Combination('BC')
-                  ],
+                  addVerticalSpace(10),
                   if (widget.loadInOverhangCName != '') ...[overhangC()],
-                  if (widget.loadInOverhangCName == 'OVERHANG C 1') ...[
-                    loading1Combination('OverhangC')
+                  if (loadInOverhangCMap
+                      .containsKey(widget.loadInOverhangCName)) ...[
+                    loadInOverhangCMap[widget.loadInOverhangCName]!('OverhangC')
                   ],
-                  if (widget.loadInOverhangCName == 'OVERHANG C 2' ||
-                      widget.loadInOverhangCName == 'OVERHANG C 3' ||
-                      widget.loadInOverhangCName == 'OVERHANG C 4') ...[
-                    loading2Combination('OverhangC')
-                  ],
-                  if (widget.loadInOverhangCName == 'OVERHANG C 5' ||
-                      widget.loadInOverhangCName == 'OVERHANG C 6.1' ||
-                      widget.loadInOverhangCName == 'OVERHANG C 6.2') ...[
-                    loading5Combination('OverhangC')
-                  ],
-                  if (widget.loadInOverhangCName == 'OVERHANG C 7.1' ||
-                      widget.loadInOverhangCName == 'OVERHANG C 7.2' ||
-                      widget.loadInOverhangCName == 'OVERHANG C 8' ||
-                      widget.loadInOverhangCName == 'OVERHANG C 9' ||
-                      widget.loadInOverhangCName == 'OVERHANG C 14.1' ||
-                      widget.loadInOverhangCName == 'OVERHANG C 14.2' ||
-                      widget.loadInOverhangCName == 'OVERHANG C 16.1' ||
-                      widget.loadInOverhangCName == 'OVERHANG C 16.2') ...[
-                    loading7Combination('OverhangC')
-                  ],
-                  if (widget.loadInOverhangCName == 'OVERHANG C 10.1' ||
-                      widget.loadInOverhangCName == 'OVERHANG C 10.2' ||
-                      widget.loadInOverhangCName == 'OVERHANG C 11' ||
-                      widget.loadInOverhangCName == 'OVERHANG C 12' ||
-                      widget.loadInOverhangCName == 'OVERHANG C 13.1' ||
-                      widget.loadInOverhangCName == 'OVERHANG C 13.2' ||
-                      widget.loadInOverhangCName == 'OVERHANG C 15.1' ||
-                      widget.loadInOverhangCName == 'OVERHANG C 15.2') ...[
-                    loading5Combination('OverhangC')
-                  ],
-                  if (widget.loadInOverhangCName == 'OVERHANG C 17.1' ||
-                      widget.loadInOverhangCName == 'OVERHANG C 17.2') ...[
-                    loading17Combination('OverhangC')
-                  ],
-                  if (widget.loadInOverhangCName == 'OVERHANG C 18' ||
-                      widget.loadInOverhangCName == 'OVERHANG C 18') ...[
-                    loading18Combination('OverhangC')
-                  ],
+                  addVerticalSpace(10)
                 ],
               ),
             ),
