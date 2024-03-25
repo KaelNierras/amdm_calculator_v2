@@ -1,6 +1,10 @@
 // ignore_for_file: library_private_types_in_public_api
 
+import 'package:amdm_calculator/utils/helper_widget_function.dart';
 import 'package:flutter/material.dart';
+
+import '../utils/_enum.dart';
+import '../utils/_maps.dart';
 
 class Calculation extends StatefulWidget {
   final String loadInAB;
@@ -234,11 +238,9 @@ class Calculation extends StatefulWidget {
   _CalculationState createState() => _CalculationState();
 }
 
-
-
 class _CalculationState extends State<Calculation> {
 
-  Widget fixedSimple1() {
+  Widget loading1Combination() {
     return Column(
       children: [
         const Text('Span AB:'),
@@ -252,7 +254,8 @@ class _CalculationState extends State<Calculation> {
       ],
     );
   }
-  Widget fixedSimple2() {
+
+  Widget loading2Combination() {
     return Column(
       children: [
         const Text('Span AB:'),
@@ -265,21 +268,103 @@ class _CalculationState extends State<Calculation> {
     );
   }
 
+  Widget loading5Combination() {
+    return Column(
+      children: [
+        const Text('Span AB:'),
+        Text('Load W: ${widget.loadABValueW!}'),
+        Text('Length L: ${widget.lengthABValueL!}'),
+        const Text('Span BC:'),
+        Text('Load W: ${widget.loadBCValueW!}'),
+        Text('Length L: ${widget.lengthBCValueL!}'),
+      ],
+    );
+  }
+
+  Widget loading7Combination() {
+    return Column(
+      children: [
+        const Text('Span AB:'),
+        Text('Load W: ${widget.loadABValueW!}'),
+        Text('Length L: ${widget.lengthABValueL!}'),
+        Text('Length K: ${widget.lengthABValueK!}'),
+        const Text('Span BC:'),
+        Text('Load W: ${widget.loadBCValueW!}'),
+        Text('Length L: ${widget.lengthBCValueL!}'),
+        Text('Length K: ${widget.lengthBCValueK!}'),
+      ],
+    );
+  }
+
+  Widget loading17Combination() {
+    return Column(
+      children: [
+        const Text('Span AB:'),
+        Text('Load W1: ${widget.loadABValueW!}'),
+        Text('Load W2: ${widget.loadABValueW2!}'),
+        Text('Length L: ${widget.lengthABValueL!}'),
+        const Text('Span BC:'),
+        Text('Load W: ${widget.loadBCValueW!}'),
+        Text('Load W2: ${widget.loadBCValueW2!}'),
+        Text('Length L: ${widget.lengthBCValueL!}'),
+      ],
+    );
+  }
+
+  Widget loading18Combination() {
+    return Column(
+      children: [
+        const Text('Span AB:'),
+        Text('Moment M: ${widget.momentABValue!}'),
+        Text('Length L: ${widget.lengthABValueL!}'),
+        Text('Length K1: ${widget.lengthABValueK1!}'),
+        const Text('Span BC:'),
+        Text('Moment M: ${widget.momentBCValue!}'),
+        Text('Length L: ${widget.lengthBCValueL!}'),
+        Text('Length K1: ${widget.lengthBCValueK1!}'),
+      ],
+    );
+  }
+
+Widget getLoadingCalculation(String spanAb, String spanBc) {
+    print(spanAb);
+    print(spanBc);
+    Span spanAB = getSpanFromString(spanAb);
+    Span spanBC = getSpanFromString(spanBc);
+    Loading? loading = combinations[spanAB]![spanBC];
+    switch (loading) {
+      case Loading.loading1Combination:
+        return loading1Combination();
+      case Loading.loading2Combination:
+        return loading2Combination();
+      // ... add the rest of the cases here
+      default:
+        throw Exception('Invalid combination');
+    }
+  }
+
+  Widget checkAndBuild(String valueP, String valueW, String contains, Widget Function() buildWidget) {
+  if (valueP.contains(contains) == true && valueW.contains(contains) == true) {
+    return buildWidget();
+  }
+  return const SizedBox.shrink();
+}
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Calculation'),
       ),
-      body: Center(
-          child: Center(
-              child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          const Text('Calculation'),
-          fixedSimple2(),
-        ],
-      ))),
+      body:  Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const Text('Calculation'),
+            getLoadingCalculation(widget.loadInAB, widget.loadInBC)
+          ],
+        ),
+      ),
     );
   }
 }
