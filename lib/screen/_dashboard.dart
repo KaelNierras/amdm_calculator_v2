@@ -31,6 +31,9 @@ class _DashboardState extends State<Dashboard> {
     overhangAPath = overhangAPaths.first.toString();
     overhangCPath = overhangCPaths.first.toString();
     isUpdated = false;
+    loadABName = 'FIXED SPAN AB 1';
+    loadBCName = 'FIXED SPAN BC 1';
+
   }
 
   //Splash Screen Initialization
@@ -72,7 +75,6 @@ class _DashboardState extends State<Dashboard> {
         'assets/images/SIMPLE SUPPORTED FOR SPAN AB/SIMPLE SPAN AB 18.png',
       ],
       simpleSupportForSpanBCPaths = [
-        
         'assets/images/SIMPLE SUPPORTED FOR SPAN BC/SIMPLE SPAN BC 1.png',
         'assets/images/SIMPLE SUPPORTED FOR SPAN BC/SIMPLE SPAN BC 2.png',
         'assets/images/SIMPLE SUPPORTED FOR SPAN BC/SIMPLE SPAN BC 3.png',
@@ -101,12 +103,60 @@ class _DashboardState extends State<Dashboard> {
         'assets/images/SIMPLE SUPPORTED FOR SPAN BC/SIMPLE SPAN BC 18.png',
       ],
       overhangAPaths = [
-        for (var i = 1; i <= 18; i++)
-          'assets/images/OVERHANG A/OVERHANG A $i.png',
+        'assets/images/OVERHANG A/OVERHANG A 1.png',
+        'assets/images/OVERHANG A/OVERHANG A 2.png',
+        'assets/images/OVERHANG A/OVERHANG A 3.png',
+        'assets/images/OVERHANG A/OVERHANG A 4.png',
+        'assets/images/OVERHANG A/OVERHANG A 5.png',
+        'assets/images/OVERHANG A/OVERHANG A 6.1.png',
+        'assets/images/OVERHANG A/OVERHANG A 6.2.png',
+        'assets/images/OVERHANG A/OVERHANG A 7.1.png',
+        'assets/images/OVERHANG A/OVERHANG A 7.2.png',
+        'assets/images/OVERHANG A/OVERHANG A 8.png',
+        'assets/images/OVERHANG A/OVERHANG A 9.png',
+        'assets/images/OVERHANG A/OVERHANG A 10.1.png',
+        'assets/images/OVERHANG A/OVERHANG A 10.2.png',
+        'assets/images/OVERHANG A/OVERHANG A 11.png',
+        'assets/images/OVERHANG A/OVERHANG A 12.png',
+        'assets/images/OVERHANG A/OVERHANG A 13.1.png',
+        'assets/images/OVERHANG A/OVERHANG A 13.2.png',
+        'assets/images/OVERHANG A/OVERHANG A 14.1.png',
+        'assets/images/OVERHANG A/OVERHANG A 14.2.png',
+        'assets/images/OVERHANG A/OVERHANG A 15.1.png',
+        'assets/images/OVERHANG A/OVERHANG A 15.2.png',
+        'assets/images/OVERHANG A/OVERHANG A 16.1.png',
+        'assets/images/OVERHANG A/OVERHANG A 16.2.png',
+        'assets/images/OVERHANG A/OVERHANG A 17.1.png',
+        'assets/images/OVERHANG A/OVERHANG A 17.2.png',
+        'assets/images/OVERHANG A/OVERHANG A 18.png',
       ],
       overhangCPaths = [
-        for (var i = 1; i <= 18; i++)
-          'assets/images/OVERHANG C/OVERHANG C $i.png',
+        'assets/images/OVERHANG C/OVERHANG C 1.png',
+        'assets/images/OVERHANG C/OVERHANG C 2.png',
+        'assets/images/OVERHANG C/OVERHANG C 3.png',
+        'assets/images/OVERHANG C/OVERHANG C 4.png',
+        'assets/images/OVERHANG C/OVERHANG C 5.png',
+        'assets/images/OVERHANG C/OVERHANG C 6.1.png',
+        'assets/images/OVERHANG C/OVERHANG C 6.2.png',
+        'assets/images/OVERHANG C/OVERHANG C 7.1.png',
+        'assets/images/OVERHANG C/OVERHANG C 7.2.png',
+        'assets/images/OVERHANG C/OVERHANG C 8.png',
+        'assets/images/OVERHANG C/OVERHANG C 9.png',
+        'assets/images/OVERHANG C/OVERHANG C 10.1.png',
+        'assets/images/OVERHANG C/OVERHANG C 10.2.png',
+        'assets/images/OVERHANG C/OVERHANG C 11.png',
+        'assets/images/OVERHANG C/OVERHANG C 12.png',
+        'assets/images/OVERHANG C/OVERHANG C 13.1.png',
+        'assets/images/OVERHANG C/OVERHANG C 13.2.png',
+        'assets/images/OVERHANG C/OVERHANG C 14.1.png',
+        'assets/images/OVERHANG C/OVERHANG C 14.2.png',
+        'assets/images/OVERHANG C/OVERHANG C 15.1.png',
+        'assets/images/OVERHANG C/OVERHANG C 15.2.png',
+        'assets/images/OVERHANG C/OVERHANG C 16.1.png',
+        'assets/images/OVERHANG C/OVERHANG C 16.2.png',
+        'assets/images/OVERHANG C/OVERHANG C 17.1.png',
+        'assets/images/OVERHANG C/OVERHANG C 17.2.png',
+        'assets/images/OVERHANG C/OVERHANG C 18.png',
       ],
       fixedSupportForSpanABPaths = [
         
@@ -187,11 +237,6 @@ class _DashboardState extends State<Dashboard> {
     'Fixed Support',
     'Simple Support',
     'Simple Support with Overhang',
-  ];
-  final List<String> imageLoadPaths = [
-    'assets/images/onboarding/image1.png',
-    'assets/images/onboarding/image2.png',
-    'assets/images/onboarding/image3.png',
   ];
 
   //Simple Span AB and BC
@@ -590,7 +635,7 @@ class _DashboardState extends State<Dashboard> {
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (context) => InputData(loadInAB: loadABName, loadInBC: loadBCName,),
+        builder: (context) => InputData(loadInAB: loadABName, loadInBC: loadBCName, loadInOverhangAName: overhangAName, loadInOverhangCName: overhangCName),
       ),
     );
   }
@@ -773,6 +818,10 @@ class _DashboardState extends State<Dashboard> {
                                   setState(() {
                                     supportA = selectedItem!;
                                     isUpdated = false;
+                                    loadABName = '';
+                                    loadBCName = '';
+                                    overhangAName = '';
+                                    overhangCName = '';
                                   });
                                 },
                               ),
@@ -785,6 +834,10 @@ class _DashboardState extends State<Dashboard> {
                                   setState(() {
                                     supportC = selectedItem!;
                                     isUpdated = false;
+                                    loadABName = '';
+                                    loadBCName = '';
+                                    overhangAName = '';
+                                    overhangCName = '';
                                   });
                                 },
                               ),
