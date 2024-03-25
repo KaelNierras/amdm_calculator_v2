@@ -622,7 +622,7 @@ class _InputDataState extends State<InputData> {
     );
   }
 
-  Calculation loading1Calculation() {
+  Calculation loadingHeader() {
     return Calculation(
       //Names of the load
       loadInAB: widget.loadInAB,
@@ -632,12 +632,20 @@ class _InputDataState extends State<InputData> {
 
       //Moment Unit
       selectedMomentUnit: selectedMomentUnit,
+    );
+  }
 
+  Calculation loading1CalculationAB() {
+    return Calculation(
       //Span AB
       loadABValueP: loadABValueP,
       lengthABValueL: lengthABValueL,
       lengthABValueA: lengthABValueA,
+    );
+  }
 
+  Calculation loading1CalculationBC() {
+    return Calculation(
       //Span BC
       loadBCValueP: loadBCValueP,
       lengthBCValueL: lengthBCValueL,
@@ -645,64 +653,50 @@ class _InputDataState extends State<InputData> {
     );
   }
 
-  Calculation loading2Calculation() {
+  Calculation loading2CalculationAB() {
     return Calculation(
-      //Names of the load
-      loadInAB: widget.loadInAB,
-      loadInBC: widget.loadInBC,
-      loadInOverhangAName: widget.loadInOverhangAName,
-      loadInOverhangCName: widget.loadInOverhangCName,
-
-      //Moment Unit
-      selectedMomentUnit: selectedMomentUnit,
-
       //Span AB
       loadABValueP: loadABValueP,
       lengthABValueL: lengthABValueL,
+    );
+  }
 
+  Calculation loading2CalculationBC() {
+    return Calculation(
       //Span BC
       loadBCValueP: loadBCValueP,
       lengthBCValueL: lengthBCValueL,
     );
   }
 
-  Calculation loading5Calculation() {
+  Calculation loading5CalculationAB() {
     return Calculation(
-      //Names of the load
-      loadInAB: widget.loadInAB,
-      loadInBC: widget.loadInBC,
-      loadInOverhangAName: widget.loadInOverhangAName,
-      loadInOverhangCName: widget.loadInOverhangCName,
-
-      //Moment Unit
-      selectedMomentUnit: selectedMomentUnit,
-
       //Span AB
       loadABValueW: loadABValueW,
       lengthABValueL: lengthABValueL,
+    );
+  }
 
+  Calculation loading5CalculationBC() {
+    return Calculation(
       //Span BC
       loadBCValueW: loadBCValueW,
       lengthBCValueL: lengthBCValueL,
     );
   }
 
-  Calculation loading7Calculation() {
+  Calculation loading7CalculationAB() {
     return Calculation(
-      //Names of the load
-      loadInAB: widget.loadInAB,
-      loadInBC: widget.loadInBC,
-      loadInOverhangAName: widget.loadInOverhangAName,
-      loadInOverhangCName: widget.loadInOverhangCName,
-
-      //Moment Unit
-      selectedMomentUnit: selectedMomentUnit,
-
       //Span AB
       loadABValueW: loadABValueW,
       lengthABValueL: lengthABValueL,
       lengthABValueK: lengthABValueK,
 
+    );
+  }
+
+  Calculation loading7CalculationBC() {
+    return Calculation(
       //Span BC
       loadBCValueW: loadBCValueW,
       lengthBCValueL: lengthBCValueL,
@@ -710,22 +704,17 @@ class _InputDataState extends State<InputData> {
     );
   }
 
-  Calculation loading17Calculation() {
+  Calculation loading17CalculationAB() {
     return Calculation(
-      //Names of the load
-      loadInAB: widget.loadInAB,
-      loadInBC: widget.loadInBC,
-      loadInOverhangAName: widget.loadInOverhangAName,
-      loadInOverhangCName: widget.loadInOverhangCName,
-
-      //Moment Unit
-      selectedMomentUnit: selectedMomentUnit,
-
       //Span AB
       loadABValueW: loadABValueW,
       loadABValueW2: loadABValueW2,
       lengthABValueL: lengthABValueL,
+    );
+  }
 
+  Calculation loading17CalculationBC() {
+    return Calculation(
       //Span BC
       loadBCValueW: loadBCValueW,
       loadBCValueW2: loadABValueW2,
@@ -733,22 +722,17 @@ class _InputDataState extends State<InputData> {
     );
   }
 
-  Calculation loading18Calculation() {
+  Calculation loading18CalculationAB() {
     return Calculation(
-      //Names of the load
-      loadInAB: widget.loadInAB,
-      loadInBC: widget.loadInBC,
-      loadInOverhangAName: widget.loadInOverhangAName,
-      loadInOverhangCName: widget.loadInOverhangCName,
-
-      //Moment Unit
-      selectedMomentUnit: selectedMomentUnit,
-
       //Span AB
       momentABValue: momentABValue,
       lengthABValueL: lengthABValueL,
       lengthABValueK: lengthABValueK,
+    );
+  }
 
+  Calculation loading18CalculationBC() {
+    return Calculation(
       //Span BC
       momentBCValue: momentBCValue,
       lengthBCValueL: lengthBCValueL,
@@ -756,27 +740,81 @@ class _InputDataState extends State<InputData> {
     );
   }
 
-  Function getLoadingCalculation(Span spanAb, Span spanBc) {
-    Loading? loading = combinations[spanAb]![spanBc];
-    switch (loading) {
-      case Loading.loading1Combination:
-        return loading1Calculation;
-      case Loading.loading2Combination:
-        return loading2Calculation;
-      // ... add the rest of the cases here
-      default:
-        throw Exception('Invalid combination');
-    }
+
+  Calculation combinedCalculationPLA(
+      Calculation header, Calculation calc1, Calculation calc2) {
+    return Calculation(
+      loadInAB: header.loadInAB,
+      loadInBC: header.loadInBC,
+      loadInOverhangAName: header.loadInOverhangAName,
+      loadInOverhangCName: header.loadInOverhangCName,
+      selectedMomentUnit: header.selectedMomentUnit,
+      loadABValueP: calc1.loadABValueP,
+      lengthABValueL: calc1.lengthABValueL,
+      lengthABValueA: calc1.lengthABValueA,
+      loadBCValueP: calc2.loadBCValueP,
+      lengthBCValueL: calc2.lengthBCValueL,
+      lengthBCValueA: calc2.lengthBCValueA,
+    );
   }
+
+  Calculation? getLoadingCalculation(String combination, Span span) {
+    if (combination == 'AB') {
+      Loading? loading = aBCombination[span];
+      switch (loading) {
+        case Loading.loading1Combination:
+          return loading1CalculationAB();
+        case Loading.loading2Combination:
+          return loading2CalculationAB();
+        case Loading.loading5Combination:
+          return loading5CalculationAB();
+        case Loading.loading7Combination:
+          return loading7CalculationAB();
+        case Loading.loading17Combination:
+          return loading17CalculationAB();
+        case Loading.loading18Combination:
+          return loading18CalculationAB();
+        default:
+          throw Exception('Invalid combination');
+      }
+    } else if (combination == 'BC') {
+      Loading? loading = bCCombination[span];
+      switch (loading) {
+        case Loading.loading1Combination:
+          return loading1CalculationBC();
+        case Loading.loading2Combination:
+          return loading2CalculationBC();
+        case Loading.loading5Combination:
+          return loading5CalculationBC();
+        case Loading.loading7Combination:
+          return loading7CalculationBC();
+        case Loading.loading17Combination:
+          return loading17CalculationBC();
+        case Loading.loading18Combination:
+          return loading18CalculationBC();
+        default:
+          throw Exception('Invalid combination');
+      }
+    }
+    return null;
+  }
+
 
   void gotoCalculationsTwoCombination() {
     Span spanAb = getSpanFromString(widget.loadInAB);
     Span spanBc = getSpanFromString(widget.loadInBC);
-    Function calculationFunction = getLoadingCalculation(spanAb, spanBc);
+    print(spanAb);
+    print(spanBc);
+    Calculation header = loadingHeader();
+    Calculation? calculation1 = getLoadingCalculation('AB', spanAb);
+    Calculation? calculation2 = getLoadingCalculation('BC', spanBc);
+    print(calculation1);
+    print(calculation2);
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (context) => calculationFunction(),
+        builder: (context) =>
+            combinedCalculationPLA(header, calculation1!, calculation2!),
       ),
     );
   }
@@ -785,13 +823,13 @@ class _InputDataState extends State<InputData> {
     Map<String, Function> combinations = {
       //Combination 1
       'FIXED SPAN AB 1FIXED SPAN BC 1OVERHANG C 1OVERHANG D 1':
-          loading1Calculation,
+          loading1CalculationAB,
       'SIMPLE SPAN AB 1SIMPLE SPAN BC 1OVERHANG C 1OVERHANG D 1':
-          loading1Calculation,
+          loading1CalculationAB,
       'SIMPLE SPAN AB 1FIXED SPAN BC 1OVERHANG C 1OVERHANG D 1':
-          loading1Calculation,
+          loading1CalculationAB,
       'FIXED SPAN AB 1SIMPLE SPAN BC 1OVERHANG C 1OVERHANG D 1':
-          loading1Calculation,
+          loading1CalculationAB,
       // Add more combinations as needed
     };
 
@@ -821,6 +859,89 @@ class _InputDataState extends State<InputData> {
       gotoCalculationsTwoCombination();
     }
   }
+
+  void gotoCalculationsSkip() {
+  Navigator.push(
+    context,
+    MaterialPageRoute(
+      builder: (context) => Calculation(
+        loadInAB: widget.loadInAB,
+        loadInBC: widget.loadInBC,
+        loadInOverhangAName: widget.loadInOverhangAName,
+        loadInOverhangCName: widget.loadInOverhangCName,
+        selectedMomentUnit: selectedMomentUnit,
+        overhangAValue: overhangAValue,
+        selectedOverhangAUnit:  selectedOverhangAUnit,
+        overhangCValue:  overhangCValue,
+        selectedOverhangCUnit:  selectedOverhangCUnit,
+        loadOverhangABValueP:  loadOverhangABValueP,
+        selectedLoadOverhangABUnitP:  selectedLoadOverhangABUnitP,
+        loadOverhangABValueW:  loadOverhangABValueW,
+        selectedLoadOverhangABUnitW:  selectedLoadOverhangABUnitW,
+        loadOverhangABValueW2:  loadOverhangABValueW2,
+        selectedLoadOverhangABUnitW2:  selectedLoadOverhangABUnitW2,
+        lengthOverhangABValueL:  lengthOverhangABValueL,
+        selectedLengthOverhangABUnitL:  selectedLengthOverhangABUnitL,
+        lengthOverhangABValueA:  lengthOverhangABValueA,
+        selectedLengthOverhangABUnitA:  selectedLengthOverhangABUnitA,
+        lengthOverhangABValueK:  lengthOverhangABValueK,
+        selectedLengthOverhangABUnitK:  selectedLengthOverhangABUnitK,
+        lengthOverhangABValueK1:  lengthOverhangABValueK1,
+        selectedLengthOverhangABUnitK1:  selectedLengthOverhangABUnitK1,
+        momentOverhangABValue:  momentOverhangAValue,
+        selectedMomentOverhangABUnit:  selectedMomentOverhangAUnit,
+        loadABValueP:  loadABValueP,
+        selectedLoadABUnitP:  selectedLoadABUnitP,
+        loadABValueW:  loadABValueW,
+        selectedLoadABUnitW:  selectedLoadABUnitW,
+        loadABValueW2:  loadABValueW2,
+        selectedLoadABUnitW2:  selectedLoadABUnitW2,
+        lengthABValueL:  lengthABValueL,
+        selectedLengthABUnitL:  selectedLengthABUnitL,
+        lengthABValueA:  lengthABValueA,
+        selectedLengthABUnitA:  selectedLengthABUnitA,
+        lengthABValueK:  lengthABValueK,
+        selectedLengthABUnitK:  selectedLengthABUnitK,
+        lengthABValueK1:  lengthABValueK1,
+        selectedLengthABUnitK1:  selectedLengthABUnitK1,
+        momentABValue:  momentABValue,
+        selectedMomentABUnit:  selectedMomentABUnit,
+        loadBCValueP:  loadBCValueP,
+        selectedLoadBCUnitP:  selectedLoadBCUnitP,
+        loadBCValueW:  loadBCValueW,
+        selectedLoadBCUnitW:  selectedLoadBCUnitW,
+        loadBCValueW2:  loadBCValueW2,
+        selectedLoadBCUnitW2:  selectedLoadBCUnitW2,
+        lengthBCValueL:  lengthBCValueL,
+        selectedLengthBCUnitL:  selectedLengthBCUnitL,
+        lengthBCValueA:  lengthBCValueA,
+        selectedLengthBCUnitA:  selectedLengthBCUnitA,
+        lengthBCValueK:  lengthBCValueK,
+        selectedLengthBCUnitK:  selectedLengthBCUnitK,
+        lengthBCValueK1:  lengthBCValueK1,
+        selectedLengthBCUnitK1:  selectedLengthBCUnitK1,
+        momentBCValue:  momentBCValue,
+        selectedMomentBCUnit:  selectedMomentBCUnit,
+        loadOverhangBCValueP:  loadOverhangBCValueP,
+        selectedLoadOverhangBCUnitP:  selectedLoadOverhangBCUnitP,
+        loadOverhangBCValueW:  loadOverhangBCValueW,
+        selectedLoadOverhangBCUnitW:  selectedLoadOverhangBCUnitW,
+        loadOverhangBCValueW2:  loadOverhangBCValueW2,
+        selectedLoadOverhangBCUnitW2:  selectedLoadOverhangBCUnitW2,
+        lengthOverhangBCValueL:  lengthOverhangBCValueL,
+        selectedLengthOverhangBCUnitL:  selectedLengthOverhangBCUnitL,
+        lengthOverhangBCValueA:  lengthOverhangBCValueA,
+        selectedLengthOverhangBCUnitA:  selectedLengthOverhangBCUnitA,
+        lengthOverhangBCValueK:  lengthOverhangBCValueK,
+        selectedLengthOverhangBCUnitK:  selectedLengthOverhangBCUnitK,
+        lengthOverhangBCValueK1:  lengthOverhangBCValueK1,
+        selectedLengthOverhangBCUnitK1:  selectedLengthOverhangBCUnitK1,
+        momentOverhangBCValue:  momentOverhangCValue,
+        selectedMomentOverhangBCUnit:  selectedMomentOverhangCUnit,
+      ),
+    ),
+  );
+}
 
   @override
   Widget build(BuildContext context) {
@@ -1062,7 +1183,7 @@ class _InputDataState extends State<InputData> {
       ),
       floatingActionButton: CustomFloatingActionButton(
         onPressed: () {
-          gotoCalculations();
+          gotoCalculationsSkip();
         },
       ),
     );
