@@ -756,8 +756,6 @@ class _InputDataState extends State<InputData> {
     );
   }
 
-
-
   Function getLoadingCalculation(Span spanAb, Span spanBc) {
     Loading? loading = combinations[spanAb]![spanBc];
     switch (loading) {
