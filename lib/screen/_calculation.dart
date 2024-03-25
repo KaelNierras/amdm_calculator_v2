@@ -1,6 +1,4 @@
 // ignore_for_file: library_private_types_in_public_api, must_be_immutable
-
-import 'package:amdm_calculator/utils/helper_widget_function.dart';
 import 'package:flutter/material.dart';
 
 class Calculation extends StatefulWidget {
@@ -236,6 +234,33 @@ class Calculation extends StatefulWidget {
 }
 
 class _CalculationState extends State<Calculation> {
+  double k1 = 0;
+  double k2 = 0;
+
+  double dfAB1 = 0;
+  double dfAB2 = 0;
+
+  double dfBC1 = 0;
+  double dfBC2 = 0;
+
+  double fEMAB1 = 0;
+  double fEMAB2 = 0;
+
+  double fEMBC1 = 0;
+  double fEMBC2 = 0;
+
+  double bMAB1 = 0;
+  double bMAB2 = 0;
+
+  double bMBC1 = 0;
+  double bMBC2 = 0;
+
+  double cOAB1 = 0;
+  double cOAB2 = 0;
+
+  double cOBC1 = 0;
+  double cOBC2 = 0;
+
   // Loading 1
   Widget loading1CombinationOverhangA() {
     return Column(
@@ -474,11 +499,165 @@ class _CalculationState extends State<Calculation> {
     );
   }
 
+  double gcd(double a, double b) {
+    if (b == 0) {
+      return a;
+    } else {
+      return gcd(b, a % b);
+    }
+  }
+
+  double lcm(double a, double b) {
+    return (a * b) / gcd(a, b);
+  }
+
+  double getK(lcm, valueL) {
+    return lcm / valueL;
+  }
+
+  double getDfAB2(k1, k2) {
+    return k1 / (k1 + k2);
+  }
+
+  double getDfBC1(k1, k2) {
+    return k2 / (k1 + k2);
+  }
+
+  double checkNumberIfNegative(double value) {
+    if (value > 0) {
+      return value * -1;
+    } else {
+      return value;
+    }
+  }
+
+  double checkNumberIfPositive(double value) {
+    if (value < 0) {
+      return value * -1;
+    } else {
+      return value;
+    }
+  }
+
+  double changeSign(double value) {
+    return value * -1;
+  }
+
+  List<double> getLoad5(valueW, valueL) {
+    double fEM1 = 0;
+    double fEM2 = 0;
+    fEM1 = (double.parse(valueW) *
+        ((double.parse(valueL) * (double.parse(valueL)))));
+    fEM1 = checkNumberIfNegative(fEM1 / 12);
+
+    fEM2 = (double.parse(valueW) *
+        ((double.parse(valueL) * (double.parse(valueL)))));
+    fEM2 = checkNumberIfPositive(fEM2 / 12);
+    return [fEM1, fEM2];
+  }
+
+  List<double> getLoad1(valueP, valueL, valueA) {
+    double fEM1 = 0;
+    double fEM2 = 0;
+    double valueB = double.parse(valueL) - double.parse(valueA);
+
+    double valuePDouble = double.parse(valueP);
+    double valueADouble = double.parse(valueA);
+    double valueLDouble = double.parse(valueL);
+
+    fEM1 = valuePDouble * valueADouble * (valueB * valueB);
+    fEM1 = checkNumberIfNegative(fEM1 / (valueLDouble * valueLDouble));
+    fEM2 = valuePDouble * (valueADouble * valueADouble) * valueB;
+    fEM2 = checkNumberIfPositive(fEM2 / (valueLDouble * valueLDouble));
+
+    return [fEM1, fEM2];
+  }
+
+  List<double> simpleSimple() {
+    double fEMAB1 = 0;
+    double fEMAB2 = 0;
+
+    double fEMBC1 = 0;
+    double fEMBC2 = 0;
+
+    double lcmValue = lcm(double.parse(widget.lengthABValueL!),
+        double.parse(widget.lengthBCValueL!));
+    double k1 = getK(lcmValue, double.parse(widget.lengthABValueL!));
+    double k2 = getK(lcmValue, double.parse(widget.lengthBCValueL!));
+    double dfAB1 = 1;
+    double dfBC2 = 1;
+    double dfAB2 = getDfAB2(k1, k2);
+    double dfBC1 = getDfBC1(k1, k2);
+    dfBC1 = checkNumberIfPositive(dfBC1);
+
+    if (widget.loadInAB!.contains('AB 5') ||
+        widget.loadInAB!.contains('BC 5')) {
+      if (widget.loadInAB!.contains('AB 5')) {
+        fEMAB1 = getLoad5(widget.loadABValueW!, widget.lengthABValueL!)[0];
+        fEMAB2 = getLoad5(widget.loadABValueW!, widget.lengthABValueL!)[1];
+      } else if (widget.loadInAB!.contains('BC 5')) {
+        fEMBC1 = getLoad5(widget.loadBCValueW!, widget.lengthBCValueL!)[0];
+        fEMBC2 = getLoad5(widget.loadBCValueW!, widget.lengthBCValueL!)[1];
+      }
+
+      if (widget.loadInAB!.contains('AB 1') ||
+          widget.loadInBC!.contains('BC 1')) {
+
+        if (widget.loadInBC!.contains('BC 1')) {
+          fEMBC1 = getLoad1(widget.loadBCValueP!, widget.lengthBCValueL!,
+              widget.lengthBCValueA!)[0];
+          fEMBC2 = getLoad1(widget.loadBCValueP!, widget.lengthBCValueL!,
+              widget.lengthBCValueA!)[1];
+        }
+      }
+
+      return [
+        dfAB1,
+        dfAB2,
+        dfBC1,
+        dfBC2,
+        fEMAB1,
+        fEMAB2,
+        fEMBC1,
+        fEMBC2,
+        k1,
+        k2
+      ];
+    }
+    return [];
+  }
+
   @override
   void initState() {
     super.initState();
     widget.loadInAB = widget.loadInAB!.replaceAll('_', ' ');
     widget.loadInBC = widget.loadInBC!.replaceAll('_', ' ');
+
+    if (widget.loadInAB!.contains('SIMPLE') &&
+        widget.loadInBC!.contains('SIMPLE')) {
+      k1 = simpleSimple()[8];
+      k2 = simpleSimple()[9];
+
+      dfAB1 = simpleSimple()[0];
+      dfAB2 = simpleSimple()[1];
+      dfBC1 = simpleSimple()[2];
+      dfBC2 = simpleSimple()[3];
+
+      fEMAB1 = checkNumberIfNegative(simpleSimple()[4]);
+      fEMAB2 = checkNumberIfPositive(simpleSimple()[5]);
+      fEMBC1 = checkNumberIfNegative(simpleSimple()[6]);
+      fEMBC2 = checkNumberIfPositive(simpleSimple()[7]);
+
+      bMAB1 = changeSign(fEMAB1 * dfAB1);
+      bMAB2 = changeSign((fEMAB2 + fEMBC1) * dfAB2);
+      bMBC1 = changeSign((fEMAB2 + fEMBC1) * dfBC1);
+      bMBC2 = changeSign(fEMBC2 * dfBC2);
+
+      cOAB1 = bMAB2 / 2;
+      cOAB2 = bMAB1 / 2;
+      cOBC1 = bMBC2 / 2;
+      cOBC2 = bMBC1 / 2;
+    }
   }
 
   @override
@@ -656,51 +835,65 @@ class _CalculationState extends State<Calculation> {
         title: const Text('Calculation'),
       ),
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const Text(
-              'Unit:',
-              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-            ),
-            Text(
-              widget.selectedMomentUnit!,
-            ),
-            if(widget.loadInOverhangAName != '')
-            Text(
-              widget.loadInOverhangAName!,
-              style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-            ),
-            if (loadInOverhangAMap.containsKey(widget.loadInOverhangAName)) ...[
-              loadInOverhangAMap[widget.loadInOverhangAName]!()
+        child: Padding(
+          padding: const EdgeInsets.all(20.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              const Text('Calculation'),
+              Table(
+                border: TableBorder.all(), // Add a border to the table
+                children: [
+                  TableRow(children: [
+                    const TableCell(
+                      child: Text('K'),
+                    ),
+                    TableCell(
+                      child: Text(k1.toStringAsFixed(4)),
+                    ),
+                    const TableCell(
+                      child: Text(''), // Empty cell to make k1 span two columns
+                    ),
+                    TableCell(
+                      child: Text(k2.toStringAsFixed(4)),
+                    ),
+                    const TableCell(
+                      child: Text(''), // Empty cell to make k2 span two columns
+                    ),
+                  ]),
+                  // Add more TableRow widgets for more data rows
+                  TableRow(children: [
+                    const Text('DF'),
+                    Text(dfAB1.toStringAsFixed(4)),
+                    Text(dfAB2.toStringAsFixed(4)),
+                    Text(dfBC1.toStringAsFixed(4)),
+                    Text(dfBC2.toStringAsFixed(4)),
+                  ]),
+                  TableRow(children: [
+                    const Text('FEM'),
+                    Text(fEMAB1.toStringAsFixed(4)),
+                    Text(fEMAB2.toStringAsFixed(4)),
+                    Text(fEMBC1.toStringAsFixed(4)),
+                    Text(fEMBC2.toStringAsFixed(4)),
+                  ]),
+                  TableRow(children: [
+                    const Text('BM'),
+                    Text(bMAB1.toStringAsFixed(4)),
+                    Text(bMAB2.toStringAsFixed(4)),
+                    Text(bMBC1.toStringAsFixed(4)),
+                    Text(bMBC2.toStringAsFixed(4)),
+                  ]),
+                  TableRow(children: [
+                    const Text('CO'),
+                    Text(cOAB1.toStringAsFixed(4)),
+                    Text(cOAB2.toStringAsFixed(4)),
+                    Text(cOBC1.toStringAsFixed(4)),
+                    Text(cOBC2.toStringAsFixed(4)),
+                  ]),
+                ],
+              ),
             ],
-            Text(
-              widget.loadInAB!,
-              style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-            ),
-            addVerticalSpace(5),
-            if (loadInABMap.containsKey(widget.loadInAB)) ...[
-              loadInABMap[widget.loadInAB]!()
-            ],
-            addVerticalSpace(10),
-            Text(
-              widget.loadInBC!,
-              style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-            ),
-            addVerticalSpace(5),
-            if (loadInBCMap.containsKey(widget.loadInBC)) ...[
-              loadInBCMap[widget.loadInBC]!()
-            ],
-            addVerticalSpace(10),
-            if(widget.loadInOverhangCName != '')
-            Text(
-              widget.loadInOverhangCName!,
-              style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-            ),
-            if (loadInOverhangCMap.containsKey(widget.loadInOverhangCName)) ...[
-              loadInOverhangCMap[widget.loadInOverhangCName]!()
-            ],
-          ],
+          ),
         ),
       ),
     );
