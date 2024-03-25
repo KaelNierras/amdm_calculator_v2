@@ -2,10 +2,12 @@
 
 import 'package:amdm_calculator/widgets/custom_textfield_with_drop.dart';
 import 'package:flutter/material.dart';
-import '../utils/helper_widget.dart';
+import '../utils/helper_widget_function.dart';
 import '../widgets/custom_dropdown_text.dart';
 import '../widgets/custom_floating_action_button.dart';
 import '_calculation.dart';
+import '../utils/_enum.dart';
+import '../utils/_variables.dart';
 
 class InputData extends StatefulWidget {
   String loadInAB;
@@ -20,193 +22,19 @@ class InputData extends StatefulWidget {
       required this.loadInOverhangAName,
       required this.loadInOverhangCName});
 
-      
-
   @override
   _InputDataState createState() => _InputDataState();
 }
-enum Span {
-  FIXED_SPAN_AB_1,
-  SIMPLE_SPAN_AB_1,
-  FIXED_SPAN_BC_1,
-  SIMPLE_SPAN_BC_1,
-  FIXED_SPAN_AB_2,
-  SIMPLE_SPAN_AB_2,
-  FIXED_SPAN_BC_2,
-  SIMPLE_SPAN_BC_2,
-  // ... add the rest of the spans here
-}
-enum Loading {
-  loading1Combination,
-  loading2Combination,
-  loading5Combination,
-  loading7Combination,
-  loading17Combination,
-  loading18Combination,
-}
 
 class _InputDataState extends State<InputData> {
-  
   @override
   initState() {
     super.initState();
     selectedMomentUnit = momentUnit.first;
   }
 
-  //Moment Unit Variable
-  String selectedMomentUnit = '';
-
-  //Unit List
-  List<String> momentUnit = ['kN.m', 'lb.ft'];
-  List<String> loadUnit = ['kN', 'lb.'];
-  List<String> lengthUnit = ['m', 'ft.'];
-
-  //Overhang Variable
-  String overhangAValue = '';
-  String selectedOverhangAUnit = '';
-
-  String overhangCValue = '';
-  String selectedOverhangCUnit = '';
-
-  //Overhang A AB Load Variable
-
-  //Load P AB Load Variable
-  String loadOverhangABValueP = '';
-  String selectedLoadOverhangABUnitP = '';
-
-  //Load W AB Load Variable
-  String loadOverhangABValueW = '';
-  String selectedLoadOverhangABUnitW = '';
-
-  //Load W2 AB Load Variable
-  String loadOverhangABValueW2 = '';
-  String selectedLoadOverhangABUnitW2 = '';
-
-  //Length L AB Load Variable
-  String lengthOverhangABValueL = '';
-  String selectedLengthOverhangABUnitL = '';
-
-  //Length A AB Load Variable
-  String lengthOverhangABValueA = '';
-  String selectedLengthOverhangABUnitA = '';
-
-  //Length K AB Load Variable
-  String lengthOverhangABValueK = '';
-  String selectedLengthOverhangABUnitK = '';
-
-  //Length K1 AB Load Variable
-  String lengthOverhangABValueK1 = '';
-  String selectedLengthOverhangABUnitK1 = '';
-
-  //Moment AB Load Variable
-  String momentOverhangAValue = '';
-  String selectedMomentOverhangAUnit = '';
-
-  //AB Load Variable
-
-  //Load P AB Load Variable
-  String loadABValueP = '';
-  String selectedLoadABUnitP = '';
-
-  //Load W AB Load Variable
-  String loadABValueW = '';
-  String selectedLoadABUnitW = '';
-
-  //Load W2 AB Load Variable
-  String loadABValueW2 = '';
-  String selectedLoadABUnitW2 = '';
-
-  //Length L AB Load Variable
-  String lengthABValueL = '';
-  String selectedLengthABUnitL = '';
-
-  //Length A AB Load Variable
-  String lengthABValueA = '';
-  String selectedLengthABUnitA = '';
-
-  //Length K AB Load Variable
-  String lengthABValueK = '';
-  String selectedLengthABUnitK = '';
-
-  //Length K1 AB Load Variable
-  String lengthABValueK1 = '';
-  String selectedLengthABUnitK1 = '';
-
-  //Moment AB Load Variable
-  String momentABValue = '';
-  String selectedMomentABUnit = '';
-
-  //BC Load Variable
-
-  //Load P BC Load Variable
-  String loadBCValueP = '';
-  String selectedLoadBCUnitP = '';
-
-  //Load W BC Load Variable
-  String loadBCValueW = '';
-  String selectedLoadBCUnitW = '';
-
-  //Load W BC Load Variable
-  String loadBCValueW2 = '';
-  String selectedLoadBCUnitW2 = '';
-
-  //Length L BC Load Variable
-  String lengthBCValueL = '';
-  String selectedLengthBCUnitL = '';
-
-  //Length A BC Load Variable
-  String lengthBCValueA = '';
-  String selectedLengthBCUnitA = '';
-
-  //Length K BC Load Variable
-  String lengthBCValueK = '';
-  String selectedLengthBCUnitK = '';
-
-  //Length K1 AB Load Variable
-  String lengthBCValueK1 = '';
-  String selectedLengthBCUnitK1 = '';
-
-  //Moment BC Load Variable
-  String momentBCValue = '';
-  String selectedMomentBCUnit = '';
-
-  //Overhang A BC Load Variable
-
-  //Load P BC Load Variable
-  String loadOverhangBCValueP = '';
-  String selectedLoadOverhangBCUnitP = '';
-
-  //Load W BC Load Variable
-  String loadOverhangBCValueW = '';
-  String selectedLoadOverhangBCUnitW = '';
-
-  //Load W2 BC Load Variable
-  String loadOverhangBCValueW2 = '';
-  String selectedLoadOverhangBCUnitW2 = '';
-
-  //Length L BC Load Variable
-  String lengthOverhangBCValueL = '';
-  String selectedLengthOverhangBCUnitL = '';
-
-  //Length A BC Load Variable
-  String lengthOverhangBCValueA = '';
-  String selectedLengthOverhangBCUnitA = '';
-
-  //Length K BC Load Variable
-  String lengthOverhangBCValueK = '';
-  String selectedLengthOverhangBCUnitK = '';
-
-  //Length K1 BC Load Variable
-  String lengthOverhangBCValueK1 = '';
-  String selectedLengthOverhangBCUnitK1 = '';
-
-  //Moment BC Load Variable
-  String momentOverhangCValue = '';
-  String selectedMomentOverhangCUnit = '';
-
-  
-
   //Overhang Header
+
   Widget overhangA() {
     return Column(
       mainAxisAlignment: MainAxisAlignment.start,
@@ -927,78 +755,365 @@ class _InputDataState extends State<InputData> {
     );
   }
 
-Map<Span, Map<Span, Loading>> combinations = {
-  Span.FIXED_SPAN_AB_1: {
-    Span.FIXED_SPAN_BC_1: Loading.loading1Combination,
-    Span.SIMPLE_SPAN_BC_1: Loading.loading1Combination,
-  },
-  Span.SIMPLE_SPAN_AB_1: {
-    Span.FIXED_SPAN_BC_1: Loading.loading1Combination,
-    Span.SIMPLE_SPAN_BC_1: Loading.loading1Combination,
-  },
-  Span.FIXED_SPAN_AB_2: {
-    Span.FIXED_SPAN_BC_2: Loading.loading2Combination,
-    Span.SIMPLE_SPAN_BC_2: Loading.loading2Combination,
-  },
-  // ... add the rest of the combinations here
-};
+  Map<Span, Map<Span, Loading>> combinations = {
+    Span.FIXED_SPAN_AB_1: {
+      Span.FIXED_SPAN_BC_1: Loading.loading1Combination,
+      Span.SIMPLE_SPAN_BC_1: Loading.loading1Combination,
 
-Function getLoadingCalculation(Span spanAb, Span spanBc) {
-  Loading? loading = combinations[spanAb]![spanBc];
-  switch (loading) {
-    case Loading.loading1Combination:
-      return loading1Calculation;
-    case Loading.loading2Combination:
-      return loading2Calculation;
-    // ... add the rest of the cases here
-    default:
-      throw Exception('Invalid combination');
-  }
-}
+      Span.FIXED_SPAN_AB_2: Loading.loading2Combination,
+      Span.SIMPLE_SPAN_AB_2: Loading.loading2Combination,
 
-Span getSpanFromString(String span) {
-  for (Span s in Span.values) {
-    if (s.toString() == 'Span.$span') {
-      return s;
-    }
-  }
-  throw Exception('Invalid span');
-}
+      Span.FIXED_SPAN_AB_3: Loading.loading2Combination,
+      Span.SIMPLE_SPAN_AB_3: Loading.loading2Combination,
 
-void gotoCalculationsTwoCombination() {
-  Span spanAb = getSpanFromString(widget.loadInAB);
-  Span spanBc = getSpanFromString(widget.loadInBC);
-  Function calculationFunction = getLoadingCalculation(spanAb, spanBc);
-  Navigator.push(
-    context,
-    MaterialPageRoute(
-      builder: (context) => calculationFunction(),
-    ),
-  );
-}
-  
+      Span.FIXED_SPAN_AB_4: Loading.loading2Combination,
+      Span.SIMPLE_SPAN_AB_4: Loading.loading2Combination,
 
-void gotoCalculationsFourCombination() {
-  Map<String, Function> combinations = {
-    //Combination 1
-    'FIXED SPAN AB 1FIXED SPAN BC 1OVERHANG C 1OVERHANG D 1': loading1Calculation,
-    'SIMPLE SPAN AB 1SIMPLE SPAN BC 1OVERHANG C 1OVERHANG D 1': loading1Calculation,
-    'SIMPLE SPAN AB 1FIXED SPAN BC 1OVERHANG C 1OVERHANG D 1': loading1Calculation,
-    'FIXED SPAN AB 1SIMPLE SPAN BC 1OVERHANG C 1OVERHANG D 1': loading1Calculation,
-    // Add more combinations as needed
+      Span.FIXED_SPAN_AB_5: Loading.loading5Combination,
+      Span.SIMPLE_SPAN_AB_5: Loading.loading5Combination,
+
+      Span.FIXED_SPAN_AB_6__1: Loading.loading5Combination,
+      Span.SIMPLE_SPAN_AB_6__1: Loading.loading5Combination,
+
+      Span.FIXED_SPAN_AB_6__2: Loading.loading5Combination,
+      Span.SIMPLE_SPAN_AB_6__2: Loading.loading5Combination,
+
+      Span.FIXED_SPAN_AB_7__1: Loading.loading7Combination,
+      Span.SIMPLE_SPAN_AB_7__1: Loading.loading7Combination,
+
+      Span.FIXED_SPAN_AB_7__2: Loading.loading7Combination,
+      Span.SIMPLE_SPAN_AB_7__2: Loading.loading7Combination,
+
+      Span.FIXED_SPAN_AB_8: Loading.loading7Combination,
+      Span.SIMPLE_SPAN_AB_8: Loading.loading7Combination,
+
+      Span.FIXED_SPAN_AB_9: Loading.loading7Combination,
+      Span.SIMPLE_SPAN_AB_9: Loading.loading7Combination,
+
+      Span.FIXED_SPAN_AB_10__1: Loading.loading5Combination,
+      Span.SIMPLE_SPAN_AB_10__1: Loading.loading5Combination,
+
+      Span.FIXED_SPAN_AB_10__2: Loading.loading5Combination,
+      Span.SIMPLE_SPAN_AB_10__2: Loading.loading5Combination,
+
+      Span.FIXED_SPAN_AB_11: Loading.loading5Combination,
+      Span.SIMPLE_SPAN_AB_11: Loading.loading5Combination,
+
+      Span.FIXED_SPAN_AB_12: Loading.loading5Combination,
+      Span.SIMPLE_SPAN_AB_12: Loading.loading5Combination,
+
+      Span.FIXED_SPAN_AB_13__1: Loading.loading5Combination,
+      Span.SIMPLE_SPAN_AB_13__1: Loading.loading5Combination,
+
+      Span.FIXED_SPAN_AB_13__2: Loading.loading5Combination,
+      Span.SIMPLE_SPAN_AB_13__2: Loading.loading5Combination,
+
+      Span.FIXED_SPAN_AB_14__1: Loading.loading7Combination,
+      Span.SIMPLE_SPAN_AB_14__1: Loading.loading7Combination,
+
+      Span.FIXED_SPAN_AB_14__2: Loading.loading7Combination,
+      Span.SIMPLE_SPAN_AB_14__2: Loading.loading7Combination,
+
+      Span.FIXED_SPAN_AB_16__1: Loading.loading7Combination,
+      Span.SIMPLE_SPAN_AB_16__1: Loading.loading7Combination,
+
+      Span.FIXED_SPAN_AB_16__2: Loading.loading7Combination,
+      Span.SIMPLE_SPAN_AB_16__2: Loading.loading7Combination,
+
+      Span.FIXED_SPAN_AB_17__1: Loading.loading17Combination,
+      Span.SIMPLE_SPAN_AB_17__1: Loading.loading17Combination,
+
+      Span.FIXED_SPAN_AB_17__2: Loading.loading17Combination,
+      Span.SIMPLE_SPAN_AB_17__2: Loading.loading17Combination,
+
+      Span.FIXED_SPAN_AB_18: Loading.loading18Combination,
+      Span.SIMPLE_SPAN_AB_18: Loading.loading18Combination,
+
+    },
+    
+    Span.SIMPLE_SPAN_AB_1: {
+      Span.FIXED_SPAN_BC_1: Loading.loading1Combination,
+      Span.SIMPLE_SPAN_BC_1: Loading.loading1Combination,
+
+      Span.FIXED_SPAN_BC_2: Loading.loading2Combination,
+      Span.SIMPLE_SPAN_BC_2: Loading.loading2Combination,
+
+      Span.FIXED_SPAN_BC_3: Loading.loading2Combination,
+      Span.SIMPLE_SPAN_BC_3: Loading.loading2Combination,
+
+      Span.FIXED_SPAN_BC_4: Loading.loading2Combination,
+      Span.SIMPLE_SPAN_BC_4: Loading.loading2Combination,
+
+      Span.FIXED_SPAN_BC_5: Loading.loading5Combination,
+      Span.SIMPLE_SPAN_BC_5: Loading.loading5Combination,
+
+      Span.FIXED_SPAN_BC_6__1: Loading.loading5Combination,
+      Span.SIMPLE_SPAN_BC_6__1: Loading.loading5Combination,
+
+      Span.FIXED_SPAN_BC_6__2: Loading.loading5Combination,
+      Span.SIMPLE_SPAN_BC_6__2: Loading.loading5Combination,
+
+      Span.FIXED_SPAN_BC_7__1: Loading.loading7Combination,
+      Span.SIMPLE_SPAN_BC_7__1: Loading.loading7Combination,
+
+      Span.FIXED_SPAN_BC_7__2: Loading.loading7Combination,
+      Span.SIMPLE_SPAN_BC_7__2: Loading.loading7Combination,
+
+      Span.FIXED_SPAN_BC_8: Loading.loading7Combination,
+      Span.SIMPLE_SPAN_BC_8: Loading.loading7Combination,
+
+      Span.FIXED_SPAN_BC_9: Loading.loading7Combination,
+      Span.SIMPLE_SPAN_BC_9: Loading.loading7Combination,
+
+      Span.FIXED_SPAN_BC_10__1: Loading.loading5Combination,
+      Span.SIMPLE_SPAN_BC_10__1: Loading.loading5Combination,
+
+      Span.FIXED_SPAN_BC_10__2: Loading.loading5Combination,
+      Span.SIMPLE_SPAN_BC_10__2: Loading.loading5Combination,
+
+      Span.FIXED_SPAN_BC_11: Loading.loading5Combination,
+      Span.SIMPLE_SPAN_BC_11: Loading.loading5Combination,
+
+      Span.FIXED_SPAN_BC_12: Loading.loading5Combination,
+      Span.SIMPLE_SPAN_BC_12: Loading.loading5Combination,
+
+      Span.FIXED_SPAN_BC_13__1: Loading.loading5Combination,
+      Span.SIMPLE_SPAN_BC_13__1: Loading.loading5Combination,
+
+      Span.FIXED_SPAN_BC_13__2: Loading.loading5Combination,
+      Span.SIMPLE_SPAN_BC_13__2: Loading.loading5Combination,
+
+      Span.FIXED_SPAN_BC_14__1: Loading.loading7Combination,
+      Span.SIMPLE_SPAN_BC_14__1: Loading.loading7Combination,
+
+      Span.FIXED_SPAN_BC_14__2: Loading.loading7Combination,
+      Span.SIMPLE_SPAN_BC_14__2: Loading.loading7Combination,
+
+      Span.FIXED_SPAN_BC_16__1: Loading.loading7Combination,
+      Span.SIMPLE_SPAN_BC_16__1: Loading.loading7Combination,
+
+      Span.FIXED_SPAN_BC_16__2: Loading.loading7Combination,
+      Span.SIMPLE_SPAN_BC_16__2: Loading.loading7Combination,
+
+      Span.FIXED_SPAN_BC_17__1: Loading.loading17Combination,
+      Span.SIMPLE_SPAN_BC_17__1: Loading.loading17Combination,
+
+      Span.FIXED_SPAN_BC_17__2: Loading.loading17Combination,
+      Span.SIMPLE_SPAN_BC_17__2: Loading.loading17Combination,
+
+      Span.FIXED_SPAN_BC_18: Loading.loading18Combination,
+      Span.SIMPLE_SPAN_BC_18: Loading.loading18Combination,
+    },
+    
+    Span.FIXED_SPAN_AB_2: {
+      Span.FIXED_SPAN_BC_2: Loading.loading2Combination,
+      Span.SIMPLE_SPAN_BC_2: Loading.loading2Combination,
+
+      Span.FIXED_SPAN_BC_3: Loading.loading2Combination,
+      Span.SIMPLE_SPAN_BC_3: Loading.loading2Combination,
+
+      Span.FIXED_SPAN_BC_4: Loading.loading2Combination,
+      Span.SIMPLE_SPAN_BC_4: Loading.loading2Combination,
+
+      Span.FIXED_SPAN_BC_5: Loading.loading5Combination,
+      Span.SIMPLE_SPAN_BC_5: Loading.loading5Combination,
+
+      Span.FIXED_SPAN_BC_6__1: Loading.loading5Combination,
+      Span.SIMPLE_SPAN_BC_6__1: Loading.loading5Combination,
+
+      Span.FIXED_SPAN_BC_6__2: Loading.loading5Combination,
+      Span.SIMPLE_SPAN_BC_6__2: Loading.loading5Combination,
+
+      Span.FIXED_SPAN_BC_7__1: Loading.loading7Combination,
+      Span.SIMPLE_SPAN_BC_7__1: Loading.loading7Combination,
+
+      Span.FIXED_SPAN_BC_7__2: Loading.loading7Combination,
+      Span.SIMPLE_SPAN_BC_7__2: Loading.loading7Combination,
+
+      Span.FIXED_SPAN_BC_8: Loading.loading7Combination,
+      Span.SIMPLE_SPAN_BC_8: Loading.loading7Combination,
+
+      Span.FIXED_SPAN_BC_9: Loading.loading7Combination,
+      Span.SIMPLE_SPAN_BC_9: Loading.loading7Combination,
+
+      Span.FIXED_SPAN_BC_10__1: Loading.loading5Combination,
+      Span.SIMPLE_SPAN_BC_10__1: Loading.loading5Combination,
+
+      Span.FIXED_SPAN_BC_10__2: Loading.loading5Combination,
+      Span.SIMPLE_SPAN_BC_10__2: Loading.loading5Combination,
+
+      Span.FIXED_SPAN_BC_11: Loading.loading5Combination,
+      Span.SIMPLE_SPAN_BC_11: Loading.loading5Combination,
+
+      Span.FIXED_SPAN_BC_12: Loading.loading5Combination,
+      Span.SIMPLE_SPAN_BC_12: Loading.loading5Combination,
+
+      Span.FIXED_SPAN_BC_13__1: Loading.loading5Combination,
+      Span.SIMPLE_SPAN_BC_13__1: Loading.loading5Combination,
+
+      Span.FIXED_SPAN_BC_13__2: Loading.loading5Combination,
+      Span.SIMPLE_SPAN_BC_13__2: Loading.loading5Combination,
+
+      Span.FIXED_SPAN_BC_14__1: Loading.loading7Combination,
+      Span.SIMPLE_SPAN_BC_14__1: Loading.loading7Combination,
+
+      Span.FIXED_SPAN_BC_14__2: Loading.loading7Combination,
+      Span.SIMPLE_SPAN_BC_14__2: Loading.loading7Combination,
+
+      Span.FIXED_SPAN_BC_16__1: Loading.loading7Combination,
+      Span.SIMPLE_SPAN_BC_16__1: Loading.loading7Combination,
+
+      Span.FIXED_SPAN_BC_16__2: Loading.loading7Combination,
+      Span.SIMPLE_SPAN_BC_16__2: Loading.loading7Combination,
+
+      Span.FIXED_SPAN_BC_17__1: Loading.loading17Combination,
+      Span.SIMPLE_SPAN_BC_17__1: Loading.loading17Combination,
+
+      Span.FIXED_SPAN_BC_17__2: Loading.loading17Combination,
+      Span.SIMPLE_SPAN_BC_17__2: Loading.loading17Combination,
+
+      Span.FIXED_SPAN_BC_18: Loading.loading18Combination,
+      Span.SIMPLE_SPAN_BC_18: Loading.loading18Combination,
+    },
+
+    Span.SIMPLE_SPAN_AB_2: {
+      Span.FIXED_SPAN_BC_2: Loading.loading2Combination,
+      Span.SIMPLE_SPAN_BC_2: Loading.loading2Combination,
+
+      Span.FIXED_SPAN_BC_3: Loading.loading2Combination,
+      Span.SIMPLE_SPAN_BC_3: Loading.loading2Combination,
+
+      Span.FIXED_SPAN_BC_4: Loading.loading2Combination,
+      Span.SIMPLE_SPAN_BC_4: Loading.loading2Combination,
+
+      Span.FIXED_SPAN_BC_5: Loading.loading5Combination,
+      Span.SIMPLE_SPAN_BC_5: Loading.loading5Combination,
+
+      Span.FIXED_SPAN_BC_6__1: Loading.loading5Combination,
+      Span.SIMPLE_SPAN_BC_6__1: Loading.loading5Combination,
+
+      Span.FIXED_SPAN_BC_6__2: Loading.loading5Combination,
+      Span.SIMPLE_SPAN_BC_6__2: Loading.loading5Combination,
+
+      Span.FIXED_SPAN_BC_7__1: Loading.loading7Combination,
+      Span.SIMPLE_SPAN_BC_7__1: Loading.loading7Combination,
+
+      Span.FIXED_SPAN_BC_7__2: Loading.loading7Combination,
+      Span.SIMPLE_SPAN_BC_7__2: Loading.loading7Combination,
+
+      Span.FIXED_SPAN_BC_8: Loading.loading7Combination,
+      Span.SIMPLE_SPAN_BC_8: Loading.loading7Combination,
+
+      Span.FIXED_SPAN_BC_9: Loading.loading7Combination,
+      Span.SIMPLE_SPAN_BC_9: Loading.loading7Combination,
+
+      Span.FIXED_SPAN_BC_10__1: Loading.loading5Combination,
+      Span.SIMPLE_SPAN_BC_10__1: Loading.loading5Combination,
+
+      Span.FIXED_SPAN_BC_10__2: Loading.loading5Combination,
+      Span.SIMPLE_SPAN_BC_10__2: Loading.loading5Combination,
+
+      Span.FIXED_SPAN_BC_11: Loading.loading5Combination,
+      Span.SIMPLE_SPAN_BC_11: Loading.loading5Combination,
+
+      Span.FIXED_SPAN_BC_12: Loading.loading5Combination,
+      Span.SIMPLE_SPAN_BC_12: Loading.loading5Combination,
+
+      Span.FIXED_SPAN_BC_13__1: Loading.loading5Combination,
+      Span.SIMPLE_SPAN_BC_13__1: Loading.loading5Combination,
+
+      Span.FIXED_SPAN_BC_13__2: Loading.loading5Combination,
+      Span.SIMPLE_SPAN_BC_13__2: Loading.loading5Combination,
+
+      Span.FIXED_SPAN_BC_14__1: Loading.loading7Combination,
+      Span.SIMPLE_SPAN_BC_14__1: Loading.loading7Combination,
+
+      Span.FIXED_SPAN_BC_14__2: Loading.loading7Combination,
+      Span.SIMPLE_SPAN_BC_14__2: Loading.loading7Combination,
+
+      Span.FIXED_SPAN_BC_16__1: Loading.loading7Combination,
+      Span.SIMPLE_SPAN_BC_16__1: Loading.loading7Combination,
+
+      Span.FIXED_SPAN_BC_16__2: Loading.loading7Combination,
+      Span.SIMPLE_SPAN_BC_16__2: Loading.loading7Combination,
+
+      Span.FIXED_SPAN_BC_17__1: Loading.loading17Combination,
+      Span.SIMPLE_SPAN_BC_17__1: Loading.loading17Combination,
+
+      Span.FIXED_SPAN_BC_17__2: Loading.loading17Combination,
+      Span.SIMPLE_SPAN_BC_17__2: Loading.loading17Combination,
+
+      Span.FIXED_SPAN_BC_18: Loading.loading18Combination,
+      Span.SIMPLE_SPAN_BC_18: Loading.loading18Combination,
+    },
+    
   };
 
-  String currentCombination = widget.loadInAB + widget.loadInBC + widget.loadInOverhangAName + widget.loadInOverhangCName;
+  Function getLoadingCalculation(Span spanAb, Span spanBc) {
+    Loading? loading = combinations[spanAb]![spanBc];
+    switch (loading) {
+      case Loading.loading1Combination:
+        return loading1Calculation;
+      case Loading.loading2Combination:
+        return loading2Calculation;
+      // ... add the rest of the cases here
+      default:
+        throw Exception('Invalid combination');
+    }
+  }
 
-  if (combinations.containsKey(currentCombination)) {
+  void gotoCalculationsTwoCombination() {
+    Span spanAb = getSpanFromString(widget.loadInAB);
+    Span spanBc = getSpanFromString(widget.loadInBC);
+    Function calculationFunction = getLoadingCalculation(spanAb, spanBc);
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (context) => combinations[currentCombination]!(),
+        builder: (context) => calculationFunction(),
       ),
     );
   }
-}
+
+  void gotoCalculationsFourCombination() {
+    Map<String, Function> combinations = {
+      //Combination 1
+      'FIXED SPAN AB 1FIXED SPAN BC 1OVERHANG C 1OVERHANG D 1':
+          loading1Calculation,
+      'SIMPLE SPAN AB 1SIMPLE SPAN BC 1OVERHANG C 1OVERHANG D 1':
+          loading1Calculation,
+      'SIMPLE SPAN AB 1FIXED SPAN BC 1OVERHANG C 1OVERHANG D 1':
+          loading1Calculation,
+      'FIXED SPAN AB 1SIMPLE SPAN BC 1OVERHANG C 1OVERHANG D 1':
+          loading1Calculation,
+      // Add more combinations as needed
+    };
+
+    String currentCombination = widget.loadInAB +
+        widget.loadInBC +
+        widget.loadInOverhangAName +
+        widget.loadInOverhangCName;
+
+    if (combinations.containsKey(currentCombination)) {
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => combinations[currentCombination]!(),
+        ),
+      );
+    }
+  }
+
+  void gotoCalculations() {
+    if (widget.loadInOverhangAName != '' && widget.loadInOverhangCName != '') {
+      widget.loadInAB = widget.loadInAB.replaceAll(' ', '_').toUpperCase();
+      widget.loadInBC = widget.loadInBC.replaceAll(' ', '_').toUpperCase();
+      gotoCalculationsFourCombination();
+    } else {
+      widget.loadInAB = widget.loadInAB.replaceAll(' ', '_').toUpperCase();
+      widget.loadInBC = widget.loadInBC.replaceAll(' ', '_').toUpperCase();
+      gotoCalculationsTwoCombination();
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -1169,7 +1284,7 @@ void gotoCalculationsFourCombination() {
       'OVERHANG C 17.2': loading17Combination,
       'OVERHANG C 18': loading18Combination,
     };
-    
+
     return Scaffold(
       appBar: AppBar(
         leading: const BackButton(
@@ -1240,15 +1355,7 @@ void gotoCalculationsFourCombination() {
       ),
       floatingActionButton: CustomFloatingActionButton(
         onPressed: () {
-          if(widget.loadInOverhangAName != '' && widget.loadInOverhangCName != '') {
-            widget.loadInAB = widget.loadInAB.replaceAll(' ', '_').toUpperCase();
-            widget.loadInBC = widget.loadInBC.replaceAll(' ', '_').toUpperCase();
-            gotoCalculationsFourCombination();
-          } else {
-            widget.loadInAB = widget.loadInAB.replaceAll(' ', '_').toUpperCase();
-            widget.loadInBC = widget.loadInBC.replaceAll(' ', '_').toUpperCase();
-            gotoCalculationsTwoCombination();
-          }
+          gotoCalculations();
         },
       ),
     );

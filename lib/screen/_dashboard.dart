@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 
 //Functions
-import '../../utils/helper_widget.dart';
+import '../utils/helper_widget_function.dart';
 import '../widgets/custom_dropdown_text.dart';
 import '../widgets/custom_dropdown_image.dart';
 import '../widgets/custom_floating_action_button.dart';

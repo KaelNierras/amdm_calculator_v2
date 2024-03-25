@@ -1,4 +1,4 @@
-import 'package:amdm_calculator/utils/helper_widget.dart';
+import 'package:amdm_calculator/utils/helper_widget_function.dart';
 import 'package:flutter/material.dart';
 
 class InfoAlert extends StatelessWidget {

@@ -234,7 +234,10 @@ class Calculation extends StatefulWidget {
   _CalculationState createState() => _CalculationState();
 }
 
+
+
 class _CalculationState extends State<Calculation> {
+
   Widget fixedSimple1() {
     return Column(
       children: [
@@ -246,6 +249,18 @@ class _CalculationState extends State<Calculation> {
         Text('Load P: ${widget.loadBCValueP!}'),
         Text('Length L: ${widget.lengthBCValueL!}'),
         Text('Length A: ${widget.lengthBCValueA!}'),
+      ],
+    );
+  }
+  Widget fixedSimple2() {
+    return Column(
+      children: [
+        const Text('Span AB:'),
+        Text('Load P: ${widget.loadABValueP!}'),
+        Text('Length L: ${widget.lengthABValueL!}'),
+        const Text('Span BC:'),
+        Text('Load P: ${widget.loadBCValueP!}'),
+        Text('Length L: ${widget.lengthBCValueL!}'),
       ],
     );
   }
@@ -262,7 +277,7 @@ class _CalculationState extends State<Calculation> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           const Text('Calculation'),
-          fixedSimple1(),
+          fixedSimple2(),
         ],
       ))),
     );
