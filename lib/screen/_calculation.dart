@@ -1,5 +1,7 @@
 // ignore_for_file: library_private_types_in_public_api, must_be_immutable
+import 'package:amdm_calculator/utils/_variables.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import '../utils/helper_widget_function.dart';
 import '../utils/_variables_calculation.dart';
 
@@ -236,7 +238,6 @@ class Calculation extends StatefulWidget {
 }
 
 class _CalculationState extends State<Calculation> {
-
   List<double> simpleSimple() {
     double fEMAB1 = 0;
     double fEMAB2 = 0;
@@ -313,66 +314,179 @@ class _CalculationState extends State<Calculation> {
     cOAB2 = bMAB1 / 2;
     cOBC1 = bMBC2 / 2;
     cOBC2 = bMBC1 / 2;
+
+    finalAnswer = fEMAB2;
   }
 
-  Widget initTable () {
+  Widget headerTable() {
     return Column(
       children: [
         Table(
-                border: TableBorder.all(), // Add a border to the table
-                children: [
-                  TableRow(children: [
-                    const TableCell(
-                      child: Text('K'),
-                    ),
-                    TableCell(
-                      child: Text(k1.toStringAsFixed(4)),
-                    ),
-                    const TableCell(
-                      child: Text(''), // Empty cell to make k1 span two columns
-                    ),
-                    TableCell(
-                      child: Text(k2.toStringAsFixed(4)),
-                    ),
-                    const TableCell(
-                      child: Text(''), // Empty cell to make k2 span two columns
-                    ),
-                  ]),
-                  // Add more TableRow widgets for more data rows
-                  TableRow(children: [
-                    const Text('DF'),
-                    Text(dfAB1.toStringAsFixed(4)),
-                    Text(dfAB2.toStringAsFixed(4)),
-                    Text(dfBC1.toStringAsFixed(4)),
-                    Text(dfBC2.toStringAsFixed(4)),
-                  ]),
-                  TableRow(children: [
-                    const Text('FEM'),
-                    Text(fEMAB1.toStringAsFixed(4)),
-                    Text(fEMAB2.toStringAsFixed(4)),
-                    Text(fEMBC1.toStringAsFixed(4)),
-                    Text(fEMBC2.toStringAsFixed(4)),
-                  ]),
-                  TableRow(children: [
-                    const Text('BM'),
-                    Text(bMAB1.toStringAsFixed(4)),
-                    Text(bMAB2.toStringAsFixed(4)),
-                    Text(bMBC1.toStringAsFixed(4)),
-                    Text(bMBC2.toStringAsFixed(4)),
-                  ]),
-                  TableRow(children: [
-                    const Text('CO'),
-                    Text(cOAB1.toStringAsFixed(4)),
-                    Text(cOAB2.toStringAsFixed(4)),
-                    Text(cOBC1.toStringAsFixed(4)),
-                    Text(cOBC2.toStringAsFixed(4)),
-                  ]),
-                ],
+          border: TableBorder.all(), // Add a border to the table
+          children: [
+            TableRow(children: [
+              const TableCell(
+                child: Center(child: Text('K1')),
               ),
+              TableCell(
+                child: Center(child: Text(k1.toStringAsFixed(4))),
+              ),
+              const TableCell(
+                child: Center(
+                    child:
+                        Text('k2')), // Empty cell to make k1 span two columns
+              ),
+              TableCell(
+                child: Center(child: Text(k2.toStringAsFixed(4))),
+              ),
+            ]),
+          ],
+        ),
       ],
     );
   }
- 
+
+  Widget initTable() {
+    return Column(
+      children: [
+        Table(
+          border: TableBorder.all(), // Add a border to the table
+          children: [
+            TableRow(children: [
+              const Center(child: Text('DF')),
+              Center(child: Text(dfAB1.toStringAsFixed(4))),
+              Center(child: Text(dfAB2.toStringAsFixed(4))),
+              Center(child: Text(dfBC1.toStringAsFixed(4))),
+              Center(child: Text(dfBC2.toStringAsFixed(4))),
+            ]),
+            TableRow(children: [
+              const Center(child: Text('FEM')),
+              Center(child: Text(fEMAB1.toStringAsFixed(4))),
+              Center(child: Text(fEMAB2.toStringAsFixed(4))),
+              Center(child: Text(fEMBC1.toStringAsFixed(4))),
+              Center(child: Text(fEMBC2.toStringAsFixed(4))),
+            ]),
+          ],
+        ),
+      ],
+    );
+  }
+
+  Widget initialLoop() {
+    return Column(
+      children: [
+        Table(
+          border: TableBorder.all(), // Add a border to the table
+          children: [
+            TableRow(children: [
+              const Center(child: Text('BM')),
+              Center(child: Text(bMAB1.toStringAsFixed(4))),
+              Center(child: Text(bMAB2.toStringAsFixed(4))),
+              Center(child: Text(bMBC1.toStringAsFixed(4))),
+              Center(child: Text(bMBC2.toStringAsFixed(4))),
+            ]),
+            TableRow(children: [
+              const Center(child: Text('CO')),
+              Center(child: Text(cOAB1.toStringAsFixed(4))),
+              Center(child: Text(cOAB2.toStringAsFixed(4))),
+              Center(child: Text(cOBC1.toStringAsFixed(4))),
+              Center(child: Text(cOBC2.toStringAsFixed(4))),
+            ]),
+          ],
+        ),
+      ],
+    );
+  }
+
+  Table generateLoopingTable() {
+    finalAnswer = finalAnswer + bMAB2 + cOAB2;
+
+    bMAB1 = changeSign(cOAB1 * dfAB1);
+    bMAB2 = changeSign((cOAB2 + cOBC1) * dfAB2);
+
+    bMBC1 = changeSign((cOAB2 + cOBC1) * dfBC1);
+    bMBC2 = changeSign(cOBC2 * dfBC2);
+
+
+    cOAB1 = bMAB2 / 2;
+
+    if (checkNumberIfPositive(cOAB2) == checkNumberIfPositive(bMAB2)) {
+      counter1++;
+      if (counter1 == 2) {
+        loopEnd = 0;
+        counter1 = 0;
+        finalAnswer = finalAnswer + bMAB2 + cOAB2;
+        return Table(
+          border: TableBorder.all(),
+          children: [
+            TableRow(
+              children: [
+                const TableCell(child: Center(child: Text('BM'))),
+                TableCell(child: Center(child: Text(bMAB1.toStringAsFixed(4)))),
+                TableCell(child: Center(child: Text(bMAB2.toStringAsFixed(4)))),
+                TableCell(child: Center(child: Text(bMBC1.toStringAsFixed(4)))),
+                TableCell(child: Center(child: Text(bMBC2.toStringAsFixed(4)))),
+              ],
+            ),
+          ],
+        );
+      }
+    }
+
+    cOAB2 = bMAB1 / 2;
+
+    if (checkNumberIfPositive(cOAB2) == checkNumberIfPositive(bMAB2)) {
+      counter2++;
+      if (counter2 == 2) {
+        loopEnd = 0;
+        counter2 = 0;
+        finalAnswer = finalAnswer + bMAB2 + cOAB2;
+        return Table(
+          border: TableBorder.all(),
+          children: [
+            TableRow(
+              children: [
+                const TableCell(child: Center(child: Text('BM'))),
+                TableCell(child: Center(child: Text(bMAB1.toStringAsFixed(4)))),
+                TableCell(child: Center(child: Text(bMAB2.toStringAsFixed(4)))),
+                TableCell(child: Center(child: Text(bMBC1.toStringAsFixed(4)))),
+                TableCell(child: Center(child: Text(bMBC2.toStringAsFixed(4)))),
+              ],
+            ),
+          ],
+        );
+      }
+    }
+
+    cOBC1 = bMBC2 / 2;
+    cOBC2 = bMBC1 / 2;
+
+    finalAnswer = finalAnswer + bMAB2 + cOAB2;
+    return Table(
+      border: TableBorder.all(),
+      children: [
+        TableRow(
+          children: [
+            const TableCell(child: Center(child: Text('BM'))),
+            TableCell(child: Center(child: Text(bMAB1.toStringAsFixed(4)))),
+            TableCell(child: Center(child: Text(bMAB2.toStringAsFixed(4)))),
+            TableCell(child: Center(child: Text(bMBC1.toStringAsFixed(4)))),
+            TableCell(child: Center(child: Text(bMBC2.toStringAsFixed(4)))),
+          ],
+        ),
+        TableRow(
+          children: [
+            const TableCell(child: Center(child: Text('CO'))),
+            TableCell(child: Center(child: Text(cOAB1.toStringAsFixed(4)))),
+            TableCell(child: Center(child: Text(cOAB2.toStringAsFixed(4)))),
+            TableCell(child: Center(child: Text(cOBC1.toStringAsFixed(4)))),
+            TableCell(child: Center(child: Text(cOBC2.toStringAsFixed(4)))),
+          ],
+        ),
+      ],
+    );
+  }
+
   @override
   void initState() {
     super.initState();
@@ -381,8 +495,8 @@ class _CalculationState extends State<Calculation> {
 
     if (widget.loadInAB!.contains('SIMPLE') &&
         widget.loadInBC!.contains('SIMPLE')) {
-          simpleSimpleInit();
-        }
+      simpleSimpleInit();
+    }
   }
 
   @override
@@ -391,15 +505,27 @@ class _CalculationState extends State<Calculation> {
       appBar: AppBar(
         title: const Text('Calculation'),
       ),
-      body: Center(
-        child: Padding(
-          padding: const EdgeInsets.all(20.0),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              const Text('Calculation'),
-              initTable(),
-            ],
+      body: SingleChildScrollView(
+        child: Center(
+          child: Padding(
+            padding: const EdgeInsets.all(20.0),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                headerTable(),
+                addVerticalSpace(10),
+                initTable(),
+                addVerticalSpace(10),
+                initialLoop(),
+                addVerticalSpace(10),
+                for (int i = 0; loopEnd != 0; i++) ...[
+                  generateLoopingTable(),
+                  addVerticalSpace(10)
+                ],
+                Text(
+                    'Final Answer: $finalAnswer or ${roundToFourDecimals(finalAnswer)} $selectedMomentABUnit'),
+              ],
+            ),
           ),
         ),
       ),

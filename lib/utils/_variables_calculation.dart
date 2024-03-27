@@ -24,3 +24,8 @@
 
   double cOBC1 = 0;
   double cOBC2 = 0;
+
+  double finalAnswer = 0;
+  double loopEnd = 1;
+  double counter1 = 0;
+  double counter2 = 0;

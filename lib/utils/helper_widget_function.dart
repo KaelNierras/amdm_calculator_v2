@@ -23,78 +23,85 @@ Span getSpanFromString(String span) {
   throw Exception('Invalid span');
 }
 
-
-  double gcd(double a, double b) {
-    if (b == 0) {
-      return a;
-    } else {
-      return gcd(b, a % b);
-    }
+double gcd(double a, double b) {
+  if (b == 0) {
+    return a;
+  } else {
+    return roundToFourDecimals(gcd(b, a % b));
   }
+}
 
-  double lcm(double a, double b) {
-    return (a * b) / gcd(a, b);
+double lcm(double a, double b) {
+  return roundToFourDecimals((a * b) / gcd(a, b));
+}
+
+double getK(lcm, valueL) {
+  return roundToFourDecimals(lcm / valueL);
+}
+
+double getDfAB2(k1, k2) {
+  return roundToFourDecimals(k1 / (k1 + k2));
+}
+
+double getDfBC1(k1, k2) {
+  return roundToFourDecimals(k2 / (k1 + k2));
+}
+
+double checkNumberIfNegative(double value) {
+  if (value > 0) {
+    return roundToFourDecimals(value * -1);
+  } else {
+    return roundToFourDecimals(value);
   }
+}
 
-  double getK(lcm, valueL) {
-    return lcm / valueL;
+double checkNumberIfPositive(double value) {
+  if (value < 0) {
+    return roundToFourDecimals(value * -1);
+  } else {
+    return roundToFourDecimals(value);
   }
+}
 
-  double getDfAB2(k1, k2) {
-    return k1 / (k1 + k2);
-  }
+double changeSign(double value) {
+  return roundToFourDecimals(value * -1);
+}
 
-  double getDfBC1(k1, k2) {
-    return k2 / (k1 + k2);
-  }
+double roundToFourDecimals(double value) {
+  return double.parse(value.toStringAsFixed(4));
+}
 
-  double checkNumberIfNegative(double value) {
-    if (value > 0) {
-      return value * -1;
-    } else {
-      return value;
-    }
-  }
+List<double> getLoad5(valueW, valueL) {
+  double fEM1 = 0;
+  double fEM2 = 0;
+  fEM1 = (double.parse(valueW) *
+      ((double.parse(valueL) * (double.parse(valueL)))));
+  fEM1 = checkNumberIfNegative(fEM1 / 12);
+  fEM1 = roundToFourDecimals(fEM1);
 
-  double checkNumberIfPositive(double value) {
-    if (value < 0) {
-      return value * -1;
-    } else {
-      return value;
-    }
-  }
+  fEM2 = (double.parse(valueW) *
+      ((double.parse(valueL) * (double.parse(valueL)))));
+  fEM2 = checkNumberIfPositive(fEM2 / 12);
+  fEM1 = roundToFourDecimals(fEM2);
 
-  double changeSign(double value) {
-    return value * -1;
-  }
+  return [fEM1, fEM2];
+}
 
-  List<double> getLoad5(valueW, valueL) {
-    double fEM1 = 0;
-    double fEM2 = 0;
-    fEM1 = (double.parse(valueW) *
-        ((double.parse(valueL) * (double.parse(valueL)))));
-    fEM1 = checkNumberIfNegative(fEM1 / 12);
+List<double> getLoad1(valueP, valueL, valueA) {
+  double fEM1 = 0;
+  double fEM2 = 0;
+  double valueB = double.parse(valueL) - double.parse(valueA);
 
-    fEM2 = (double.parse(valueW) *
-        ((double.parse(valueL) * (double.parse(valueL)))));
-    fEM2 = checkNumberIfPositive(fEM2 / 12);
-    return [fEM1, fEM2];
-  }
+  double valuePDouble = double.parse(valueP);
+  double valueADouble = double.parse(valueA);
+  double valueLDouble = double.parse(valueL);
 
-  List<double> getLoad1(valueP, valueL, valueA) {
-    double fEM1 = 0;
-    double fEM2 = 0;
-    double valueB = double.parse(valueL) - double.parse(valueA);
+  fEM1 = valuePDouble * valueADouble * (valueB * valueB);
+  fEM1 = checkNumberIfNegative(fEM1 / (valueLDouble * valueLDouble));
+  fEM2 = valuePDouble * (valueADouble * valueADouble) * valueB;
+  fEM2 = checkNumberIfPositive(fEM2 / (valueLDouble * valueLDouble));
 
-    double valuePDouble = double.parse(valueP);
-    double valueADouble = double.parse(valueA);
-    double valueLDouble = double.parse(valueL);
+  return [roundToFourDecimals(fEM1), roundToFourDecimals(fEM2)];
+}
 
-    fEM1 = valuePDouble * valueADouble * (valueB * valueB);
-    fEM1 = checkNumberIfNegative(fEM1 / (valueLDouble * valueLDouble));
-    fEM2 = valuePDouble * (valueADouble * valueADouble) * valueB;
-    fEM2 = checkNumberIfPositive(fEM2 / (valueLDouble * valueLDouble));
-
-    return [fEM1, fEM2];
-  }
 
