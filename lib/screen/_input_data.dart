@@ -861,6 +861,7 @@ class _InputDataState extends State<InputData> {
   }
 
   void gotoCalculationsSkip() {
+  
   Navigator.push(
     context,
     MaterialPageRoute(
