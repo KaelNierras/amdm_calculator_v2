@@ -148,5 +148,4 @@
   //Moment BC Load Variable
   String momentOverhangCValue = '';
   String selectedMomentOverhangCUnit = '';
-
   

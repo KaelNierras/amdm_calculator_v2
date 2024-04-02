@@ -691,7 +691,6 @@ class _InputDataState extends State<InputData> {
       loadABValueW: loadABValueW,
       lengthABValueL: lengthABValueL,
       lengthABValueK: lengthABValueK,
-
     );
   }
 
@@ -739,7 +738,6 @@ class _InputDataState extends State<InputData> {
       lengthBCValueK: lengthBCValueK,
     );
   }
-
 
   Calculation combinedCalculationPLA(
       Calculation header, Calculation calc1, Calculation calc2) {
@@ -798,7 +796,6 @@ class _InputDataState extends State<InputData> {
     }
     return null;
   }
-
 
   void gotoCalculationsTwoCombination() {
     Span spanAb = getSpanFromString(widget.loadInAB);
@@ -861,88 +858,87 @@ class _InputDataState extends State<InputData> {
   }
 
   void gotoCalculationsSkip() {
-  
-  Navigator.push(
-    context,
-    MaterialPageRoute(
-      builder: (context) => Calculation(
-        loadInAB: widget.loadInAB,
-        loadInBC: widget.loadInBC,
-        loadInOverhangAName: widget.loadInOverhangAName,
-        loadInOverhangCName: widget.loadInOverhangCName,
-        selectedMomentUnit: selectedMomentUnit,
-        overhangAValue: overhangAValue,
-        selectedOverhangAUnit:  selectedOverhangAUnit,
-        overhangCValue:  overhangCValue,
-        selectedOverhangCUnit:  selectedOverhangCUnit,
-        loadOverhangABValueP:  loadOverhangABValueP,
-        selectedLoadOverhangABUnitP:  selectedLoadOverhangABUnitP,
-        loadOverhangABValueW:  loadOverhangABValueW,
-        selectedLoadOverhangABUnitW:  selectedLoadOverhangABUnitW,
-        loadOverhangABValueW2:  loadOverhangABValueW2,
-        selectedLoadOverhangABUnitW2:  selectedLoadOverhangABUnitW2,
-        lengthOverhangABValueL:  lengthOverhangABValueL,
-        selectedLengthOverhangABUnitL:  selectedLengthOverhangABUnitL,
-        lengthOverhangABValueA:  lengthOverhangABValueA,
-        selectedLengthOverhangABUnitA:  selectedLengthOverhangABUnitA,
-        lengthOverhangABValueK:  lengthOverhangABValueK,
-        selectedLengthOverhangABUnitK:  selectedLengthOverhangABUnitK,
-        lengthOverhangABValueK1:  lengthOverhangABValueK1,
-        selectedLengthOverhangABUnitK1:  selectedLengthOverhangABUnitK1,
-        momentOverhangABValue:  momentOverhangAValue,
-        selectedMomentOverhangABUnit:  selectedMomentOverhangAUnit,
-        loadABValueP:  loadABValueP,
-        selectedLoadABUnitP:  selectedLoadABUnitP,
-        loadABValueW:  loadABValueW,
-        selectedLoadABUnitW:  selectedLoadABUnitW,
-        loadABValueW2:  loadABValueW2,
-        selectedLoadABUnitW2:  selectedLoadABUnitW2,
-        lengthABValueL:  lengthABValueL,
-        selectedLengthABUnitL:  selectedLengthABUnitL,
-        lengthABValueA:  lengthABValueA,
-        selectedLengthABUnitA:  selectedLengthABUnitA,
-        lengthABValueK:  lengthABValueK,
-        selectedLengthABUnitK:  selectedLengthABUnitK,
-        lengthABValueK1:  lengthABValueK1,
-        selectedLengthABUnitK1:  selectedLengthABUnitK1,
-        momentABValue:  momentABValue,
-        selectedMomentABUnit:  selectedMomentABUnit,
-        loadBCValueP:  loadBCValueP,
-        selectedLoadBCUnitP:  selectedLoadBCUnitP,
-        loadBCValueW:  loadBCValueW,
-        selectedLoadBCUnitW:  selectedLoadBCUnitW,
-        loadBCValueW2:  loadBCValueW2,
-        selectedLoadBCUnitW2:  selectedLoadBCUnitW2,
-        lengthBCValueL:  lengthBCValueL,
-        selectedLengthBCUnitL:  selectedLengthBCUnitL,
-        lengthBCValueA:  lengthBCValueA,
-        selectedLengthBCUnitA:  selectedLengthBCUnitA,
-        lengthBCValueK:  lengthBCValueK,
-        selectedLengthBCUnitK:  selectedLengthBCUnitK,
-        lengthBCValueK1:  lengthBCValueK1,
-        selectedLengthBCUnitK1:  selectedLengthBCUnitK1,
-        momentBCValue:  momentBCValue,
-        selectedMomentBCUnit:  selectedMomentBCUnit,
-        loadOverhangBCValueP:  loadOverhangBCValueP,
-        selectedLoadOverhangBCUnitP:  selectedLoadOverhangBCUnitP,
-        loadOverhangBCValueW:  loadOverhangBCValueW,
-        selectedLoadOverhangBCUnitW:  selectedLoadOverhangBCUnitW,
-        loadOverhangBCValueW2:  loadOverhangBCValueW2,
-        selectedLoadOverhangBCUnitW2:  selectedLoadOverhangBCUnitW2,
-        lengthOverhangBCValueL:  lengthOverhangBCValueL,
-        selectedLengthOverhangBCUnitL:  selectedLengthOverhangBCUnitL,
-        lengthOverhangBCValueA:  lengthOverhangBCValueA,
-        selectedLengthOverhangBCUnitA:  selectedLengthOverhangBCUnitA,
-        lengthOverhangBCValueK:  lengthOverhangBCValueK,
-        selectedLengthOverhangBCUnitK:  selectedLengthOverhangBCUnitK,
-        lengthOverhangBCValueK1:  lengthOverhangBCValueK1,
-        selectedLengthOverhangBCUnitK1:  selectedLengthOverhangBCUnitK1,
-        momentOverhangBCValue:  momentOverhangCValue,
-        selectedMomentOverhangBCUnit:  selectedMomentOverhangCUnit,
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => Calculation(
+          loadInAB: widget.loadInAB,
+          loadInBC: widget.loadInBC,
+          loadInOverhangAName: widget.loadInOverhangAName,
+          loadInOverhangCName: widget.loadInOverhangCName,
+          selectedMomentUnit: selectedMomentUnit,
+          overhangAValue: overhangAValue,
+          selectedOverhangAUnit: selectedOverhangAUnit,
+          overhangCValue: overhangCValue,
+          selectedOverhangCUnit: selectedOverhangCUnit,
+          loadOverhangABValueP: loadOverhangABValueP,
+          selectedLoadOverhangABUnitP: selectedLoadOverhangABUnitP,
+          loadOverhangABValueW: loadOverhangABValueW,
+          selectedLoadOverhangABUnitW: selectedLoadOverhangABUnitW,
+          loadOverhangABValueW2: loadOverhangABValueW2,
+          selectedLoadOverhangABUnitW2: selectedLoadOverhangABUnitW2,
+          lengthOverhangABValueL: lengthOverhangABValueL,
+          selectedLengthOverhangABUnitL: selectedLengthOverhangABUnitL,
+          lengthOverhangABValueA: lengthOverhangABValueA,
+          selectedLengthOverhangABUnitA: selectedLengthOverhangABUnitA,
+          lengthOverhangABValueK: lengthOverhangABValueK,
+          selectedLengthOverhangABUnitK: selectedLengthOverhangABUnitK,
+          lengthOverhangABValueK1: lengthOverhangABValueK1,
+          selectedLengthOverhangABUnitK1: selectedLengthOverhangABUnitK1,
+          momentOverhangABValue: momentOverhangAValue,
+          selectedMomentOverhangABUnit: selectedMomentOverhangAUnit,
+          loadABValueP: loadABValueP,
+          selectedLoadABUnitP: selectedLoadABUnitP,
+          loadABValueW: loadABValueW,
+          selectedLoadABUnitW: selectedLoadABUnitW,
+          loadABValueW2: loadABValueW2,
+          selectedLoadABUnitW2: selectedLoadABUnitW2,
+          lengthABValueL: lengthABValueL,
+          selectedLengthABUnitL: selectedLengthABUnitL,
+          lengthABValueA: lengthABValueA,
+          selectedLengthABUnitA: selectedLengthABUnitA,
+          lengthABValueK: lengthABValueK,
+          selectedLengthABUnitK: selectedLengthABUnitK,
+          lengthABValueK1: lengthABValueK1,
+          selectedLengthABUnitK1: selectedLengthABUnitK1,
+          momentABValue: momentABValue,
+          selectedMomentABUnit: selectedMomentABUnit,
+          loadBCValueP: loadBCValueP,
+          selectedLoadBCUnitP: selectedLoadBCUnitP,
+          loadBCValueW: loadBCValueW,
+          selectedLoadBCUnitW: selectedLoadBCUnitW,
+          loadBCValueW2: loadBCValueW2,
+          selectedLoadBCUnitW2: selectedLoadBCUnitW2,
+          lengthBCValueL: lengthBCValueL,
+          selectedLengthBCUnitL: selectedLengthBCUnitL,
+          lengthBCValueA: lengthBCValueA,
+          selectedLengthBCUnitA: selectedLengthBCUnitA,
+          lengthBCValueK: lengthBCValueK,
+          selectedLengthBCUnitK: selectedLengthBCUnitK,
+          lengthBCValueK1: lengthBCValueK1,
+          selectedLengthBCUnitK1: selectedLengthBCUnitK1,
+          momentBCValue: momentBCValue,
+          selectedMomentBCUnit: selectedMomentBCUnit,
+          loadOverhangBCValueP: loadOverhangBCValueP,
+          selectedLoadOverhangBCUnitP: selectedLoadOverhangBCUnitP,
+          loadOverhangBCValueW: loadOverhangBCValueW,
+          selectedLoadOverhangBCUnitW: selectedLoadOverhangBCUnitW,
+          loadOverhangBCValueW2: loadOverhangBCValueW2,
+          selectedLoadOverhangBCUnitW2: selectedLoadOverhangBCUnitW2,
+          lengthOverhangBCValueL: lengthOverhangBCValueL,
+          selectedLengthOverhangBCUnitL: selectedLengthOverhangBCUnitL,
+          lengthOverhangBCValueA: lengthOverhangBCValueA,
+          selectedLengthOverhangBCUnitA: selectedLengthOverhangBCUnitA,
+          lengthOverhangBCValueK: lengthOverhangBCValueK,
+          selectedLengthOverhangBCUnitK: selectedLengthOverhangBCUnitK,
+          lengthOverhangBCValueK1: lengthOverhangBCValueK1,
+          selectedLengthOverhangBCUnitK1: selectedLengthOverhangBCUnitK1,
+          momentOverhangBCValue: momentOverhangCValue,
+          selectedMomentOverhangBCUnit: selectedMomentOverhangCUnit,
+        ),
       ),
-    ),
-  );
-}
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -1114,19 +1110,19 @@ class _InputDataState extends State<InputData> {
       'OVERHANG C 18': loading18Combination,
     };
 
-    return Scaffold(
-      appBar: AppBar(
-        leading: const BackButton(
-          color: Colors.white,
+    try {
+      return Scaffold(
+        appBar: AppBar(
+          leading: const BackButton(
+            color: Colors.white,
+          ),
+          title: const Row(
+            children: [
+              Text("Data Input"),
+            ],
+          ),
         ),
-        title: const Row(
-          children: [
-            Text("Data Input"),
-          ],
-        ),
-      ),
-      body: SingleChildScrollView(
-        child: Expanded(
+        body: SingleChildScrollView(
           child: Center(
             child: Padding(
               padding: const EdgeInsets.all(20.0),
@@ -1147,13 +1143,15 @@ class _InputDataState extends State<InputData> {
                   if (widget.loadInOverhangAName != '') ...[overhangA()],
                   if (loadInOverhangAMap
                       .containsKey(widget.loadInOverhangAName)) ...[
-                    loadInOverhangAMap[widget.loadInOverhangAName]!('OverhangA')
+                    loadInOverhangAMap[widget.loadInOverhangAName]!(
+                        'OverhangA')
                   ],
                   addVerticalSpace(10),
                   const Divider(),
                   const Text(
                     'Span AB:',
-                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                    style:
+                        TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                   ),
                   addVerticalSpace(10),
                   if (loadInABMap.containsKey(widget.loadInAB)) ...[
@@ -1163,7 +1161,8 @@ class _InputDataState extends State<InputData> {
                   const Divider(),
                   const Text(
                     'Span BC:',
-                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                    style:
+                        TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                   ),
                   addVerticalSpace(10),
                   if (loadInBCMap.containsKey(widget.loadInBC)) ...[
@@ -1173,7 +1172,8 @@ class _InputDataState extends State<InputData> {
                   if (widget.loadInOverhangCName != '') ...[overhangC()],
                   if (loadInOverhangCMap
                       .containsKey(widget.loadInOverhangCName)) ...[
-                    loadInOverhangCMap[widget.loadInOverhangCName]!('OverhangC')
+                    loadInOverhangCMap[widget.loadInOverhangCName]!(
+                        'OverhangC')
                   ],
                   addVerticalSpace(10)
                 ],
@@ -1181,12 +1181,16 @@ class _InputDataState extends State<InputData> {
             ),
           ),
         ),
-      ),
-      floatingActionButton: CustomFloatingActionButton(
-        onPressed: () {
-          gotoCalculationsSkip();
-        },
-      ),
-    );
+        floatingActionButton: CustomFloatingActionButton(
+          onPressed: () {
+            gotoCalculationsSkip();
+          },
+        ),
+      );
+    } catch (error, stackTrace) {
+      print('Caught error: $error');
+      print(stackTrace);
+      return Container(); // Return a fallback widget
+    }
   }
 }

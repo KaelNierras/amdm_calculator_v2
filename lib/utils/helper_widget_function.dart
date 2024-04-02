@@ -24,7 +24,7 @@ Span getSpanFromString(String span) {
   throw Exception('Invalid span');
 }
 
-double gcd(double a, double b) {
+num gcd(num a, num b) {
   if (b == 0) {
     return a;
   } else {
@@ -32,23 +32,23 @@ double gcd(double a, double b) {
   }
 }
 
-double lcm(double a, double b) {
+num lcm(num a, num b) {
   return roundToFourDecimals((a * b) / gcd(a, b));
 }
 
-double getK(lcm, valueL) {
+num getK(lcm, valueL) {
   return roundToFourDecimals(lcm / valueL);
 }
 
-double getDfAB2(k1, k2) {
+num getDfAB2(k1, k2) {
   return roundToFourDecimals(k1 / (k1 + k2));
 }
 
-double getDfBC1(k1, k2) {
+num getDfBC1(k1, k2) {
   return roundToFourDecimals(k2 / (k1 + k2));
 }
 
-double checkNumberIfNegative(double value) {
+num checkNumberIfNegative(num value) {
   if (value > 0) {
     return roundToFourDecimals(value * -1);
   } else {
@@ -56,7 +56,7 @@ double checkNumberIfNegative(double value) {
   }
 }
 
-double checkNumberIfPositive(double value) {
+num checkNumberIfPositive(num value) {
   if (value < 0) {
     return roundToFourDecimals(value * -1);
   } else {
@@ -64,11 +64,11 @@ double checkNumberIfPositive(double value) {
   }
 }
 
-double changeSign(double value) {
+num changeSign(num value) {
   return roundToFourDecimals(value * -1);
 }
 
-double roundToFourDecimals(double value) {
-  return double.parse(value.toStringAsFixed(4));
+num roundToFourDecimals(num value) {
+  return num.parse(value.toStringAsFixed(4));
 }
 

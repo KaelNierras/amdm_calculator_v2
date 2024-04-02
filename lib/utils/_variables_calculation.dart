@@ -1,34 +1,34 @@
-  double k1 = 0;
-  double k2 = 0;
+  num k1 = 0;
+  num k2 = 0;
 
-  double dfAB1 = 0;
-  double dfAB2 = 0;
+  num dfAB1 = 0;
+  num dfAB2 = 0;
 
-  double dfBC1 = 0;
-  double dfBC2 = 0;
+  num dfBC1 = 0;
+  num dfBC2 = 0;
 
-  double fEMAB1 = 0;
-  double fEMAB2 = 0;
+  num fEMAB1 = 0; 
+  num fEMAB2 = 0;    
 
-  double fEMBC1 = 0;
-  double fEMBC2 = 0;
+  num fEMBC1 = 0;
+  num fEMBC2 = 0;
 
-  double bMAB1 = 0;
-  double bMAB2 = 0;
+  num bMAB1 = 0;
+  num bMAB2 = 0; 
 
-  double bMBC1 = 0;
-  double bMBC2 = 0;
+  num bMBC1 = 0;
+  num bMBC2 = 0;
 
-  double cOAB1 = 0;
-  double cOAB2 = 0;
+  num cOAB1 = 0;
+  num cOAB2 = 0;
 
-  double cOBC1 = 0;
-  double cOBC2 = 0;
+  num cOBC1 = 0;
+  num cOBC2 = 0;
 
-  double finalAnswer = 0;
-  double loopEnd = 1;
-  double counter1 = 0;
-  double counter2 = 0;
+  num finalAnswer = 0;
+  num loopEnd = 1;
+  num counter1 = 0;
+  num counter2 = 0;
 
-  double bMAB1OverhangA = 0;
-  double bMABC2OverhangC = 0;
+  num bMAB1OverhangA = 0;
+  num bMABC2OverhangC = 0;
