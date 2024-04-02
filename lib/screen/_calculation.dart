@@ -1,11 +1,8 @@
 // ignore_for_file: library_private_types_in_public_api, must_be_immutable
-import 'dart:ui';
-
 import 'package:amdm_calculator/utils/_variables.dart';
 import 'package:amdm_calculator/utils/formulas/overhangA.dart';
 import 'package:amdm_calculator/utils/formulas/overhangC.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import '../utils/helper_widget_function.dart';
 import '../utils/formulas/simpleFixed.dart';
 import '../utils/_variables_calculation.dart';
@@ -249,7 +246,7 @@ class _CalculationState extends State<Calculation> {
       double fEMBC1 = 0;
       double fEMBC2 = 0;
 
-      if (widget.loadInBC!.contains('BC 1')  && widget.loadInBC!.length <= 16 ) {
+      if (widget.loadInBC!.contains('BC 1') && widget.loadInBC!.length <= 16) {
         print('true');
         fEMBC1 = getLoad1(widget.loadBCValueP!, widget.lengthBCValueL!,
             widget.lengthBCValueA!)[0];
@@ -359,7 +356,7 @@ class _CalculationState extends State<Calculation> {
 
       return [fEMBC1, fEMBC2];
     }
-    
+
     double fEMAB1 = 0;
     double fEMAB2 = 0;
 
@@ -398,7 +395,7 @@ class _CalculationState extends State<Calculation> {
         k1,
         k2
       ];
-    } else if (widget.loadInAB!.contains('AB 2') ) {
+    } else if (widget.loadInAB!.contains('AB 2')) {
       fEMAB1 = getLoad2(widget.loadABValueP!, widget.lengthABValueL!)[0];
       fEMAB2 = getLoad2(widget.loadABValueP!, widget.lengthABValueL!)[1];
 
@@ -899,7 +896,7 @@ class _CalculationState extends State<Calculation> {
     List<double> functionResult;
     if (fnc == 'simpleFixedCalculation') {
       functionResult = simpleFixedCalculation(value1, value2);
-      
+
       k1 = functionResult[8];
       k2 = functionResult[9];
 
@@ -913,252 +910,198 @@ class _CalculationState extends State<Calculation> {
       fEMBC1 = checkNumberIfNegative(functionResult[6]);
       fEMBC2 = checkNumberIfPositive(functionResult[7]);
 
-      if(widget.loadInOverhangAName != '') {
-        if (widget.loadInOverhangAName!.contains('A 1') && widget.loadInOverhangAName!.length <= 12) 
-        {
-            bMAB1OverhangA = getOverhangALoad1(widget.loadOverhangABValueP!, widget.lengthOverhangABValueL!, widget.lengthOverhangABValueA!)[0];
-        }
-
-        else if (widget.loadInOverhangAName!.contains('A 2'))
-        {
-            bMAB1OverhangA = getOverhangALoad2(widget.loadOverhangABValueP!, widget.lengthOverhangABValueL!)[0];         
-        }
-
-        else if (widget.loadInOverhangAName!.contains('A 3'))
-        {
-            bMAB1OverhangA = getOverhangALoad3(widget.loadOverhangABValueP!, widget.lengthOverhangABValueL!)[0];     
-        }
-
-        else if (widget.loadInOverhangAName!.contains('A 4'))
-        {
-            bMAB1OverhangA = getOverhangALoad4(widget.loadOverhangABValueP!, widget.lengthOverhangABValueL!)[0];
-            
-        }
-
-        else if (widget.loadInOverhangAName!.contains('A 5'))
-        {
-            bMAB1OverhangA = getOVerhangALoad5(widget.loadOverhangABValueW!, widget.lengthOverhangABValueL!)[0];
-        }
-
-        else if (widget.loadInOverhangAName!.contains('A 6  1'))
-        {
-            bMAB1OverhangA = getOverhangALoad6_1(widget.loadOverhangABValueW!, widget.lengthOverhangABValueL!)[0];         
-        }
-
-        else if (widget.loadInOverhangAName!.contains('A 6  2'))
-        {
-            bMAB1OverhangA = getOverhangALoad6_2(widget.loadOverhangABValueW!, widget.lengthOverhangABValueL!)[0];           
-        }
-
-        else if (widget.loadInOverhangAName!.contains('A 7  1'))
-        {
-            bMAB1OverhangA = getOverhangALoad7_1(widget.loadOverhangABValueW!, widget.lengthOverhangABValueL!, widget.lengthOverhangABValueK!)[0];      
-        }
-
-        else if (widget.loadInOverhangAName!.contains('A 7  2'))
-        {
-            bMAB1OverhangA = getOverhangALoad17_2(widget.loadOverhangABValueW!, widget.lengthOverhangABValueL!, widget.lengthOverhangABValueK!)[0];    
-        }
-
-        else if (widget.loadInOverhangAName!.contains('A 8'))
-        {
-            bMAB1OverhangA = getOverhangALoad8(widget.loadOverhangABValueW!, widget.lengthOverhangABValueL!, widget.lengthOverhangABValueK!)[0];     
-        }
-
-        else if (widget.loadInOverhangAName!.contains('A 9'))
-        {
-            bMAB1OverhangA = getOverhangALoad9(widget.loadOverhangABValueW!, widget.lengthOverhangABValueL!, widget.lengthOverhangABValueK!)[0]; 
-        }
-
-        else if (widget.loadInOverhangAName!.contains('A 10  1'))
-        {
-            bMAB1OverhangA = getOverhangALoad10_1(widget.loadOverhangABValueW!, widget.lengthOverhangABValueL!)[0];
-        }
-
-        else if (widget.loadInOverhangAName!.contains('A 10  2'))
-        {
-            bMAB1OverhangA = getOverhangALoad10_2(widget.loadOverhangABValueW!, widget.lengthOverhangABValueL!)[0];          
-        }
-
-        else if (widget.loadInOverhangAName!.contains('A 11'))
-        {
-            bMAB1OverhangA = getOverhangALoad11(widget.loadOverhangABValueW!, widget.lengthOverhangABValueL!)[0];
-        }
-
-        else if (widget.loadInOverhangAName!.contains('A 12'))
-        {
-            bMAB1OverhangA = getOverhangALoad12(widget.loadOverhangABValueW!, widget.lengthOverhangABValueL!)[0];   
-        }
-
-        else if (widget.loadInOverhangAName!.contains('A 13  1'))
-        {
-            bMAB1OverhangA = getOverhangALoad13_1(widget.loadOverhangABValueW!, widget.lengthOverhangABValueL!)[0];        
-        }
-
-        else if (widget.loadInOverhangAName!.contains('A 13  2'))
-        {
-            bMAB1OverhangA = getOverhangALoad13_1(widget.loadOverhangABValueW!, widget.lengthOverhangABValueL!)[0];       
-        }
-
-        else if (widget.loadInOverhangAName!.contains('A 14  1'))
-        {
-            bMAB1OverhangA = getOverhangALoad14_1(widget.loadOverhangABValueW!, widget.lengthOverhangABValueK!)[0];         
-        }
-
-        else if (widget.loadInOverhangAName!.contains('A 14  2'))
-        {
-            bMAB1OverhangA = getOverhangALoad14_2(widget.loadOverhangABValueW!, widget.lengthOverhangABValueL!, widget.lengthOverhangABValueK!)[0];   
-        }
-
-        else if (widget.loadInOverhangAName!.contains('A 15  1'))
-        {
-            bMAB1OverhangA = getOverhangALoad15_1(widget.loadOverhangABValueW!, widget.lengthOverhangABValueL!)[0];      
-        }
-
-        else if (widget.loadInOverhangAName!.contains('A 15  2'))
-        {
-            bMAB1OverhangA = getOverhangALoad15_2(widget.loadOverhangABValueW!, widget.lengthOverhangABValueL!)[0];
-        }
-
-        else if (widget.loadInOverhangAName!.contains('A 16  1'))
-        {
-            bMAB1OverhangA = getOverhangALoad16_1(widget.loadOverhangABValueW!, widget.lengthOverhangABValueK!)[0];      
-        }
-
-        else if (widget.loadInOverhangAName!.contains('A 16  2'))
-        {
-            bMAB1OverhangA = getOverhangALoad16_2(widget.loadOverhangABValueW!, widget.lengthOverhangABValueL!, widget.lengthOverhangABValueK!)[0];
-            
-        }
-
-        else if (widget.loadInOverhangAName!.contains('A 17  1'))
-        {
-            bMAB1OverhangA = getOverhangALoad17_1(widget.loadOverhangABValueW!, widget.loadOverhangABValueW2!, widget.lengthOverhangABValueL!)[0]; 
-        }
-
-        else if (widget.loadInOverhangAName!.contains('A 17  2'))
-        {
-            bMAB1OverhangA = getOverhangALoad17_2(widget.loadOverhangABValueW!, widget.loadOverhangABValueW2!, widget.lengthOverhangABValueL!)[0];    
-        }
-
-        else if (widget.loadInOverhangAName!.contains('A 18'))
-        {
-            bMAB1OverhangA = getOverhangALoad18(widget.momentOverhangABValue!)[0];    
+      if (widget.loadInOverhangAName != '') {
+        if (widget.loadInOverhangAName!.contains('A 1') &&
+            widget.loadInOverhangAName!.length <= 12) {
+          bMAB1OverhangA = getOverhangALoad1(
+              widget.loadOverhangABValueP!,
+              widget.lengthOverhangABValueL!,
+              widget.lengthOverhangABValueA!)[0];
+        } else if (widget.loadInOverhangAName!.contains('A 2')) {
+          bMAB1OverhangA = getOverhangALoad2(
+              widget.loadOverhangABValueP!, widget.lengthOverhangABValueL!)[0];
+        } else if (widget.loadInOverhangAName!.contains('A 3')) {
+          bMAB1OverhangA = getOverhangALoad3(
+              widget.loadOverhangABValueP!, widget.lengthOverhangABValueL!)[0];
+        } else if (widget.loadInOverhangAName!.contains('A 4')) {
+          bMAB1OverhangA = getOverhangALoad4(
+              widget.loadOverhangABValueP!, widget.lengthOverhangABValueL!)[0];
+        } else if (widget.loadInOverhangAName!.contains('A 5')) {
+          bMAB1OverhangA = getOVerhangALoad5(
+              widget.loadOverhangABValueW!, widget.lengthOverhangABValueL!)[0];
+        } else if (widget.loadInOverhangAName!.contains('A 6  1')) {
+          bMAB1OverhangA = getOverhangALoad6_1(
+              widget.loadOverhangABValueW!, widget.lengthOverhangABValueL!)[0];
+        } else if (widget.loadInOverhangAName!.contains('A 6  2')) {
+          bMAB1OverhangA = getOverhangALoad6_2(
+              widget.loadOverhangABValueW!, widget.lengthOverhangABValueL!)[0];
+        } else if (widget.loadInOverhangAName!.contains('A 7  1')) {
+          bMAB1OverhangA = getOverhangALoad7_1(
+              widget.loadOverhangABValueW!,
+              widget.lengthOverhangABValueL!,
+              widget.lengthOverhangABValueK!)[0];
+        } else if (widget.loadInOverhangAName!.contains('A 7  2')) {
+          bMAB1OverhangA = getOverhangALoad17_2(
+              widget.loadOverhangABValueW!,
+              widget.lengthOverhangABValueL!,
+              widget.lengthOverhangABValueK!)[0];
+        } else if (widget.loadInOverhangAName!.contains('A 8')) {
+          bMAB1OverhangA = getOverhangALoad8(
+              widget.loadOverhangABValueW!,
+              widget.lengthOverhangABValueL!,
+              widget.lengthOverhangABValueK!)[0];
+        } else if (widget.loadInOverhangAName!.contains('A 9')) {
+          bMAB1OverhangA = getOverhangALoad9(
+              widget.loadOverhangABValueW!,
+              widget.lengthOverhangABValueL!,
+              widget.lengthOverhangABValueK!)[0];
+        } else if (widget.loadInOverhangAName!.contains('A 10  1')) {
+          bMAB1OverhangA = getOverhangALoad10_1(
+              widget.loadOverhangABValueW!, widget.lengthOverhangABValueL!)[0];
+        } else if (widget.loadInOverhangAName!.contains('A 10  2')) {
+          bMAB1OverhangA = getOverhangALoad10_2(
+              widget.loadOverhangABValueW!, widget.lengthOverhangABValueL!)[0];
+        } else if (widget.loadInOverhangAName!.contains('A 11')) {
+          bMAB1OverhangA = getOverhangALoad11(
+              widget.loadOverhangABValueW!, widget.lengthOverhangABValueL!)[0];
+        } else if (widget.loadInOverhangAName!.contains('A 12')) {
+          bMAB1OverhangA = getOverhangALoad12(
+              widget.loadOverhangABValueW!, widget.lengthOverhangABValueL!)[0];
+        } else if (widget.loadInOverhangAName!.contains('A 13  1')) {
+          bMAB1OverhangA = getOverhangALoad13_1(
+              widget.loadOverhangABValueW!, widget.lengthOverhangABValueL!)[0];
+        } else if (widget.loadInOverhangAName!.contains('A 13  2')) {
+          bMAB1OverhangA = getOverhangALoad13_1(
+              widget.loadOverhangABValueW!, widget.lengthOverhangABValueL!)[0];
+        } else if (widget.loadInOverhangAName!.contains('A 14  1')) {
+          bMAB1OverhangA = getOverhangALoad14_1(
+              widget.loadOverhangABValueW!, widget.lengthOverhangABValueK!)[0];
+        } else if (widget.loadInOverhangAName!.contains('A 14  2')) {
+          bMAB1OverhangA = getOverhangALoad14_2(
+              widget.loadOverhangABValueW!,
+              widget.lengthOverhangABValueL!,
+              widget.lengthOverhangABValueK!)[0];
+        } else if (widget.loadInOverhangAName!.contains('A 15  1')) {
+          bMAB1OverhangA = getOverhangALoad15_1(
+              widget.loadOverhangABValueW!, widget.lengthOverhangABValueL!)[0];
+        } else if (widget.loadInOverhangAName!.contains('A 15  2')) {
+          bMAB1OverhangA = getOverhangALoad15_2(
+              widget.loadOverhangABValueW!, widget.lengthOverhangABValueL!)[0];
+        } else if (widget.loadInOverhangAName!.contains('A 16  1')) {
+          bMAB1OverhangA = getOverhangALoad16_1(
+              widget.loadOverhangABValueW!, widget.lengthOverhangABValueK!)[0];
+        } else if (widget.loadInOverhangAName!.contains('A 16  2')) {
+          bMAB1OverhangA = getOverhangALoad16_2(
+              widget.loadOverhangABValueW!,
+              widget.lengthOverhangABValueL!,
+              widget.lengthOverhangABValueK!)[0];
+        } else if (widget.loadInOverhangAName!.contains('A 17  1')) {
+          bMAB1OverhangA = getOverhangALoad17_1(widget.loadOverhangABValueW!,
+              widget.loadOverhangABValueW2!, widget.lengthOverhangABValueL!)[0];
+        } else if (widget.loadInOverhangAName!.contains('A 17  2')) {
+          bMAB1OverhangA = getOverhangALoad17_2(widget.loadOverhangABValueW!,
+              widget.loadOverhangABValueW2!, widget.lengthOverhangABValueL!)[0];
+        } else if (widget.loadInOverhangAName!.contains('A 18')) {
+          bMAB1OverhangA = getOverhangALoad18(widget.momentOverhangABValue!)[0];
         }
       }
 
-
-      if(widget.loadInOverhangCName != '') {
-        if (widget.loadInOverhangCName!.contains('C 1') && widget.loadInOverhangCName!.length <= 12) 
-        {
-            bMABC2OverhangC = getOverhangCLoad1(widget.loadOverhangBCValueP!, widget.lengthOverhangBCValueA!)[0];
-        }
-        else if (widget.loadInOverhangCName!.contains('C 2')) 
-        {
-            bMABC2OverhangC = getOverhangCLoad2(widget.loadOverhangBCValueP!, widget.lengthOverhangBCValueL!)[0];
-        }
-        else if (widget.loadInOverhangCName!.contains('C 3')) 
-        {
-            bMABC2OverhangC = getOverhangCLoad3(widget.loadOverhangBCValueP!, widget.lengthOverhangBCValueL!)[0];     
-        }
-        else if (widget.loadInOverhangCName!.contains('C 4')) 
-        {
-            bMABC2OverhangC = getOverhangCLoad4(widget.loadOverhangBCValueP!, widget.lengthOverhangBCValueL!)[0];
-        }
-        else if (widget.loadInOverhangCName!.contains('C 5')) 
-        {
-            bMABC2OverhangC = getOverhangCLoad5(widget.loadOverhangBCValueW!, widget.lengthOverhangBCValueL!)[0];
-        }
-        else if (widget.loadInOverhangCName!.contains('C 6  1')) 
-        {
-            bMABC2OverhangC = getOverhangCLoad6_1(widget.loadOverhangBCValueW!, widget.lengthOverhangBCValueL!)[0];  
-        }
-        else if (widget.loadInOverhangCName!.contains('C 6  2')) 
-        {
-            bMABC2OverhangC = getOverhangCLoad6_2(widget.loadOverhangBCValueW!, widget.lengthOverhangBCValueL!)[0]; 
-        }
-        else if (widget.loadInOverhangCName!.contains('C 7  1')) 
-        {
-            bMABC2OverhangC = getOverhangCLoad7_1(widget.loadOverhangBCValueW!, widget.lengthOverhangBCValueK!)[0];    
-        }
-        else if (widget.loadInOverhangCName!.contains('C 7  2')) 
-        {
-            bMABC2OverhangC = getOverhangCLoad7_2(widget.loadOverhangBCValueW!,widget.lengthOverhangBCValueL!, widget.lengthOverhangBCValueK!)[0];  
-        }
-        else if (widget.loadInOverhangCName!.contains('C 8')) 
-        {
-            bMABC2OverhangC = getOverhangCLoad8(widget.loadOverhangBCValueW!,widget.lengthOverhangBCValueL!, widget.lengthOverhangBCValueK!)[0];
-        }
-        else if (widget.loadInOverhangCName!.contains('C 9')) 
-        {
-            bMABC2OverhangC = getOverhangCLoad9(widget.loadOverhangBCValueW!,widget.lengthOverhangBCValueL!, widget.lengthOverhangBCValueK!)[0];
-        }
-        else if (widget.loadInOverhangCName!.contains('C 10  1')) 
-        {
-            bMABC2OverhangC = getOverhangCLoad10_1(widget.loadOverhangBCValueW!,widget.lengthOverhangBCValueL!)[0];   
-        }
-        else if (widget.loadInOverhangCName!.contains('C 10  2')) 
-        {
-            bMABC2OverhangC = getOverhangCLoad10_2(widget.loadOverhangBCValueW!,widget.lengthOverhangBCValueL!)[0];       
-        }
-        else if (widget.loadInOverhangCName!.contains('C 11')) 
-        {
-            bMABC2OverhangC = getOverhangCLoad11(widget.loadOverhangBCValueW!,widget.lengthOverhangBCValueL!)[0];    
-        }
-        else if (widget.loadInOverhangCName!.contains('C 12')) 
-        {
-            bMABC2OverhangC = getOverhangCLoad12(widget.loadOverhangBCValueW!,widget.lengthOverhangBCValueL!)[0];    
-        }
-        else if (widget.loadInOverhangCName!.contains('C 13  1')) 
-        {
-            bMABC2OverhangC = getOverhangCLoad13_1(widget.loadOverhangBCValueW!,widget.lengthOverhangBCValueL!)[0];  
-        }
-        else if (widget.loadInOverhangCName!.contains('C 13  2')) 
-        {
-            bMABC2OverhangC = getOverhangCLoad13_2(widget.loadOverhangBCValueW!,widget.lengthOverhangBCValueL!)[0];  
-        }
-        else if (widget.loadInOverhangCName!.contains('C 14  1')) 
-        {
-            bMABC2OverhangC = getOverhangCLoad14_1(widget.loadOverhangBCValueW!,widget.lengthOverhangBCValueL!,widget.lengthOverhangBCValueK!)[0];  
-        }
-        else if (widget.loadInOverhangCName!.contains('C 14  2')) 
-        {
-            bMABC2OverhangC = getOverhangCLoad14_2(widget.loadOverhangBCValueW!,widget.lengthOverhangBCValueL!)[0];  
-        }
-        else if (widget.loadInOverhangCName!.contains('C 15  1')) 
-        {
-            bMABC2OverhangC = getOverhangCLoad15_1(widget.loadOverhangBCValueW!,widget.lengthOverhangBCValueL!)[0];  
-        }
-        else if (widget.loadInOverhangCName!.contains('C 15  2')) 
-        {
-            bMABC2OverhangC = getOverhangCLoad15_2(widget.loadOverhangBCValueW!,widget.lengthOverhangBCValueL!)[0];  
-        }
-        else if (widget.loadInOverhangCName!.contains('C 15  2')) 
-        {
-            bMABC2OverhangC = getOverhangCLoad15_2(widget.loadOverhangBCValueW!,widget.lengthOverhangBCValueL!)[0];  
-        }
-        else if (widget.loadInOverhangCName!.contains('C 16  1')) 
-        {
-            bMABC2OverhangC = getOverhangCLoad16_1(widget.loadOverhangBCValueW!,widget.lengthOverhangBCValueL!,widget.lengthOverhangBCValueK!)[0];  
-        }
-        else if (widget.loadInOverhangCName!.contains('C 16  2')) 
-        {
-            bMABC2OverhangC = getOverhangCLoad16_2(widget.loadOverhangBCValueW!,widget.lengthOverhangBCValueK!)[0];  
-        }
-        else if (widget.loadInOverhangCName!.contains('C 17  1')) 
-        {
-            bMABC2OverhangC = getOverhangCLoad17_1(widget.loadOverhangBCValueW!,widget.loadOverhangBCValueW2!,widget.lengthOverhangBCValueL!)[0];  
-        }
-        else if (widget.loadInOverhangCName!.contains('C 17  2')) 
-        {
-            bMABC2OverhangC = getOverhangCLoad17_2(widget.loadOverhangBCValueW!,widget.loadOverhangBCValueW2!,widget.lengthOverhangBCValueL!)[0];  
-        }
-        else if (widget.loadInOverhangCName!.contains('C 18')) 
-        {
-            bMABC2OverhangC = getOverhangCLoad18(widget.momentOverhangBCValue!)[0];  
+      if (widget.loadInOverhangCName != '') {
+        if (widget.loadInOverhangCName!.contains('C 1') &&
+            widget.loadInOverhangCName!.length <= 12) {
+          bMABC2OverhangC = getOverhangCLoad1(
+              widget.loadOverhangBCValueP!, widget.lengthOverhangBCValueA!)[0];
+        } else if (widget.loadInOverhangCName!.contains('C 2')) {
+          bMABC2OverhangC = getOverhangCLoad2(
+              widget.loadOverhangBCValueP!, widget.lengthOverhangBCValueL!)[0];
+        } else if (widget.loadInOverhangCName!.contains('C 3')) {
+          bMABC2OverhangC = getOverhangCLoad3(
+              widget.loadOverhangBCValueP!, widget.lengthOverhangBCValueL!)[0];
+        } else if (widget.loadInOverhangCName!.contains('C 4')) {
+          bMABC2OverhangC = getOverhangCLoad4(
+              widget.loadOverhangBCValueP!, widget.lengthOverhangBCValueL!)[0];
+        } else if (widget.loadInOverhangCName!.contains('C 5')) {
+          bMABC2OverhangC = getOverhangCLoad5(
+              widget.loadOverhangBCValueW!, widget.lengthOverhangBCValueL!)[0];
+        } else if (widget.loadInOverhangCName!.contains('C 6  1')) {
+          bMABC2OverhangC = getOverhangCLoad6_1(
+              widget.loadOverhangBCValueW!, widget.lengthOverhangBCValueL!)[0];
+        } else if (widget.loadInOverhangCName!.contains('C 6  2')) {
+          bMABC2OverhangC = getOverhangCLoad6_2(
+              widget.loadOverhangBCValueW!, widget.lengthOverhangBCValueL!)[0];
+        } else if (widget.loadInOverhangCName!.contains('C 7  1')) {
+          bMABC2OverhangC = getOverhangCLoad7_1(
+              widget.loadOverhangBCValueW!, widget.lengthOverhangBCValueK!)[0];
+        } else if (widget.loadInOverhangCName!.contains('C 7  2')) {
+          bMABC2OverhangC = getOverhangCLoad7_2(
+              widget.loadOverhangBCValueW!,
+              widget.lengthOverhangBCValueL!,
+              widget.lengthOverhangBCValueK!)[0];
+        } else if (widget.loadInOverhangCName!.contains('C 8')) {
+          bMABC2OverhangC = getOverhangCLoad8(
+              widget.loadOverhangBCValueW!,
+              widget.lengthOverhangBCValueL!,
+              widget.lengthOverhangBCValueK!)[0];
+        } else if (widget.loadInOverhangCName!.contains('C 9')) {
+          bMABC2OverhangC = getOverhangCLoad9(
+              widget.loadOverhangBCValueW!,
+              widget.lengthOverhangBCValueL!,
+              widget.lengthOverhangBCValueK!)[0];
+        } else if (widget.loadInOverhangCName!.contains('C 10  1')) {
+          bMABC2OverhangC = getOverhangCLoad10_1(
+              widget.loadOverhangBCValueW!, widget.lengthOverhangBCValueL!)[0];
+        } else if (widget.loadInOverhangCName!.contains('C 10  2')) {
+          bMABC2OverhangC = getOverhangCLoad10_2(
+              widget.loadOverhangBCValueW!, widget.lengthOverhangBCValueL!)[0];
+        } else if (widget.loadInOverhangCName!.contains('C 11')) {
+          bMABC2OverhangC = getOverhangCLoad11(
+              widget.loadOverhangBCValueW!, widget.lengthOverhangBCValueL!)[0];
+        } else if (widget.loadInOverhangCName!.contains('C 12')) {
+          bMABC2OverhangC = getOverhangCLoad12(
+              widget.loadOverhangBCValueW!, widget.lengthOverhangBCValueL!)[0];
+        } else if (widget.loadInOverhangCName!.contains('C 13  1')) {
+          bMABC2OverhangC = getOverhangCLoad13_1(
+              widget.loadOverhangBCValueW!, widget.lengthOverhangBCValueL!)[0];
+        } else if (widget.loadInOverhangCName!.contains('C 13  2')) {
+          bMABC2OverhangC = getOverhangCLoad13_2(
+              widget.loadOverhangBCValueW!, widget.lengthOverhangBCValueL!)[0];
+        } else if (widget.loadInOverhangCName!.contains('C 14  1')) {
+          bMABC2OverhangC = getOverhangCLoad14_1(
+              widget.loadOverhangBCValueW!,
+              widget.lengthOverhangBCValueL!,
+              widget.lengthOverhangBCValueK!)[0];
+        } else if (widget.loadInOverhangCName!.contains('C 14  2')) {
+          bMABC2OverhangC = getOverhangCLoad14_2(
+              widget.loadOverhangBCValueW!, widget.lengthOverhangBCValueL!)[0];
+        } else if (widget.loadInOverhangCName!.contains('C 15  1')) {
+          bMABC2OverhangC = getOverhangCLoad15_1(
+              widget.loadOverhangBCValueW!, widget.lengthOverhangBCValueL!)[0];
+        } else if (widget.loadInOverhangCName!.contains('C 15  2')) {
+          bMABC2OverhangC = getOverhangCLoad15_2(
+              widget.loadOverhangBCValueW!, widget.lengthOverhangBCValueL!)[0];
+        } else if (widget.loadInOverhangCName!.contains('C 15  2')) {
+          bMABC2OverhangC = getOverhangCLoad15_2(
+              widget.loadOverhangBCValueW!, widget.lengthOverhangBCValueL!)[0];
+        } else if (widget.loadInOverhangCName!.contains('C 16  1')) {
+          bMABC2OverhangC = getOverhangCLoad16_1(
+              widget.loadOverhangBCValueW!,
+              widget.lengthOverhangBCValueL!,
+              widget.lengthOverhangBCValueK!)[0];
+        } else if (widget.loadInOverhangCName!.contains('C 16  2')) {
+          bMABC2OverhangC = getOverhangCLoad16_2(
+              widget.loadOverhangBCValueW!, widget.lengthOverhangBCValueK!)[0];
+        } else if (widget.loadInOverhangCName!.contains('C 17  1')) {
+          bMABC2OverhangC = getOverhangCLoad17_1(widget.loadOverhangBCValueW!,
+              widget.loadOverhangBCValueW2!, widget.lengthOverhangBCValueL!)[0];
+        } else if (widget.loadInOverhangCName!.contains('C 17  2')) {
+          bMABC2OverhangC = getOverhangCLoad17_2(widget.loadOverhangBCValueW!,
+              widget.loadOverhangBCValueW2!, widget.lengthOverhangBCValueL!)[0];
+        } else if (widget.loadInOverhangCName!.contains('C 18')) {
+          bMABC2OverhangC =
+              getOverhangCLoad18(widget.momentOverhangBCValue!)[0];
         }
       }
-      
+
       bMAB1 = changeSign((fEMAB1 + bMAB1OverhangA) * dfAB1);
       bMAB2 = changeSign((fEMAB2 + fEMBC1) * dfAB2);
       bMBC1 = changeSign((fEMAB2 + fEMBC1) * dfBC1);
@@ -1171,35 +1114,74 @@ class _CalculationState extends State<Calculation> {
 
       finalAnswer = fEMAB2;
 
-     
       print(finalAnswer);
     }
   }
 
   Widget headerTable() {
-    return Column(
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        Table(
-          border: TableBorder.all(), // Add a border to the table
-          children: [
-            TableRow(children: [
-              const TableCell(
-                child: Center(child: Text('K1')),
-              ),
-              TableCell(
-                child: Center(child: Text(k1.toStringAsFixed(4))),
-              ),
-              const TableCell(
-                child: Center(
-                    child:
-                        Text('k2')), // Empty cell to make k1 span two columns
-              ),
-              TableCell(
-                child: Center(child: Text(k2.toStringAsFixed(4))),
-              ),
-            ]),
-          ],
+        const Text(style: TextStyle(fontSize: 16), 'K1 = '),
+        Card(
+          color: colorPrimary,
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Text(
+                style: const TextStyle(color: Colors.white),
+                '${roundToFourDecimals(k1)}'),
+          ),
         ),
+        addHorizontalSpace(10),
+        const Text(style: TextStyle(fontSize: 16), 'K2 = '),
+        Card(
+          color: colorPrimary,
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Text(
+                style: const TextStyle(color: Colors.white),
+                '${roundToFourDecimals(k2)}'),
+          ),
+        )
+      ],
+    );
+  }
+
+  Widget overhangA() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        const Text(style: TextStyle(fontSize: 16), 'Overhang A = '),
+        Card(
+          color: colorPrimary,
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Text(
+                style: const TextStyle(color: Colors.white),
+                '${roundToFourDecimals(bMAB1OverhangA)}'),
+          ),
+        )
+      ],
+    );
+  }
+
+  Widget overhangC() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        const Text(style: TextStyle(fontSize: 16), 'Overhang C = '),
+        Card(
+          color: colorPrimary,
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Text(
+                style: const TextStyle(color: Colors.white),
+                '${roundToFourDecimals(bMABC2OverhangC)}'),
+          ),
+        )
       ],
     );
   }
@@ -1369,20 +1351,16 @@ class _CalculationState extends State<Calculation> {
     bMAB1OverhangA = 0;
     bMABC2OverhangC = 0;
 
-
     if (widget.loadInAB!.contains('SIMPLE') &&
         widget.loadInBC!.contains('SIMPLE')) {
       functionInit('simpleFixedCalculation', 1, 1);
-    }
-    else if (widget.loadInAB!.contains('SIMPLE') &&
+    } else if (widget.loadInAB!.contains('SIMPLE') &&
         widget.loadInBC!.contains('FIXED')) {
       functionInit('simpleFixedCalculation', 1, 0);
-    }
-    else if (widget.loadInAB!.contains('FIXED') &&
+    } else if (widget.loadInAB!.contains('FIXED') &&
         widget.loadInBC!.contains('FIXED')) {
       functionInit('simpleFixedCalculation', 0, 0);
-    }
-    else if (widget.loadInAB!.contains('FIXED') &&
+    } else if (widget.loadInAB!.contains('FIXED') &&
         widget.loadInBC!.contains('SIMPLE')) {
       functionInit('simpleFixedCalculation', 0, 1);
     }
@@ -1405,6 +1383,19 @@ class _CalculationState extends State<Calculation> {
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       headerTable(),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          if (widget.loadInOverhangAName != '') ...[
+                            overhangA(),
+                          ],
+                          if (widget.loadInOverhangCName != '') ...[
+                            addVerticalSpace(10),
+                            overhangC(),
+                          ],
+                        ],
+                      ),
                       addVerticalSpace(10),
                       initTable(),
                       addVerticalSpace(10),
@@ -1414,7 +1405,6 @@ class _CalculationState extends State<Calculation> {
                         generateLoopingTable(),
                         addVerticalSpace(10)
                       ],
-                      
                     ],
                   ),
                 ),
@@ -1424,23 +1414,22 @@ class _CalculationState extends State<Calculation> {
           Container(
             padding: const EdgeInsets.all(10),
             child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      const Text(
-                          style: TextStyle(fontSize: 16),
-                          'Moment at Support B = '),
-                      Card(
-                        color: colorPrimary,
-                        child: Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Text(
-                              style: const TextStyle(color: Colors.white),
-                              '${roundToFourDecimals(finalAnswer)} $selectedMomentABUnit'),
-                        ),
-                      )
-                    ],
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                const Text(
+                    style: TextStyle(fontSize: 16), 'Moment at Support B = '),
+                Card(
+                  color: colorPrimary,
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text(
+                        style: const TextStyle(color: Colors.white),
+                        '${roundToFourDecimals(finalAnswer)} ${widget.selectedMomentUnit}'),
                   ),
+                )
+              ],
+            ),
           ),
         ],
       ),
