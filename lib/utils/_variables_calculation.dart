@@ -29,3 +29,6 @@
   double loopEnd = 1;
   double counter1 = 0;
   double counter2 = 0;
+
+  double bMAB1OverhangA = 0;
+  double bMABC2OverhangC = 0;

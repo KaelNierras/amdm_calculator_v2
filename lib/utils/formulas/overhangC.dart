@@ -315,7 +315,7 @@ List<double> getOverhangCLoad17_2(valueW1, valueW2, valueL) {
   return [roundToFourDecimals(fEM1)];
 }
 
-List<double> getOverhangCLoad18(valueM, valueL, valueK1) {
+List<double> getOverhangCLoad18(valueM) {
   double fEM1 = 0;
 
   double valueMDouble = double.parse(valueM);

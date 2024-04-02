@@ -5,6 +5,7 @@ import 'package:amdm_calculator/utils/_variables.dart';
 import 'package:amdm_calculator/utils/formulas/overhangA.dart';
 import 'package:amdm_calculator/utils/formulas/overhangC.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import '../utils/helper_widget_function.dart';
 import '../utils/formulas/simpleFixed.dart';
 import '../utils/_variables_calculation.dart';
@@ -899,8 +900,6 @@ class _CalculationState extends State<Calculation> {
     if (fnc == 'simpleFixedCalculation') {
       functionResult = simpleFixedCalculation(value1, value2);
       
-      
-      
       k1 = functionResult[8];
       k2 = functionResult[9];
 
@@ -914,551 +913,263 @@ class _CalculationState extends State<Calculation> {
       fEMBC1 = checkNumberIfNegative(functionResult[6]);
       fEMBC2 = checkNumberIfPositive(functionResult[7]);
 
-      if(widget.loadInOverhangAName != '' && widget.loadInOverhangCName == '') {
+      if(widget.loadInOverhangAName != '') {
         if (widget.loadInOverhangAName!.contains('A 1') && widget.loadInOverhangAName!.length <= 12) 
         {
-            double bMAB1OverhangA = getOverhangALoad1(widget.loadOverhangABValueP!, widget.lengthOverhangABValueL!, widget.lengthOverhangABValueA!)[0];
-            bMAB1 = changeSign((fEMAB1 + bMAB1OverhangA) * dfAB1);
-            bMAB2 = changeSign((fEMAB2 + fEMBC1) * dfAB2);
-            bMBC1 = changeSign((fEMAB2 + fEMBC1) * dfBC1);
-            bMBC2 = changeSign(fEMBC2 * dfBC2);
-
-            cOAB1 = bMAB2 / 2;
-            cOAB2 = bMAB1 / 2;
-            cOBC1 = bMBC2 / 2;
-            cOBC2 = bMBC1 / 2;
-
-            finalAnswer = fEMAB2;
-            
+            bMAB1OverhangA = getOverhangALoad1(widget.loadOverhangABValueP!, widget.lengthOverhangABValueL!, widget.lengthOverhangABValueA!)[0];
         }
 
         else if (widget.loadInOverhangAName!.contains('A 2'))
         {
-            double bMAB1OverhangA = getOverhangALoad2(widget.loadOverhangABValueP!, widget.lengthOverhangABValueL!)[0];
-            bMAB1 = changeSign((fEMAB1 + bMAB1OverhangA) * dfAB1);
-            bMAB2 = changeSign((fEMAB2 + fEMBC1) * dfAB2);
-            bMBC1 = changeSign((fEMAB2 + fEMBC1) * dfBC1);
-            bMBC2 = changeSign(fEMBC2 * dfBC2);
-
-            cOAB1 = bMAB2 / 2;
-            cOAB2 = bMAB1 / 2;
-            cOBC1 = bMBC2 / 2;
-            cOBC2 = bMBC1 / 2;
-
-            finalAnswer = fEMAB2;
-            
+            bMAB1OverhangA = getOverhangALoad2(widget.loadOverhangABValueP!, widget.lengthOverhangABValueL!)[0];         
         }
 
         else if (widget.loadInOverhangAName!.contains('A 3'))
         {
-            double bMAB1OverhangA = getOverhangALoad3(widget.loadOverhangABValueP!, widget.lengthOverhangABValueL!)[0];
-            bMAB1 = changeSign((fEMAB1 + bMAB1OverhangA) * dfAB1);
-            bMAB2 = changeSign((fEMAB2 + fEMBC1) * dfAB2);
-            bMBC1 = changeSign((fEMAB2 + fEMBC1) * dfBC1);
-            bMBC2 = changeSign(fEMBC2 * dfBC2);
-
-            cOAB1 = bMAB2 / 2;
-            cOAB2 = bMAB1 / 2;
-            cOBC1 = bMBC2 / 2;
-            cOBC2 = bMBC1 / 2;
-
-            finalAnswer = fEMAB2;
-            
+            bMAB1OverhangA = getOverhangALoad3(widget.loadOverhangABValueP!, widget.lengthOverhangABValueL!)[0];     
         }
 
         else if (widget.loadInOverhangAName!.contains('A 4'))
         {
-            double bMAB1OverhangA = getOverhangALoad4(widget.loadOverhangABValueP!, widget.lengthOverhangABValueL!)[0];
-            bMAB1 = changeSign((fEMAB1 + bMAB1OverhangA) * dfAB1);
-            bMAB2 = changeSign((fEMAB2 + fEMBC1) * dfAB2);
-            bMBC1 = changeSign((fEMAB2 + fEMBC1) * dfBC1);
-            bMBC2 = changeSign(fEMBC2 * dfBC2);
-
-            cOAB1 = bMAB2 / 2;
-            cOAB2 = bMAB1 / 2;
-            cOBC1 = bMBC2 / 2;
-            cOBC2 = bMBC1 / 2;
-
-            finalAnswer = fEMAB2;
+            bMAB1OverhangA = getOverhangALoad4(widget.loadOverhangABValueP!, widget.lengthOverhangABValueL!)[0];
             
         }
 
         else if (widget.loadInOverhangAName!.contains('A 5'))
         {
-            double bMAB1OverhangA = getOVerhangALoad5(widget.loadOverhangABValueW!, widget.lengthOverhangABValueL!)[0];
-            bMAB1 = changeSign((fEMAB1 + bMAB1OverhangA) * dfAB1);
-            bMAB2 = changeSign((fEMAB2 + fEMBC1) * dfAB2);
-            bMBC1 = changeSign((fEMAB2 + fEMBC1) * dfBC1);
-            bMBC2 = changeSign(fEMBC2 * dfBC2);
-
-            cOAB1 = bMAB2 / 2;
-            cOAB2 = bMAB1 / 2;
-            cOBC1 = bMBC2 / 2;
-            cOBC2 = bMBC1 / 2;
-
-            finalAnswer = fEMAB2;
-            
+            bMAB1OverhangA = getOVerhangALoad5(widget.loadOverhangABValueW!, widget.lengthOverhangABValueL!)[0];
         }
 
         else if (widget.loadInOverhangAName!.contains('A 6  1'))
         {
-            double bMAB1OverhangA = getOverhangALoad6_1(widget.loadOverhangABValueW!, widget.lengthOverhangABValueL!)[0];
-            bMAB1 = changeSign((fEMAB1 + bMAB1OverhangA) * dfAB1);
-            bMAB2 = changeSign((fEMAB2 + fEMBC1) * dfAB2);
-            bMBC1 = changeSign((fEMAB2 + fEMBC1) * dfBC1);
-            bMBC2 = changeSign(fEMBC2 * dfBC2);
-
-            cOAB1 = bMAB2 / 2;
-            cOAB2 = bMAB1 / 2;
-            cOBC1 = bMBC2 / 2;
-            cOBC2 = bMBC1 / 2;
-
-            finalAnswer = fEMAB2;
-            
+            bMAB1OverhangA = getOverhangALoad6_1(widget.loadOverhangABValueW!, widget.lengthOverhangABValueL!)[0];         
         }
 
         else if (widget.loadInOverhangAName!.contains('A 6  2'))
         {
-            double bMAB1OverhangA = getOverhangALoad6_2(widget.loadOverhangABValueW!, widget.lengthOverhangABValueL!)[0];
-            bMAB1 = changeSign((fEMAB1 + bMAB1OverhangA) * dfAB1);
-            bMAB2 = changeSign((fEMAB2 + fEMBC1) * dfAB2);
-            bMBC1 = changeSign((fEMAB2 + fEMBC1) * dfBC1);
-            bMBC2 = changeSign(fEMBC2 * dfBC2);
-
-            cOAB1 = bMAB2 / 2;
-            cOAB2 = bMAB1 / 2;
-            cOBC1 = bMBC2 / 2;
-            cOBC2 = bMBC1 / 2;
-
-            finalAnswer = fEMAB2;
-            
+            bMAB1OverhangA = getOverhangALoad6_2(widget.loadOverhangABValueW!, widget.lengthOverhangABValueL!)[0];           
         }
 
         else if (widget.loadInOverhangAName!.contains('A 7  1'))
         {
-            double bMAB1OverhangA = getOverhangALoad7_1(widget.loadOverhangABValueW!, widget.lengthOverhangABValueL!, widget.lengthOverhangABValueK!)[0];
-            bMAB1 = changeSign((fEMAB1 + bMAB1OverhangA) * dfAB1);
-            bMAB2 = changeSign((fEMAB2 + fEMBC1) * dfAB2);
-            bMBC1 = changeSign((fEMAB2 + fEMBC1) * dfBC1);
-            bMBC2 = changeSign(fEMBC2 * dfBC2);
-
-            cOAB1 = bMAB2 / 2;
-            cOAB2 = bMAB1 / 2;
-            cOBC1 = bMBC2 / 2;
-            cOBC2 = bMBC1 / 2;
-
-            finalAnswer = fEMAB2;
-            
+            bMAB1OverhangA = getOverhangALoad7_1(widget.loadOverhangABValueW!, widget.lengthOverhangABValueL!, widget.lengthOverhangABValueK!)[0];      
         }
 
         else if (widget.loadInOverhangAName!.contains('A 7  2'))
         {
-            double bMAB1OverhangA = getOverhangALoad17_2(widget.loadOverhangABValueW!, widget.lengthOverhangABValueL!, widget.lengthOverhangABValueK!)[0];
-            bMAB1 = changeSign((fEMAB1 + bMAB1OverhangA) * dfAB1);
-            bMAB2 = changeSign((fEMAB2 + fEMBC1) * dfAB2);
-            bMBC1 = changeSign((fEMAB2 + fEMBC1) * dfBC1);
-            bMBC2 = changeSign(fEMBC2 * dfBC2);
-
-            cOAB1 = bMAB2 / 2;
-            cOAB2 = bMAB1 / 2;
-            cOBC1 = bMBC2 / 2;
-            cOBC2 = bMBC1 / 2;
-
-            finalAnswer = fEMAB2;
-            
+            bMAB1OverhangA = getOverhangALoad17_2(widget.loadOverhangABValueW!, widget.lengthOverhangABValueL!, widget.lengthOverhangABValueK!)[0];    
         }
 
         else if (widget.loadInOverhangAName!.contains('A 8'))
         {
-            double bMAB1OverhangA = getOverhangALoad8(widget.loadOverhangABValueW!, widget.lengthOverhangABValueL!, widget.lengthOverhangABValueK!)[0];
-            bMAB1 = changeSign((fEMAB1 + bMAB1OverhangA) * dfAB1);
-            bMAB2 = changeSign((fEMAB2 + fEMBC1) * dfAB2);
-            bMBC1 = changeSign((fEMAB2 + fEMBC1) * dfBC1);
-            bMBC2 = changeSign(fEMBC2 * dfBC2);
-
-            cOAB1 = bMAB2 / 2;
-            cOAB2 = bMAB1 / 2;
-            cOBC1 = bMBC2 / 2;
-            cOBC2 = bMBC1 / 2;
-
-            finalAnswer = fEMAB2;
-            
+            bMAB1OverhangA = getOverhangALoad8(widget.loadOverhangABValueW!, widget.lengthOverhangABValueL!, widget.lengthOverhangABValueK!)[0];     
         }
 
         else if (widget.loadInOverhangAName!.contains('A 9'))
         {
-            double bMAB1OverhangA = getOverhangALoad9(widget.loadOverhangABValueW!, widget.lengthOverhangABValueL!, widget.lengthOverhangABValueK!)[0];
-            bMAB1 = changeSign((fEMAB1 + bMAB1OverhangA) * dfAB1);
-            bMAB2 = changeSign((fEMAB2 + fEMBC1) * dfAB2);
-            bMBC1 = changeSign((fEMAB2 + fEMBC1) * dfBC1);
-            bMBC2 = changeSign(fEMBC2 * dfBC2);
-
-            cOAB1 = bMAB2 / 2;
-            cOAB2 = bMAB1 / 2;
-            cOBC1 = bMBC2 / 2;
-            cOBC2 = bMBC1 / 2;
-
-            finalAnswer = fEMAB2;
-            
+            bMAB1OverhangA = getOverhangALoad9(widget.loadOverhangABValueW!, widget.lengthOverhangABValueL!, widget.lengthOverhangABValueK!)[0]; 
         }
 
         else if (widget.loadInOverhangAName!.contains('A 10  1'))
         {
-            double bMAB1OverhangA = getOverhangALoad10_1(widget.loadOverhangABValueW!, widget.lengthOverhangABValueL!)[0];
-            bMAB1 = changeSign((fEMAB1 + bMAB1OverhangA) * dfAB1);
-            bMAB2 = changeSign((fEMAB2 + fEMBC1) * dfAB2);
-            bMBC1 = changeSign((fEMAB2 + fEMBC1) * dfBC1);
-            bMBC2 = changeSign(fEMBC2 * dfBC2);
-
-            cOAB1 = bMAB2 / 2;
-            cOAB2 = bMAB1 / 2;
-            cOBC1 = bMBC2 / 2;
-            cOBC2 = bMBC1 / 2;
-
-            finalAnswer = fEMAB2;
-            
+            bMAB1OverhangA = getOverhangALoad10_1(widget.loadOverhangABValueW!, widget.lengthOverhangABValueL!)[0];
         }
 
         else if (widget.loadInOverhangAName!.contains('A 10  2'))
         {
-            double bMAB1OverhangA = getOverhangALoad10_2(widget.loadOverhangABValueW!, widget.lengthOverhangABValueL!)[0];
-            bMAB1 = changeSign((fEMAB1 + bMAB1OverhangA) * dfAB1);
-            bMAB2 = changeSign((fEMAB2 + fEMBC1) * dfAB2);
-            bMBC1 = changeSign((fEMAB2 + fEMBC1) * dfBC1);
-            bMBC2 = changeSign(fEMBC2 * dfBC2);
-
-            cOAB1 = bMAB2 / 2;
-            cOAB2 = bMAB1 / 2;
-            cOBC1 = bMBC2 / 2;
-            cOBC2 = bMBC1 / 2;
-
-            finalAnswer = fEMAB2;
-            
+            bMAB1OverhangA = getOverhangALoad10_2(widget.loadOverhangABValueW!, widget.lengthOverhangABValueL!)[0];          
         }
 
         else if (widget.loadInOverhangAName!.contains('A 11'))
         {
-            double bMAB1OverhangA = getOverhangALoad11(widget.loadOverhangABValueW!, widget.lengthOverhangABValueL!)[0];
-            bMAB1 = changeSign((fEMAB1 + bMAB1OverhangA) * dfAB1);
-            bMAB2 = changeSign((fEMAB2 + fEMBC1) * dfAB2);
-            bMBC1 = changeSign((fEMAB2 + fEMBC1) * dfBC1);
-            bMBC2 = changeSign(fEMBC2 * dfBC2);
-
-            cOAB1 = bMAB2 / 2;
-            cOAB2 = bMAB1 / 2;
-            cOBC1 = bMBC2 / 2;
-            cOBC2 = bMBC1 / 2;
-
-            finalAnswer = fEMAB2;
-            
+            bMAB1OverhangA = getOverhangALoad11(widget.loadOverhangABValueW!, widget.lengthOverhangABValueL!)[0];
         }
 
         else if (widget.loadInOverhangAName!.contains('A 12'))
         {
-            double bMAB1OverhangA = getOverhangALoad12(widget.loadOverhangABValueW!, widget.lengthOverhangABValueL!)[0];
-            bMAB1 = changeSign((fEMAB1 + bMAB1OverhangA) * dfAB1);
-            bMAB2 = changeSign((fEMAB2 + fEMBC1) * dfAB2);
-            bMBC1 = changeSign((fEMAB2 + fEMBC1) * dfBC1);
-            bMBC2 = changeSign(fEMBC2 * dfBC2);
-
-            cOAB1 = bMAB2 / 2;
-            cOAB2 = bMAB1 / 2;
-            cOBC1 = bMBC2 / 2;
-            cOBC2 = bMBC1 / 2;
-
-            finalAnswer = fEMAB2;
-            
+            bMAB1OverhangA = getOverhangALoad12(widget.loadOverhangABValueW!, widget.lengthOverhangABValueL!)[0];   
         }
 
         else if (widget.loadInOverhangAName!.contains('A 13  1'))
         {
-            double bMAB1OverhangA = getOverhangALoad13_1(widget.loadOverhangABValueW!, widget.lengthOverhangABValueL!)[0];
-            bMAB1 = changeSign((fEMAB1 + bMAB1OverhangA) * dfAB1);
-            bMAB2 = changeSign((fEMAB2 + fEMBC1) * dfAB2);
-            bMBC1 = changeSign((fEMAB2 + fEMBC1) * dfBC1);
-            bMBC2 = changeSign(fEMBC2 * dfBC2);
-
-            cOAB1 = bMAB2 / 2;
-            cOAB2 = bMAB1 / 2;
-            cOBC1 = bMBC2 / 2;
-            cOBC2 = bMBC1 / 2;
-
-            finalAnswer = fEMAB2;
-            
+            bMAB1OverhangA = getOverhangALoad13_1(widget.loadOverhangABValueW!, widget.lengthOverhangABValueL!)[0];        
         }
 
         else if (widget.loadInOverhangAName!.contains('A 13  2'))
         {
-            double bMAB1OverhangA = getOverhangALoad13_1(widget.loadOverhangABValueW!, widget.lengthOverhangABValueL!)[0];
-            bMAB1 = changeSign((fEMAB1 + bMAB1OverhangA) * dfAB1);
-            bMAB2 = changeSign((fEMAB2 + fEMBC1) * dfAB2);
-            bMBC1 = changeSign((fEMAB2 + fEMBC1) * dfBC1);
-            bMBC2 = changeSign(fEMBC2 * dfBC2);
-
-            cOAB1 = bMAB2 / 2;
-            cOAB2 = bMAB1 / 2;
-            cOBC1 = bMBC2 / 2;
-            cOBC2 = bMBC1 / 2;
-
-            finalAnswer = fEMAB2;
-            
+            bMAB1OverhangA = getOverhangALoad13_1(widget.loadOverhangABValueW!, widget.lengthOverhangABValueL!)[0];       
         }
 
         else if (widget.loadInOverhangAName!.contains('A 14  1'))
         {
-            double bMAB1OverhangA = getOverhangALoad14_1(widget.loadOverhangABValueW!, widget.lengthOverhangABValueK!)[0];
-            bMAB1 = changeSign((fEMAB1 + bMAB1OverhangA) * dfAB1);
-            bMAB2 = changeSign((fEMAB2 + fEMBC1) * dfAB2);
-            bMBC1 = changeSign((fEMAB2 + fEMBC1) * dfBC1);
-            bMBC2 = changeSign(fEMBC2 * dfBC2);
-
-            cOAB1 = bMAB2 / 2;
-            cOAB2 = bMAB1 / 2;
-            cOBC1 = bMBC2 / 2;
-            cOBC2 = bMBC1 / 2;
-
-            finalAnswer = fEMAB2;
-            
+            bMAB1OverhangA = getOverhangALoad14_1(widget.loadOverhangABValueW!, widget.lengthOverhangABValueK!)[0];         
         }
 
         else if (widget.loadInOverhangAName!.contains('A 14  2'))
         {
-            double bMAB1OverhangA = getOverhangALoad14_2(widget.loadOverhangABValueW!, widget.lengthOverhangABValueL!, widget.lengthOverhangABValueK!)[0];
-            bMAB1 = changeSign((fEMAB1 + bMAB1OverhangA) * dfAB1);
-            bMAB2 = changeSign((fEMAB2 + fEMBC1) * dfAB2);
-            bMBC1 = changeSign((fEMAB2 + fEMBC1) * dfBC1);
-            bMBC2 = changeSign(fEMBC2 * dfBC2);
-
-            cOAB1 = bMAB2 / 2;
-            cOAB2 = bMAB1 / 2;
-            cOBC1 = bMBC2 / 2;
-            cOBC2 = bMBC1 / 2;
-
-            finalAnswer = fEMAB2;
-            
+            bMAB1OverhangA = getOverhangALoad14_2(widget.loadOverhangABValueW!, widget.lengthOverhangABValueL!, widget.lengthOverhangABValueK!)[0];   
         }
 
         else if (widget.loadInOverhangAName!.contains('A 15  1'))
         {
-            double bMAB1OverhangA = getOverhangALoad15_1(widget.loadOverhangABValueW!, widget.lengthOverhangABValueL!)[0];
-            bMAB1 = changeSign((fEMAB1 + bMAB1OverhangA) * dfAB1);
-            bMAB2 = changeSign((fEMAB2 + fEMBC1) * dfAB2);
-            bMBC1 = changeSign((fEMAB2 + fEMBC1) * dfBC1);
-            bMBC2 = changeSign(fEMBC2 * dfBC2);
-
-            cOAB1 = bMAB2 / 2;
-            cOAB2 = bMAB1 / 2;
-            cOBC1 = bMBC2 / 2;
-            cOBC2 = bMBC1 / 2;
-
-            finalAnswer = fEMAB2;
-            
+            bMAB1OverhangA = getOverhangALoad15_1(widget.loadOverhangABValueW!, widget.lengthOverhangABValueL!)[0];      
         }
 
         else if (widget.loadInOverhangAName!.contains('A 15  2'))
         {
-            double bMAB1OverhangA = getOverhangALoad15_2(widget.loadOverhangABValueW!, widget.lengthOverhangABValueL!)[0];
-            bMAB1 = changeSign((fEMAB1 + bMAB1OverhangA) * dfAB1);
-            bMAB2 = changeSign((fEMAB2 + fEMBC1) * dfAB2);
-            bMBC1 = changeSign((fEMAB2 + fEMBC1) * dfBC1);
-            bMBC2 = changeSign(fEMBC2 * dfBC2);
-
-            cOAB1 = bMAB2 / 2;
-            cOAB2 = bMAB1 / 2;
-            cOBC1 = bMBC2 / 2;
-            cOBC2 = bMBC1 / 2;
-
-            finalAnswer = fEMAB2;
-            
+            bMAB1OverhangA = getOverhangALoad15_2(widget.loadOverhangABValueW!, widget.lengthOverhangABValueL!)[0];
         }
 
         else if (widget.loadInOverhangAName!.contains('A 16  1'))
         {
-            double bMAB1OverhangA = getOverhangALoad16_1(widget.loadOverhangABValueW!, widget.lengthOverhangABValueK!)[0];
-            bMAB1 = changeSign((fEMAB1 + bMAB1OverhangA) * dfAB1);
-            bMAB2 = changeSign((fEMAB2 + fEMBC1) * dfAB2);
-            bMBC1 = changeSign((fEMAB2 + fEMBC1) * dfBC1);
-            bMBC2 = changeSign(fEMBC2 * dfBC2);
-
-            cOAB1 = bMAB2 / 2;
-            cOAB2 = bMAB1 / 2;
-            cOBC1 = bMBC2 / 2;
-            cOBC2 = bMBC1 / 2;
-
-            finalAnswer = fEMAB2;
-            
+            bMAB1OverhangA = getOverhangALoad16_1(widget.loadOverhangABValueW!, widget.lengthOverhangABValueK!)[0];      
         }
 
         else if (widget.loadInOverhangAName!.contains('A 16  2'))
         {
-            double bMAB1OverhangA = getOverhangALoad16_2(widget.loadOverhangABValueW!, widget.lengthOverhangABValueL!, widget.lengthOverhangABValueK!)[0];
-            bMAB1 = changeSign((fEMAB1 + bMAB1OverhangA) * dfAB1);
-            bMAB2 = changeSign((fEMAB2 + fEMBC1) * dfAB2);
-            bMBC1 = changeSign((fEMAB2 + fEMBC1) * dfBC1);
-            bMBC2 = changeSign(fEMBC2 * dfBC2);
-
-            cOAB1 = bMAB2 / 2;
-            cOAB2 = bMAB1 / 2;
-            cOBC1 = bMBC2 / 2;
-            cOBC2 = bMBC1 / 2;
-
-            finalAnswer = fEMAB2;
+            bMAB1OverhangA = getOverhangALoad16_2(widget.loadOverhangABValueW!, widget.lengthOverhangABValueL!, widget.lengthOverhangABValueK!)[0];
             
         }
 
         else if (widget.loadInOverhangAName!.contains('A 17  1'))
         {
-            double bMAB1OverhangA = getOverhangALoad17_1(widget.loadOverhangABValueW!, widget.loadOverhangABValueW2!, widget.lengthOverhangABValueL!)[0];
-            bMAB1 = changeSign((fEMAB1 + bMAB1OverhangA) * dfAB1);
-            bMAB2 = changeSign((fEMAB2 + fEMBC1) * dfAB2);
-            bMBC1 = changeSign((fEMAB2 + fEMBC1) * dfBC1);
-            bMBC2 = changeSign(fEMBC2 * dfBC2);
-
-            cOAB1 = bMAB2 / 2;
-            cOAB2 = bMAB1 / 2;
-            cOBC1 = bMBC2 / 2;
-            cOBC2 = bMBC1 / 2;
-
-            finalAnswer = fEMAB2;
-            
+            bMAB1OverhangA = getOverhangALoad17_1(widget.loadOverhangABValueW!, widget.loadOverhangABValueW2!, widget.lengthOverhangABValueL!)[0]; 
         }
 
         else if (widget.loadInOverhangAName!.contains('A 17  2'))
         {
-            double bMAB1OverhangA = getOverhangALoad17_2(widget.loadOverhangABValueW!, widget.loadOverhangABValueW2!, widget.lengthOverhangABValueL!)[0];
-            bMAB1 = changeSign((fEMAB1 + bMAB1OverhangA) * dfAB1);
-            bMAB2 = changeSign((fEMAB2 + fEMBC1) * dfAB2);
-            bMBC1 = changeSign((fEMAB2 + fEMBC1) * dfBC1);
-            bMBC2 = changeSign(fEMBC2 * dfBC2);
-
-            cOAB1 = bMAB2 / 2;
-            cOAB2 = bMAB1 / 2;
-            cOBC1 = bMBC2 / 2;
-            cOBC2 = bMBC1 / 2;
-
-            finalAnswer = fEMAB2;
-            
+            bMAB1OverhangA = getOverhangALoad17_2(widget.loadOverhangABValueW!, widget.loadOverhangABValueW2!, widget.lengthOverhangABValueL!)[0];    
         }
 
         else if (widget.loadInOverhangAName!.contains('A 18'))
         {
-            double bMAB1OverhangA = getOverhangALoad18(widget.momentOverhangABValue!)[0];
-            bMAB1 = changeSign((fEMAB1 + bMAB1OverhangA) * dfAB1);
-            bMAB2 = changeSign((fEMAB2 + fEMBC1) * dfAB2);
-            bMBC1 = changeSign((fEMAB2 + fEMBC1) * dfBC1);
-            bMBC2 = changeSign(fEMBC2 * dfBC2);
-
-            cOAB1 = bMAB2 / 2;
-            cOAB2 = bMAB1 / 2;
-            cOBC1 = bMBC2 / 2;
-            cOBC2 = bMBC1 / 2;
-
-            finalAnswer = fEMAB2;
-            
+            bMAB1OverhangA = getOverhangALoad18(widget.momentOverhangABValue!)[0];    
         }
       }
-      else if(widget.loadInOverhangAName == '' && widget.loadInOverhangCName != '') {
+
+
+      if(widget.loadInOverhangCName != '') {
         if (widget.loadInOverhangCName!.contains('C 1') && widget.loadInOverhangCName!.length <= 12) 
         {
-            bMAB1 = changeSign(fEMAB1 * dfAB1);
-            bMAB2 = changeSign((fEMAB2 + fEMBC1) * dfAB2);
-            bMBC1 = changeSign((fEMAB2 + fEMBC1) * dfBC1);
-            double bMABC2OverhangC = getOverhangCLoad1(widget.loadOverhangBCValueP!, widget.lengthOverhangBCValueA!)[0];
-            bMBC2 = changeSign((fEMBC2 + bMABC2OverhangC) * dfBC2);
-
-            cOAB1 = bMAB2 / 2;
-            cOAB2 = bMAB1 / 2;
-            cOBC1 = bMBC2 / 2;
-            cOBC2 = bMBC1 / 2;
-
-            finalAnswer = fEMAB2;
-            
+            bMABC2OverhangC = getOverhangCLoad1(widget.loadOverhangBCValueP!, widget.lengthOverhangBCValueA!)[0];
         }
-
         else if (widget.loadInOverhangCName!.contains('C 2')) 
         {
-            bMAB1 = changeSign(fEMAB1 * dfAB1);
-            bMAB2 = changeSign((fEMAB2 + fEMBC1) * dfAB2);
-            bMBC1 = changeSign((fEMAB2 + fEMBC1) * dfBC1);
-            double bMABC2OverhangC = getOverhangCLoad2(widget.loadOverhangBCValueP!, widget.lengthOverhangBCValueL!)[0];
-            bMBC2 = changeSign((fEMBC2 + bMABC2OverhangC) * dfBC2);
-
-            cOAB1 = bMAB2 / 2;
-            cOAB2 = bMAB1 / 2;
-            cOBC1 = bMBC2 / 2;
-            cOBC2 = bMBC1 / 2;
-
-            finalAnswer = fEMAB2;
-            
+            bMABC2OverhangC = getOverhangCLoad2(widget.loadOverhangBCValueP!, widget.lengthOverhangBCValueL!)[0];
         }
-
         else if (widget.loadInOverhangCName!.contains('C 3')) 
         {
-            bMAB1 = changeSign(fEMAB1 * dfAB1);
-            bMAB2 = changeSign((fEMAB2 + fEMBC1) * dfAB2);
-            bMBC1 = changeSign((fEMAB2 + fEMBC1) * dfBC1);
-            double bMABC2OverhangC = getOverhangCLoad3(widget.loadOverhangBCValueP!, widget.lengthOverhangBCValueL!)[0];
-            bMBC2 = changeSign((fEMBC2 + bMABC2OverhangC) * dfBC2);
-
-            cOAB1 = bMAB2 / 2;
-            cOAB2 = bMAB1 / 2;
-            cOBC1 = bMBC2 / 2;
-            cOBC2 = bMBC1 / 2;
-
-            finalAnswer = fEMAB2;
-            
+            bMABC2OverhangC = getOverhangCLoad3(widget.loadOverhangBCValueP!, widget.lengthOverhangBCValueL!)[0];     
         }
-
         else if (widget.loadInOverhangCName!.contains('C 4')) 
         {
-            bMAB1 = changeSign(fEMAB1 * dfAB1);
-            bMAB2 = changeSign((fEMAB2 + fEMBC1) * dfAB2);
-            bMBC1 = changeSign((fEMAB2 + fEMBC1) * dfBC1);
-            double bMABC2OverhangC = getOverhangCLoad4(widget.loadOverhangBCValueP!, widget.lengthOverhangBCValueL!)[0];
-            bMBC2 = changeSign((fEMBC2 + bMABC2OverhangC) * dfBC2);
-
-            cOAB1 = bMAB2 / 2;
-            cOAB2 = bMAB1 / 2;
-            cOBC1 = bMBC2 / 2;
-            cOBC2 = bMBC1 / 2;
-
-            finalAnswer = fEMAB2;
-            
+            bMABC2OverhangC = getOverhangCLoad4(widget.loadOverhangBCValueP!, widget.lengthOverhangBCValueL!)[0];
         }
-
         else if (widget.loadInOverhangCName!.contains('C 5')) 
         {
-            bMAB1 = changeSign(fEMAB1 * dfAB1);
-            bMAB2 = changeSign((fEMAB2 + fEMBC1) * dfAB2);
-            bMBC1 = changeSign((fEMAB2 + fEMBC1) * dfBC1);
-            double bMABC2OverhangC = getOverhangCLoad5(widget.loadOverhangBCValueW!, widget.lengthOverhangBCValueL!)[0];
-            bMBC2 = changeSign((fEMBC2 + bMABC2OverhangC) * dfBC2);
-
-            cOAB1 = bMAB2 / 2;
-            cOAB2 = bMAB1 / 2;
-            cOBC1 = bMBC2 / 2;
-            cOBC2 = bMBC1 / 2;
-
-            finalAnswer = fEMAB2;
-            
+            bMABC2OverhangC = getOverhangCLoad5(widget.loadOverhangBCValueW!, widget.lengthOverhangBCValueL!)[0];
         }
-
-        
+        else if (widget.loadInOverhangCName!.contains('C 6  1')) 
+        {
+            bMABC2OverhangC = getOverhangCLoad6_1(widget.loadOverhangBCValueW!, widget.lengthOverhangBCValueL!)[0];  
+        }
+        else if (widget.loadInOverhangCName!.contains('C 6  2')) 
+        {
+            bMABC2OverhangC = getOverhangCLoad6_2(widget.loadOverhangBCValueW!, widget.lengthOverhangBCValueL!)[0]; 
+        }
+        else if (widget.loadInOverhangCName!.contains('C 7  1')) 
+        {
+            bMABC2OverhangC = getOverhangCLoad7_1(widget.loadOverhangBCValueW!, widget.lengthOverhangBCValueK!)[0];    
+        }
+        else if (widget.loadInOverhangCName!.contains('C 7  2')) 
+        {
+            bMABC2OverhangC = getOverhangCLoad7_2(widget.loadOverhangBCValueW!,widget.lengthOverhangBCValueL!, widget.lengthOverhangBCValueK!)[0];  
+        }
+        else if (widget.loadInOverhangCName!.contains('C 8')) 
+        {
+            bMABC2OverhangC = getOverhangCLoad8(widget.loadOverhangBCValueW!,widget.lengthOverhangBCValueL!, widget.lengthOverhangBCValueK!)[0];
+        }
+        else if (widget.loadInOverhangCName!.contains('C 9')) 
+        {
+            bMABC2OverhangC = getOverhangCLoad9(widget.loadOverhangBCValueW!,widget.lengthOverhangBCValueL!, widget.lengthOverhangBCValueK!)[0];
+        }
+        else if (widget.loadInOverhangCName!.contains('C 10  1')) 
+        {
+            bMABC2OverhangC = getOverhangCLoad10_1(widget.loadOverhangBCValueW!,widget.lengthOverhangBCValueL!)[0];   
+        }
+        else if (widget.loadInOverhangCName!.contains('C 10  2')) 
+        {
+            bMABC2OverhangC = getOverhangCLoad10_2(widget.loadOverhangBCValueW!,widget.lengthOverhangBCValueL!)[0];       
+        }
+        else if (widget.loadInOverhangCName!.contains('C 11')) 
+        {
+            bMABC2OverhangC = getOverhangCLoad11(widget.loadOverhangBCValueW!,widget.lengthOverhangBCValueL!)[0];    
+        }
+        else if (widget.loadInOverhangCName!.contains('C 12')) 
+        {
+            bMABC2OverhangC = getOverhangCLoad12(widget.loadOverhangBCValueW!,widget.lengthOverhangBCValueL!)[0];    
+        }
+        else if (widget.loadInOverhangCName!.contains('C 13  1')) 
+        {
+            bMABC2OverhangC = getOverhangCLoad13_1(widget.loadOverhangBCValueW!,widget.lengthOverhangBCValueL!)[0];  
+        }
+        else if (widget.loadInOverhangCName!.contains('C 13  2')) 
+        {
+            bMABC2OverhangC = getOverhangCLoad13_2(widget.loadOverhangBCValueW!,widget.lengthOverhangBCValueL!)[0];  
+        }
+        else if (widget.loadInOverhangCName!.contains('C 14  1')) 
+        {
+            bMABC2OverhangC = getOverhangCLoad14_1(widget.loadOverhangBCValueW!,widget.lengthOverhangBCValueL!,widget.lengthOverhangBCValueK!)[0];  
+        }
+        else if (widget.loadInOverhangCName!.contains('C 14  2')) 
+        {
+            bMABC2OverhangC = getOverhangCLoad14_2(widget.loadOverhangBCValueW!,widget.lengthOverhangBCValueL!)[0];  
+        }
+        else if (widget.loadInOverhangCName!.contains('C 15  1')) 
+        {
+            bMABC2OverhangC = getOverhangCLoad15_1(widget.loadOverhangBCValueW!,widget.lengthOverhangBCValueL!)[0];  
+        }
+        else if (widget.loadInOverhangCName!.contains('C 15  2')) 
+        {
+            bMABC2OverhangC = getOverhangCLoad15_2(widget.loadOverhangBCValueW!,widget.lengthOverhangBCValueL!)[0];  
+        }
+        else if (widget.loadInOverhangCName!.contains('C 15  2')) 
+        {
+            bMABC2OverhangC = getOverhangCLoad15_2(widget.loadOverhangBCValueW!,widget.lengthOverhangBCValueL!)[0];  
+        }
+        else if (widget.loadInOverhangCName!.contains('C 16  1')) 
+        {
+            bMABC2OverhangC = getOverhangCLoad16_1(widget.loadOverhangBCValueW!,widget.lengthOverhangBCValueL!,widget.lengthOverhangBCValueK!)[0];  
+        }
+        else if (widget.loadInOverhangCName!.contains('C 16  2')) 
+        {
+            bMABC2OverhangC = getOverhangCLoad16_2(widget.loadOverhangBCValueW!,widget.lengthOverhangBCValueK!)[0];  
+        }
+        else if (widget.loadInOverhangCName!.contains('C 17  1')) 
+        {
+            bMABC2OverhangC = getOverhangCLoad17_1(widget.loadOverhangBCValueW!,widget.loadOverhangBCValueW2!,widget.lengthOverhangBCValueL!)[0];  
+        }
+        else if (widget.loadInOverhangCName!.contains('C 17  2')) 
+        {
+            bMABC2OverhangC = getOverhangCLoad17_2(widget.loadOverhangBCValueW!,widget.loadOverhangBCValueW2!,widget.lengthOverhangBCValueL!)[0];  
+        }
+        else if (widget.loadInOverhangCName!.contains('C 18')) 
+        {
+            bMABC2OverhangC = getOverhangCLoad18(widget.momentOverhangBCValue!)[0];  
+        }
       }
-      else{
-        print('No overhang');
-        bMAB1 = changeSign(fEMAB1 * dfAB1);
-        bMAB2 = changeSign((fEMAB2 + fEMBC1) * dfAB2);
-        bMBC1 = changeSign((fEMAB2 + fEMBC1) * dfBC1);
-        bMBC2 = changeSign(fEMBC2 * dfBC2);
+      
+      bMAB1 = changeSign((fEMAB1 + bMAB1OverhangA) * dfAB1);
+      bMAB2 = changeSign((fEMAB2 + fEMBC1) * dfAB2);
+      bMBC1 = changeSign((fEMAB2 + fEMBC1) * dfBC1);
+      bMBC2 = changeSign((fEMBC2 + bMABC2OverhangC) * dfBC2);
 
-        cOAB1 = bMAB2 / 2;
-        cOAB2 = bMAB1 / 2;
-        cOBC1 = bMBC2 / 2;
-        cOBC2 = bMBC1 / 2;
+      cOAB1 = bMAB2 / 2;
+      cOAB2 = bMAB1 / 2;
+      cOBC1 = bMBC2 / 2;
+      cOBC2 = bMBC1 / 2;
 
-        finalAnswer = fEMAB2;
-      }
+      finalAnswer = fEMAB2;
 
      
       print(finalAnswer);
@@ -1655,6 +1366,9 @@ class _CalculationState extends State<Calculation> {
     loopEnd = 1;
     counter1 = 0;
     counter2 = 0;
+    bMAB1OverhangA = 0;
+    bMABC2OverhangC = 0;
+
 
     if (widget.loadInAB!.contains('SIMPLE') &&
         widget.loadInBC!.contains('SIMPLE')) {
@@ -1680,45 +1394,55 @@ class _CalculationState extends State<Calculation> {
       appBar: AppBar(
         title: const Text('Calculation'),
       ),
-      body: SingleChildScrollView(
-        child: Center(
-          child: Padding(
-            padding: const EdgeInsets.all(20.0),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                headerTable(),
-                addVerticalSpace(10),
-                initTable(),
-                addVerticalSpace(10),
-                initialLoop(),
-                addVerticalSpace(10),
-                for (int i = 0; loopEnd != 0; i++) ...[
-                  generateLoopingTable(),
-                  addVerticalSpace(10)
-                ],
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    const Text(
-                        style: TextStyle(fontSize: 16),
-                        'Moment at Support B = '),
-                    Card(
-                      color: colorPrimary,
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Text(
-                            style: const TextStyle(color: Colors.white),
-                            '${roundToFourDecimals(finalAnswer)} $selectedMomentABUnit'),
-                      ),
-                    )
-                  ],
+      body: Column(
+        children: [
+          Expanded(
+            child: SingleChildScrollView(
+              child: Center(
+                child: Padding(
+                  padding: const EdgeInsets.all(20.0),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      headerTable(),
+                      addVerticalSpace(10),
+                      initTable(),
+                      addVerticalSpace(10),
+                      initialLoop(),
+                      addVerticalSpace(10),
+                      for (int i = 0; loopEnd != 0; i++) ...[
+                        generateLoopingTable(),
+                        addVerticalSpace(10)
+                      ],
+                      
+                    ],
+                  ),
                 ),
-              ],
+              ),
             ),
           ),
-        ),
+          Container(
+            padding: const EdgeInsets.all(10),
+            child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      const Text(
+                          style: TextStyle(fontSize: 16),
+                          'Moment at Support B = '),
+                      Card(
+                        color: colorPrimary,
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text(
+                              style: const TextStyle(color: Colors.white),
+                              '${roundToFourDecimals(finalAnswer)} $selectedMomentABUnit'),
+                        ),
+                      )
+                    ],
+                  ),
+          ),
+        ],
       ),
     );
   }
