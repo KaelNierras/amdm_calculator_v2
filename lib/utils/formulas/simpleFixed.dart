@@ -10,7 +10,7 @@ List<num> getLoad1(valueP, valueL, valueA) {
   num valueAnum = num.parse(valueA);
   num valueLnum = num.parse(valueL);
 
-  num valueB = num.parse(valueL) - num.parse(valueA);
+  num valueB = valueLnum - valueAnum;
 
   fEM1 = valuePnum * valueAnum * (valueB * valueB);
   fEM1 = checkNumberIfNegative(fEM1 / (valueLnum * valueLnum));
@@ -188,7 +188,6 @@ List<num> getLoad9(valueW, valueL, valueK) {
 }
 
 List<num> getLoad10_1(valueW, valueL) {
-  print('Passed valueW: $valueW, valueL: $valueL');
   num fEM1 = 0;
   num fEM2 = 0;
 
@@ -205,7 +204,6 @@ List<num> getLoad10_1(valueW, valueL) {
 }
 
 List<num> getLoad10_2(valueW, valueL) {
-  print('Passed valueW: $valueW, valueL: $valueL');
   num fEM1 = 0;
   num fEM2 = 0;
 
@@ -440,13 +438,16 @@ List<num> getLoad18(valueM, valueL, valueK1) {
   num valueLnum = num.parse(valueL);
   num valueK1num = num.parse(valueK1);
 
+
   num valueK2 = valueLnum - valueK1num;
 
-  fEM1 = valueMnum * valueK2 * (1 - (3 * valueK1));
+  fEM1 = valueMnum * valueK2 * (1 - (3 * valueK1num));
   fEM1 = checkNumberIfNegative(fEM1);
 
-  fEM2 = valueMnum * valueK1 * (1 - (3 * valueK2));
+
+  fEM2 = valueMnum * valueK1num * (1 - (3 * valueK2));
   fEM2 = checkNumberIfPositive(fEM2);
+
 
   return [roundToFourDecimals(fEM1), roundToFourDecimals(fEM2)];
 }

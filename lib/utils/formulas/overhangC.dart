@@ -1,3 +1,5 @@
+// ignore_for_file: file_names
+
 import '../helper_widget_function.dart';
 
 List<num> getOverhangCLoad1(valueP, valueA) {

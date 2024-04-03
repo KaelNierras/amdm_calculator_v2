@@ -246,8 +246,20 @@ class _CalculationState extends State<Calculation> {
       num fEMBC1 = 0;
       num fEMBC2 = 0;
 
-      if (widget.loadInBC!.contains('BC 1') && widget.loadInBC!.length <= 16) {
-        print('true');
+      if (widget.loadInBC!.contains('BC 18')) {
+        fEMBC1 = getLoad18(widget.momentBCValue!, widget.lengthBCValueL!,
+            widget.lengthBCValueK1!)[0];
+        fEMBC2 = getLoad18(widget.momentBCValue!, widget.lengthBCValueL!,
+            widget.lengthBCValueK1!)[1];
+      }
+      else if (widget.loadInBC!.contains('BC 12')) {
+        fEMBC1 = getLoad12(widget.loadBCValueW!, widget.lengthBCValueL!)[0];
+        fEMBC2 = getLoad12(widget.loadBCValueW!, widget.lengthBCValueL!)[1];
+      } 
+      else if (widget.loadInBC!.contains('BC 11')) {
+        fEMBC1 = getLoad11(widget.loadBCValueW!, widget.lengthBCValueL!)[0];
+        fEMBC2 = getLoad11(widget.loadBCValueW!, widget.lengthBCValueL!)[1];
+      } else if (widget.loadInBC!.contains('BC 1') && widget.loadInBC!.length <= 16) {
         fEMBC1 = getLoad1(widget.loadBCValueP!, widget.lengthBCValueL!,
             widget.lengthBCValueA!)[0];
         fEMBC2 = getLoad1(widget.loadBCValueP!, widget.lengthBCValueL!,
@@ -299,12 +311,6 @@ class _CalculationState extends State<Calculation> {
       } else if (widget.loadInBC!.contains('BC 10  2')) {
         fEMBC1 = getLoad10_2(widget.loadBCValueW!, widget.lengthBCValueL!)[0];
         fEMBC2 = getLoad10_2(widget.loadBCValueW!, widget.lengthBCValueL!)[1];
-      } else if (widget.loadInBC!.contains('BC 11')) {
-        fEMBC1 = getLoad11(widget.loadBCValueW!, widget.lengthBCValueL!)[0];
-        fEMBC2 = getLoad11(widget.loadBCValueW!, widget.lengthBCValueL!)[1];
-      } else if (widget.loadInBC!.contains('BC 12')) {
-        fEMBC1 = getLoad12(widget.loadBCValueW!, widget.lengthBCValueL!)[0];
-        fEMBC2 = getLoad12(widget.loadBCValueW!, widget.lengthBCValueL!)[1];
       } else if (widget.loadInBC!.contains('BC 13  1')) {
         fEMBC1 = getLoad13_1(widget.loadBCValueW!, widget.lengthBCValueL!)[0];
         fEMBC2 = getLoad13_1(widget.loadBCValueW!, widget.lengthBCValueL!)[1];
@@ -347,12 +353,7 @@ class _CalculationState extends State<Calculation> {
             widget.lengthBCValueL!)[0];
         fEMBC2 = getLoad17_2(widget.loadABValueW!, widget.loadABValueW2!,
             widget.lengthBCValueL!)[1];
-      } else if (widget.loadInBC!.contains('BC 18')) {
-        fEMBC1 = getLoad18(widget.momentBCValue!, widget.lengthBCValueL!,
-            widget.lengthBCValueK1!)[0];
-        fEMBC2 = getLoad18(widget.momentBCValue!, widget.lengthBCValueL!,
-            widget.lengthBCValueK1!)[1];
-      }
+      } 
 
       return [fEMBC1, fEMBC2];
     }
@@ -374,7 +375,71 @@ class _CalculationState extends State<Calculation> {
     num dfBC1 = getDfBC1(k1, k2);
     dfBC1 = checkNumberIfPositive(dfBC1);
 
-    if (widget.loadInAB!.contains('AB 1') && widget.loadInAB!.length <= 15) {
+    
+    if (widget.loadInAB!.contains('AB 18')) {
+      fEMAB1 = getLoad18(widget.momentABValue!, widget.lengthABValueL!,
+          widget.lengthABValueK1)[0];
+      fEMAB2 = getLoad18(widget.momentABValue!, widget.lengthABValueL!,
+          widget.lengthABValueK1)[1];
+
+      fEMBC1 = bCCalculation()[0];
+      fEMBC2 = bCCalculation()[1];
+
+      return [
+        dfAB1,
+        dfAB2,
+        dfBC1,
+        dfBC2,
+        fEMAB1,
+        fEMAB2,
+        fEMBC1,
+        fEMBC2,
+        k1,
+        k2
+      ];
+    }
+    else if (widget.loadInAB!.contains('AB 12')) {
+      fEMAB1 = getLoad12(widget.loadABValueW!, widget.lengthABValueL!)[0];
+      fEMAB2 = getLoad12(widget.loadABValueW!, widget.lengthABValueL!)[1];
+
+      fEMBC1 = bCCalculation()[0];
+      fEMBC2 = bCCalculation()[1];
+
+      return [
+        dfAB1,
+        dfAB2,
+        dfBC1,
+        dfBC2,
+        fEMAB1,
+        fEMAB2,
+        fEMBC1,
+        fEMBC2,
+        k1,
+        k2
+      ];
+    
+    } 
+    else if (widget.loadInAB!.contains('AB 11')) {
+      fEMAB1 = getLoad11(widget.loadABValueW!, widget.lengthABValueL!)[0];
+      fEMAB2 = getLoad11(widget.loadABValueW!, widget.lengthABValueL!)[1];
+
+      fEMBC1 = bCCalculation()[0];
+      fEMBC2 = bCCalculation()[1];
+
+      return [
+        dfAB1,
+        dfAB2,
+        dfBC1,
+        dfBC2,
+        fEMAB1,
+        fEMAB2,
+        fEMBC1,
+        fEMBC2,
+        k1,
+        k2
+      ];
+    } 
+    else if (widget.loadInAB!.contains('AB 1') && widget.loadInAB!.length <= 16) {
       fEMAB1 = getLoad1(widget.loadABValueP!, widget.lengthABValueL!,
           widget.lengthABValueA!)[0];
       fEMAB2 = getLoad1(widget.loadABValueP!, widget.lengthABValueL!,
@@ -594,7 +659,6 @@ class _CalculationState extends State<Calculation> {
         k2
       ];
     } else if (widget.loadInAB!.contains('AB 10  1')) {
-      print('AB 10  1');
       fEMAB1 = getLoad10_1(widget.loadABValueW!, widget.lengthABValueL!)[0];
       fEMAB2 = getLoad10_1(widget.loadABValueW!, widget.lengthABValueL!)[1];
 
@@ -614,7 +678,6 @@ class _CalculationState extends State<Calculation> {
         k2
       ];
     } else if (widget.loadInAB!.contains('AB 10  2')) {
-      print('AB 10  1');
       fEMAB1 = getLoad10_1(widget.loadABValueW!, widget.lengthABValueL!)[0];
       fEMAB2 = getLoad10_1(widget.loadABValueW!, widget.lengthABValueL!)[1];
 
@@ -633,26 +696,9 @@ class _CalculationState extends State<Calculation> {
         k1,
         k2
       ];
-    } else if (widget.loadInAB!.contains('AB 11')) {
-      fEMAB1 = getLoad11(widget.loadABValueW!, widget.lengthABValueL!)[0];
-      fEMAB2 = getLoad11(widget.loadABValueW!, widget.lengthABValueL!)[1];
-
-      fEMBC1 = bCCalculation()[0];
-      fEMBC2 = bCCalculation()[1];
-
-      return [
-        dfAB1,
-        dfAB2,
-        dfBC1,
-        dfBC2,
-        fEMAB1,
-        fEMAB2,
-        fEMBC1,
-        fEMBC2,
-        k1,
-        k2
-      ];
-    } else if (widget.loadInAB!.contains('AB 13  1')) {
+    }
+    
+    else if (widget.loadInAB!.contains('AB 13  1')) {
       fEMAB1 = getLoad13_1(
         widget.loadABValueW!,
         widget.lengthABValueL!,
@@ -866,28 +912,7 @@ class _CalculationState extends State<Calculation> {
         k1,
         k2
       ];
-    } else if (widget.loadInAB!.contains('AB 18')) {
-      fEMAB1 = getLoad18(widget.momentABValue!, widget.lengthABValueL!,
-          widget.lengthABValueK1)[0];
-      fEMAB2 = getLoad18(widget.momentABValue!, widget.lengthABValueL!,
-          widget.lengthABValueK1)[1];
-
-      fEMBC1 = bCCalculation()[0];
-      fEMBC2 = bCCalculation()[1];
-
-      return [
-        dfAB1,
-        dfAB2,
-        dfBC1,
-        dfBC2,
-        fEMAB1,
-        fEMAB2,
-        fEMBC1,
-        fEMBC2,
-        k1,
-        k2
-      ];
-    }
+    } 
 
     return [];
   }
@@ -1125,7 +1150,7 @@ class _CalculationState extends State<Calculation> {
         momentSupportB = fEMAB2;
         momentSupportC = fEMBC2;
 
-        print(momentSupportB);
+        //print(momentSupportB);
       }
     } catch (e) {
       Fluttertoast.showToast(
@@ -1357,6 +1382,8 @@ class _CalculationState extends State<Calculation> {
     super.initState();
     widget.loadInAB = widget.loadInAB!.replaceAll('.', '  ');
     widget.loadInBC = widget.loadInBC!.replaceAll('.', '  ');
+    widget.loadInOverhangAName = widget.loadInOverhangAName!.replaceAll('.', '  ');
+    widget.loadInOverhangCName = widget.loadInOverhangCName!.replaceAll('.', '  ');
 
     loopEnd = 1;
     counter1 = 0;
@@ -1503,9 +1530,7 @@ class _CalculationState extends State<Calculation> {
           ],
         ),
       );
-    } catch (error, stackTrace) {
-      print('Caught error: $error');
-      print(stackTrace);
+    } catch (error) {
       return Container(); // Return a fallback widget
     }
   }

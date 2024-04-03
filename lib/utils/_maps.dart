@@ -1,5 +1,4 @@
   import '_enum.dart';
-import 'formulas/simpleFixed.dart';
 
  Map<Span, Loading> aBCombination = {
       Span.FIXED_SPAN_AB_1: Loading.loading1Combination,

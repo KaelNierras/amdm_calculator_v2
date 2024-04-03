@@ -1,5 +1,4 @@
 // ignore_for_file: library_private_types_in_public_api, constant_identifier_names, must_be_immutable
-
 import 'package:amdm_calculator/widgets/custom_textfield_with_drop.dart';
 import 'package:flutter/material.dart';
 import '../utils/helper_widget_function.dart';
@@ -64,6 +63,22 @@ class _InputDataState extends State<InputData> {
         addVerticalSpace(10),
       ],
     );
+  }
+
+  void showToasts(BuildContext context, String e) {
+    final snackBar = SnackBar(
+      content: Row(
+        children: [
+          const Icon(Icons.error, color: Colors.white),
+          const SizedBox(width: 10),
+          Expanded(child: Text(e)),
+        ],
+      ),
+      duration: const Duration(seconds: 2),
+      backgroundColor: Colors.red,
+    );
+
+    ScaffoldMessenger.of(context).showSnackBar(snackBar);
   }
 
   Widget overhangC() {
@@ -187,12 +202,30 @@ class _InputDataState extends State<InputData> {
           onValueChanged: (value) {
             setState(() {
               if (type == 'AB') {
+                if (double.parse(value) > double.parse(lengthABValueL)) {
+                  showToasts(
+                      context, 'Length (a) should be less than Length (L)');
+                }
                 lengthABValueA = value;
               } else if (type == 'BC') {
+                if (double.parse(value) > double.parse(lengthBCValueL)) {
+                  showToasts(
+                      context, 'Length (a) should be less than Length (L)');
+                }
                 lengthBCValueA = value;
               } else if (type == 'OverhangA') {
+                if (double.parse(value) >
+                    double.parse(lengthOverhangABValueL)) {
+                  showToasts(
+                      context, 'Length (a) should be less than Length (L)');
+                }
                 lengthOverhangABValueA = value;
               } else if (type == 'OverhangC') {
+                if (double.parse(value) >
+                    double.parse(lengthOverhangBCValueL)) {
+                  showToasts(
+                      context, 'Length (a) should be less than Length (L)');
+                }
                 lengthOverhangBCValueA = value;
               }
             });
@@ -425,12 +458,146 @@ class _InputDataState extends State<InputData> {
           onValueChanged: (value) {
             setState(() {
               if (type == 'AB') {
+                if (num.parse(value) > num.parse(lengthABValueL)) {
+                  showToasts(
+                      context, 'Length (K) should be less than Length (L)');
+                }
                 lengthABValueK = value;
               } else if (type == 'BC') {
+                if (num.parse(value) > num.parse(lengthBCValueL)) {
+                  showToasts(
+                      context, 'Length (K) should be less than Length (L)');
+                }
                 lengthBCValueK = value;
               } else if (type == 'OverhangA') {
+                if (num.parse(value) > num.parse(lengthOverhangABValueL)) {
+                  showToasts(
+                      context, 'Length (K) should be less than Length (L)');
+                }
                 lengthOverhangABValueK = value;
               } else if (type == 'OverhangC') {
+                if (num.parse(value) > num.parse(lengthOverhangBCValueL)) {
+                  showToasts(
+                      context, 'Length (K) should be less than Length (L)');
+                }
+                lengthOverhangBCValueK = value;
+              }
+            });
+          },
+        ),
+      ],
+    );
+  }
+
+  //Loading 8 Combination
+  Widget loading8Combination(String type) {
+    return Column(
+      children: [
+        buildCustomTextfieldWithDropdown(
+          label: 'Enter Load (W)',
+          items: loadUnit,
+          onSelectedUnitChanged: (selectedItem) {
+            setState(() {
+              if (type == 'AB') {
+                selectedLoadABUnitW = selectedItem;
+              } else if (type == 'BC') {
+                selectedLoadBCUnitW = selectedItem;
+              } else if (type == 'OverhangA') {
+                selectedLoadOverhangABUnitW = selectedItem;
+              } else if (type == 'OverhangC') {
+                selectedLoadOverhangBCUnitW = selectedItem;
+              }
+            });
+          },
+          onValueChanged: (value) {
+            setState(() {
+              if (type == 'AB') {
+                loadABValueW = value;
+              } else if (type == 'BC') {
+                loadBCValueW = value;
+              } else if (type == 'OverhangA') {
+                loadOverhangABValueW = value;
+              } else if (type == 'OverhangC') {
+                loadOverhangBCValueW = value;
+              }
+            });
+          },
+        ),
+        addVerticalSpace(10),
+        buildCustomTextfieldWithDropdown(
+          label: 'Enter Length (L)',
+          items: lengthUnit,
+          onSelectedUnitChanged: (selectedItem) {
+            setState(() {
+              if (type == 'AB') {
+                selectedLengthABUnitL = selectedItem;
+              } else if (type == 'BC') {
+                selectedLengthBCUnitL = selectedItem;
+              } else if (type == 'OverhangA') {
+                selectedLengthOverhangABUnitL = selectedItem;
+              } else if (type == 'OverhangC') {
+                selectedLengthOverhangBCUnitL = selectedItem;
+              }
+            });
+          },
+          onValueChanged: (value) {
+            setState(() {
+              if (type == 'AB') {
+                lengthABValueL = value;
+              } else if (type == 'BC') {
+                lengthBCValueL = value;
+              } else if (type == 'OverhangA') {
+                lengthOverhangABValueL = value;
+              } else if (type == 'OverhangC') {
+                lengthOverhangBCValueL = value;
+              }
+            });
+          },
+        ),
+        addVerticalSpace(10),
+        buildCustomTextfieldWithDropdown(
+          label: 'Enter Length (K)',
+          items: lengthUnit,
+          onSelectedUnitChanged: (selectedItem) {
+            setState(() {
+              if (type == 'AB') {
+                selectedLengthABUnitK = selectedItem;
+              } else if (type == 'BC') {
+                selectedLengthBCUnitK = selectedItem;
+              } else if (type == 'OverhangA') {
+                selectedLengthOverhangABUnitK = selectedItem;
+              } else if (type == 'OverhangC') {
+                selectedLengthOverhangBCUnitK = selectedItem;
+              }
+            });
+          },
+          onValueChanged: (value) {
+            setState(() {
+              if (type == 'AB') {
+                if ((num.parse(value) * 2) > num.parse(lengthABValueL)) {
+                  showToasts(context,
+                      'Length (K) times two should be less than Length (L)');
+                }
+                lengthABValueK = value;
+              } else if (type == 'BC') {
+                if ((num.parse(value) * 2) > num.parse(lengthBCValueL)) {
+                  showToasts(context,
+                      'Length (K) times two should be less than Length (L)');
+                }
+                lengthBCValueK = value;
+              } else if (type == 'OverhangA') {
+                if ((num.parse(value) * 2) >
+                    num.parse(lengthOverhangABValueL)) {
+                  showToasts(context,
+                      'Length (K) times two should be less than Length (L)');
+                }
+                lengthOverhangABValueK = value;
+              } else if (type == 'OverhangC') {
+                if ((num.parse(value) * 2) >
+                    num.parse(lengthOverhangBCValueL)) {
+                  showToasts(context,
+                      'Length (K) times two should be less than Length (L)');
+                }
                 lengthOverhangBCValueK = value;
               }
             });
@@ -494,12 +661,28 @@ class _InputDataState extends State<InputData> {
           onValueChanged: (value) {
             setState(() {
               if (type == 'AB') {
+                if (num.parse(value) > num.parse(loadABValueW)) {
+                  showToasts(
+                      context, 'Load (W1) should be less than Load (W2)');
+                }
                 loadABValueW2 = value;
               } else if (type == 'BC') {
+                if (num.parse(value) > num.parse(loadBCValueW)) {
+                  showToasts(
+                      context, 'Load (W1) should be less than Load (W2)');
+                }
                 loadBCValueW2 = value;
               } else if (type == 'OverhangA') {
+                if (num.parse(value) > num.parse(loadOverhangABValueW)) {
+                  showToasts(
+                      context, 'Load (W1) should be less than Load (W2)');
+                }
                 loadOverhangABValueW2 = value;
               } else if (type == 'OverhangC') {
+                if (num.parse(value) > num.parse(loadOverhangBCValueW)) {
+                  showToasts(
+                      context, 'Load (W1) should be less than Load (W2)');
+                }
                 loadOverhangBCValueW2 = value;
               }
             });
@@ -625,12 +808,28 @@ class _InputDataState extends State<InputData> {
           onValueChanged: (value) {
             setState(() {
               if (type == 'AB') {
+                if (num.parse(value) > num.parse(lengthABValueL)) {
+                  showToasts(
+                      context, 'Length (K1) should be less than Length (L)');
+                }
                 lengthABValueK1 = value;
               } else if (type == 'BC') {
+                if (num.parse(value) > num.parse(lengthBCValueL)) {
+                  showToasts(
+                      context, 'Length (K1) should be less than Length (L)');
+                }
                 lengthBCValueK1 = value;
               } else if (type == 'OverhangA') {
+                if (num.parse(value) > num.parse(lengthOverhangABValueL)) {
+                  showToasts(
+                      context, 'Length (K1) should be less than Length (L)');
+                }
                 lengthOverhangABValueK1 = value;
               } else if (type == 'OverhangC') {
+                if (num.parse(value) > num.parse(lengthOverhangBCValueL)) {
+                  showToasts(
+                      context, 'Length (K1) should be less than Length (L)');
+                }
                 lengthOverhangBCValueK1 = value;
               }
             });
@@ -818,13 +1017,9 @@ class _InputDataState extends State<InputData> {
   void gotoCalculationsTwoCombination() {
     Span spanAb = getSpanFromString(widget.loadInAB);
     Span spanBc = getSpanFromString(widget.loadInBC);
-    print(spanAb);
-    print(spanBc);
     Calculation header = loadingHeader();
     Calculation? calculation1 = getLoadingCalculation('AB', spanAb);
     Calculation? calculation2 = getLoadingCalculation('BC', spanBc);
-    print(calculation1);
-    print(calculation2);
     Navigator.push(
       context,
       MaterialPageRoute(
@@ -970,8 +1165,8 @@ class _InputDataState extends State<InputData> {
       'OVERHANG A 6.2': loading5Combination,
       'OVERHANG A 7.1': loading7Combination,
       'OVERHANG A 7.2': loading7Combination,
-      'OVERHANG A 8': loading7Combination,
-      'OVERHANG A 9': loading7Combination,
+      'OVERHANG A 8': loading8Combination,
+      'OVERHANG A 9': loading8Combination,
       'OVERHANG A 14.1': loading7Combination,
       'OVERHANG A 14.2': loading7Combination,
       'OVERHANG A 16.1': loading7Combination,
@@ -1008,10 +1203,10 @@ class _InputDataState extends State<InputData> {
       'SIMPLE SPAN AB 7.1': loading7Combination,
       'FIXED SPAN AB 7.2': loading7Combination,
       'SIMPLE SPAN AB 7.2': loading7Combination,
-      'FIXED SPAN AB 8': loading7Combination,
-      'SIMPLE SPAN AB 8': loading7Combination,
-      'FIXED SPAN AB 9': loading7Combination,
-      'SIMPLE SPAN AB 9': loading7Combination,
+      'FIXED SPAN AB 8': loading8Combination,
+      'SIMPLE SPAN AB 8': loading8Combination,
+      'FIXED SPAN AB 9': loading8Combination,
+      'SIMPLE SPAN AB 9': loading8Combination,
       'FIXED SPAN AB 14.1': loading7Combination,
       'SIMPLE SPAN AB 14.1': loading7Combination,
       'FIXED SPAN AB 14.2': loading7Combination,
@@ -1063,10 +1258,10 @@ class _InputDataState extends State<InputData> {
       'SIMPLE SPAN BC 7.1': loading7Combination,
       'FIXED SPAN BC 7.2': loading7Combination,
       'SIMPLE SPAN BC 7.2': loading7Combination,
-      'FIXED SPAN BC 8': loading7Combination,
-      'SIMPLE SPAN BC 8': loading7Combination,
-      'FIXED SPAN BC 9': loading7Combination,
-      'SIMPLE SPAN BC 9': loading7Combination,
+      'FIXED SPAN BC 8': loading8Combination,
+      'SIMPLE SPAN BC 8': loading8Combination,
+      'FIXED SPAN BC 9': loading8Combination,
+      'SIMPLE SPAN BC 9': loading8Combination,
       'FIXED SPAN BC 14.1': loading7Combination,
       'SIMPLE SPAN BC 14.1': loading7Combination,
       'FIXED SPAN BC 14.2': loading7Combination,
@@ -1109,8 +1304,8 @@ class _InputDataState extends State<InputData> {
       'OVERHANG C 6.2': loading5Combination,
       'OVERHANG C 7.1': loading7Combination,
       'OVERHANG C 7.2': loading7Combination,
-      'OVERHANG C 8': loading7Combination,
-      'OVERHANG C 9': loading7Combination,
+      'OVERHANG C 8': loading8Combination,
+      'OVERHANG C 9': loading8Combination,
       'OVERHANG C 14.1': loading7Combination,
       'OVERHANG C 14.2': loading7Combination,
       'OVERHANG C 16.1': loading7Combination,
@@ -1354,9 +1549,7 @@ class _InputDataState extends State<InputData> {
           },
         ),
       );
-    } catch (error, stackTrace) {
-      print('Caught error: $error');
-      print(stackTrace);
+    } catch (error) {
       return Container(); // Return a fallback widget
     }
   }
