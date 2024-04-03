@@ -72,16 +72,17 @@ class _CustomTextfieldWithDropdownState
   }
 
   Widget _buildTextField() {
-    return Expanded(
-      child: TextField(
-        controller: textController,
-        decoration: InputDecoration(
-          border: const OutlineInputBorder(),
-          labelText: widget.label,
-        ),
+  return Expanded(
+    child: TextField(
+      controller: textController,
+      decoration: InputDecoration(
+        border: const OutlineInputBorder(),
+        labelText: widget.label,
       ),
-    );
-  }
+      keyboardType: TextInputType.number,
+    ),
+  );
+}
 
   Widget _buildDropdownMenu() {
     return DropdownButton<String>(

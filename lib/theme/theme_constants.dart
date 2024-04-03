@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-const colorPrimary = Colors.deepOrangeAccent;
-const colorAccent = Colors.orange;
+const colorPrimary = Color.fromRGBO(123, 178, 222, 1); // light blue in RGB
+const colorAccent = Color.fromRGBO(93, 148, 192, 1); // darker shade of light blue for accent
 
 ThemeData lightTheme = ThemeData(
   brightness: Brightness.light,
@@ -36,8 +36,7 @@ ThemeData lightTheme = ThemeData(
   ),
   cardTheme: CardTheme(
     color: Colors.white,
-    shadowColor: Colors.black.withOpacity(0.2),
-    elevation: 3,
+    elevation: 0,
     shape: RoundedRectangleBorder(
       borderRadius: BorderRadius.circular(15),
     ),

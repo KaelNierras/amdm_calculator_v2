@@ -32,6 +32,6 @@ List<OnboardingContents> contents = [
     title: "About Us",
     image: "assets/images/onboarding/image4.png",
     desc:
-        "This calculator application was developed\nby this dynamic group of students:\n\nCharlemagne Abainza, Arnold Canonoy,\nKent Raven Capin, Daryl Lamoste, and\nKyle Anthony Nierras.",
+        "This calculator application was developed\nby this dynamic group of students:\n\nCharlemagne Abainza, Arnold Canonoy Jr.,\nKent Raven Capin, Daryl Lamoste, and\nKyle Anthony Nierras.",
   ),
 ];

@@ -1121,9 +1121,11 @@ class _CalculationState extends State<Calculation> {
         cOBC1 = bMBC2 / 2;
         cOBC2 = bMBC1 / 2;
 
-        finalAnswer = fEMAB2;
+        momentSupportA = fEMAB1;
+        momentSupportB = fEMAB2;
+        momentSupportC = fEMBC2;
 
-        print(finalAnswer);
+        print(momentSupportB);
       }
     } catch (e) {
       Fluttertoast.showToast(
@@ -1172,7 +1174,7 @@ class _CalculationState extends State<Calculation> {
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        const Text(style: TextStyle(fontSize: 16), 'Overhang A = '),
+        const Text(style: TextStyle(fontSize: 16), 'FEM of Overhang A = '),
         Card(
           color: colorPrimary,
           child: Padding(
@@ -1191,7 +1193,7 @@ class _CalculationState extends State<Calculation> {
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        const Text(style: TextStyle(fontSize: 16), 'Overhang C = '),
+        const Text(style: TextStyle(fontSize: 16), 'FEM of Overhang C = '),
         Card(
           color: colorPrimary,
           child: Padding(
@@ -1258,11 +1260,9 @@ class _CalculationState extends State<Calculation> {
   }
 
   Table generateLoopingTable() {
-    finalAnswer = finalAnswer + bMAB2 + cOAB2;
-    print('Sheesh');
-    print(finalAnswer);
-    print(bMAB2);
-    print(cOAB2);
+    momentSupportA = momentSupportA + bMAB1 + cOAB1;
+    momentSupportB = momentSupportB + bMAB2 + cOAB2;
+    momentSupportC = momentSupportC + bMBC2 + cOBC2;
 
     bMAB1 = changeSign(cOAB1 * dfAB1);
     bMAB2 = changeSign((cOAB2 + cOBC1) * dfAB2);
@@ -1277,10 +1277,9 @@ class _CalculationState extends State<Calculation> {
       if (counter1 == 2) {
         loopEnd = 0;
         counter1 = 0;
-        finalAnswer = finalAnswer + bMAB2;
-        print(finalAnswer);
-        print(bMAB2);
-        print(cOAB2);
+        momentSupportA = momentSupportA + bMAB1;
+        momentSupportB = momentSupportB + bMAB2;
+        momentSupportC = momentSupportC + bMBC2;
         return Table(
           border: TableBorder.all(),
           children: [
@@ -1305,10 +1304,9 @@ class _CalculationState extends State<Calculation> {
       if (counter2 == 2) {
         loopEnd = 0;
         counter2 = 0;
-        finalAnswer = finalAnswer + bMAB2 + cOAB2;
-        print(finalAnswer);
-        print(bMAB2);
-        print(cOAB2);
+        momentSupportA = momentSupportA + bMAB1 + cOAB1;
+        momentSupportB = momentSupportB + bMAB2 + cOAB2;
+        momentSupportC = momentSupportC + bMBC2 + cOBC2;
         return Table(
           border: TableBorder.all(),
           children: [
@@ -1329,10 +1327,6 @@ class _CalculationState extends State<Calculation> {
     cOBC1 = bMBC2 / 2;
     cOBC2 = bMBC1 / 2;
 
-    // finalAnswer = finalAnswer + bMAB2 + cOAB2;
-    // print(finalAnswer);
-    // print(bMAB2);
-    // print(cOAB2);
     return Table(
       border: TableBorder.all(),
       children: [
@@ -1372,10 +1366,10 @@ class _CalculationState extends State<Calculation> {
 
     if (widget.loadInAB!.contains('SIMPLE') &&
         widget.loadInBC!.contains('SIMPLE')) {
-      functionInit('simpleFixedCalculation', 1, 1);
+      functionInit('simpleFixedCalculation', -1, 1);
     } else if (widget.loadInAB!.contains('SIMPLE') &&
         widget.loadInBC!.contains('FIXED')) {
-      functionInit('simpleFixedCalculation', 1, 0);
+      functionInit('simpleFixedCalculation', -1, 0);
     } else if (widget.loadInAB!.contains('FIXED') &&
         widget.loadInBC!.contains('FIXED')) {
       functionInit('simpleFixedCalculation', 0, 0);
@@ -1394,46 +1388,77 @@ class _CalculationState extends State<Calculation> {
         ),
         body: Column(
           children: [
-            SingleChildScrollView(
-              child: Center(
-                child: Padding(
-                  padding: const EdgeInsets.all(20.0),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      headerTable(),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          if (widget.loadInOverhangAName != '') ...[
-                            overhangA(),
-                          ],
-                          if (widget.loadInOverhangCName != '') ...[
-                            addVerticalSpace(10),
-                            overhangC(),
-                          ],
+            addVerticalSpace(10),
+            headerTable(),
+            Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                if (widget.loadInOverhangAName != '') ...[
+                  overhangA(),
+                ],
+                if (widget.loadInOverhangCName != '') ...[
+                  overhangC(),
+                ],
+              ],
+            ),
+            addVerticalSpace(10),
+            const Divider(
+              color: Colors.blue, // Set the color to blue
+              thickness: 3, // Adjust the thickness of the line as needed
+            ),
+            Expanded(
+              child: SingleChildScrollView(
+                child: Center(
+                  child: Padding(
+                    padding: const EdgeInsets.all(20.0),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        addVerticalSpace(10),
+                        initTable(),
+                        addVerticalSpace(10),
+                        initialLoop(),
+                        addVerticalSpace(10),
+                        for (int i = 0; loopEnd != 0; i++) ...[
+                          generateLoopingTable(),
+                          addVerticalSpace(10)
                         ],
-                      ),
-                      addVerticalSpace(5),
-                      const Divider(),
-                      addVerticalSpace(5),
-                      initTable(),
-                      addVerticalSpace(10),
-                      initialLoop(),
-                      addVerticalSpace(10),
-                      for (int i = 0; loopEnd != 0; i++) ...[
-                        generateLoopingTable(),
-                        addVerticalSpace(10)
                       ],
-                    ],
+                    ),
                   ),
                 ),
               ),
             ),
-            const Divider(),
+            const Divider(
+              color: Colors.blue, // Set the color to blue
+              thickness: 3, // Adjust the thickness of the line as needed
+            ),
+            if (widget.loadInOverhangAName != '' || widget.loadInAB!.contains('FIXED')) ...[
+              Container(
+                padding: const EdgeInsets.all(5),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    const Text(
+                        style: TextStyle(fontSize: 16),
+                        'Moment at Support A = '),
+                    Card(
+                      color: colorPrimary,
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Text(
+                            style: const TextStyle(color: Colors.white),
+                            '${checkNumberIfNegative(roundToFourDecimals(momentSupportA))} ${widget.selectedMomentUnit}'),
+                      ),
+                    )
+                  ],
+                ),
+              )
+            ],
             Container(
-              padding: const EdgeInsets.all(10),
+              padding: const EdgeInsets.all(5),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -1446,12 +1471,35 @@ class _CalculationState extends State<Calculation> {
                       padding: const EdgeInsets.all(8.0),
                       child: Text(
                           style: const TextStyle(color: Colors.white),
-                          '${roundToFourDecimals(finalAnswer)} ${widget.selectedMomentUnit}'),
+                          '${checkNumberIfNegative(roundToFourDecimals(momentSupportB))} ${widget.selectedMomentUnit}'),
                     ),
                   )
                 ],
               ),
             ),
+            if (widget.loadInOverhangCName != '' || widget.loadInBC!.contains('FIXED')) ...[
+              Container(
+                padding: const EdgeInsets.all(5),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    const Text(
+                        style: TextStyle(fontSize: 16),
+                        'Moment at Support C = '),
+                    Card(
+                      color: colorPrimary,
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Text(
+                            style: const TextStyle(color: Colors.white),
+                            '${roundToFourDecimals(momentSupportC)} ${widget.selectedMomentUnit}'),
+                      ),
+                    )
+                  ],
+                ),
+              )
+            ],
           ],
         ),
       );

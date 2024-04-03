@@ -1,4 +1,5 @@
 // ignore_for_file: library_private_types_in_public_api
+import 'package:amdm_calculator/screen/onboarding/onboarding_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 
@@ -7,7 +8,6 @@ import '../utils/helper_widget_function.dart';
 import '../widgets/custom_dropdown_text.dart';
 import '../widgets/custom_dropdown_image.dart';
 import '../widgets/custom_floating_action_button.dart';
-import '../widgets/custom_info_alert.dart';
 import '_input_data.dart';
 
 class Dashboard extends StatefulWidget {
@@ -33,7 +33,6 @@ class _DashboardState extends State<Dashboard> {
     isUpdated = false;
     loadABName = 'FIXED SPAN AB 1';
     loadBCName = 'FIXED SPAN BC 1';
-
   }
 
   //Splash Screen Initialization
@@ -43,10 +42,7 @@ class _DashboardState extends State<Dashboard> {
   }
 
   //List file path declaration
-  final List<String> 
-  
-      simpleSupportForSpanABPaths = [
-
+  final List<String> simpleSupportForSpanABPaths = [
         'assets/images/SIMPLE SUPPORTED FOR SPAN AB/SIMPLE SPAN AB 1.png',
         'assets/images/SIMPLE SUPPORTED FOR SPAN AB/SIMPLE SPAN AB 2.png',
         'assets/images/SIMPLE SUPPORTED FOR SPAN AB/SIMPLE SPAN AB 3.png',
@@ -159,7 +155,6 @@ class _DashboardState extends State<Dashboard> {
         'assets/images/OVERHANG C/OVERHANG C 18.png',
       ],
       fixedSupportForSpanABPaths = [
-        
         'assets/images/FIXED SUPPORTED FOR SPAN AB/FIXED SPAN AB 1.png',
         'assets/images/FIXED SUPPORTED FOR SPAN AB/FIXED SPAN AB 2.png',
         'assets/images/FIXED SUPPORTED FOR SPAN AB/FIXED SPAN AB 3.png',
@@ -188,7 +183,6 @@ class _DashboardState extends State<Dashboard> {
         'assets/images/FIXED SUPPORTED FOR SPAN AB/FIXED SPAN AB 18.png',
       ],
       fixedSupportForSpanBCPaths = [
-        
         'assets/images/FIXED SUPPORTED FOR SPAN BC/FIXED SPAN BC 1.png',
         'assets/images/FIXED SUPPORTED FOR SPAN BC/FIXED SPAN BC 2.png',
         'assets/images/FIXED SUPPORTED FOR SPAN BC/FIXED SPAN BC 3.png',
@@ -230,7 +224,11 @@ class _DashboardState extends State<Dashboard> {
       loadABName = '',
       loadBCName = '',
       overhangAName = '',
-      overhangCName = '';
+      overhangCName = '',
+      overhangAStart = 'assets/images/STARTING IMAGE/OVERHANG A START.png',
+      overhangCStart = 'assets/images/STARTING IMAGE/OVERHANG C START.png',
+      spanABStart = 'assets/images/STARTING IMAGE/SPAN AB START.png',
+      spanBCStart = 'assets/images/STARTING IMAGE/SPAN BC START.png';
 
   //List options
   List<String> supportList = [
@@ -507,9 +505,9 @@ class _DashboardState extends State<Dashboard> {
         const Divider(),
         CustomDropdownImage(
           label: 'LOAD IN: SPAN AB',
-          items: fixedSupportForSpanABPaths,
+          items: simpleSupportForSpanABPaths,
           initalValue:
-              'assets/images/FIXED SUPPORTED FOR SPAN AB/FIXED SPAN AB 1.png',
+              'assets/images/SIMPLE SUPPORTED FOR SPAN AB/SIMPLE SPAN AB 1.png',
           onChanged: (selectedItem) {
             setState(() {
               loadABPath = selectedItem[0]!;
@@ -600,12 +598,11 @@ class _DashboardState extends State<Dashboard> {
             });
           },
         ),
-        const Divider(),
         CustomDropdownImage(
           label: 'LOAD IN: SPAN BC',
-          items: fixedSupportForSpanBCPaths,
+          items: simpleSupportForSpanBCPaths,
           initalValue:
-              'assets/images/FIXED SUPPORTED FOR SPAN BC/FIXED SPAN BC 1.png',
+              'assets/images/SIMPLE SUPPORTED FOR SPAN BC/SIMPLE SPAN BC 1.png',
           onChanged: (selectedItem) {
             setState(() {
               loadBCPath = selectedItem[0]!;
@@ -635,7 +632,26 @@ class _DashboardState extends State<Dashboard> {
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (context) => InputData(loadInAB: loadABName, loadInBC: loadBCName, loadInOverhangAName: overhangAName, loadInOverhangCName: overhangCName),
+        builder: (context) => InputData(
+            loadInAB: loadABName,
+            loadInBC: loadBCName,
+            loadInOverhangAName: overhangAName,
+            loadInOverhangCName: overhangCName,
+            supportA: supportA,
+            supportC: supportC,
+            loadABPath: loadABPath,
+            loadBCPath: loadBCPath,
+            overhangAPath: overhangAPath,
+            overhangCPath: overhangCPath),
+      ),
+    );
+  }
+
+  void gotoSpashScreen() {
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(
+        builder: (context) => const OnboardingScreen(),
       ),
     );
   }
@@ -647,27 +663,59 @@ class _DashboardState extends State<Dashboard> {
         automaticallyImplyLeading: false,
         title: Row(
           children: [
-            const Icon(
-              Icons.calculate,
-              color: Colors.white,
-              size: 30,
-            ),
+            SizedBox(
+                width: 35, child: Image.asset('assets/images/amdm_logo.png')),
             addHorizontalSpace(8),
             const Text("AMDM Calculator"),
+            Expanded(
+                child: Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              crossAxisAlignment: CrossAxisAlignment.end,
+              children: [
+                IconButton(
+                  icon: const Icon(Icons.info),
+                  onPressed: () {
+                    gotoSpashScreen();
+                  },
+                ),
+              ],
+            ))
           ],
         ),
       ),
       body: Center(
         child: Padding(
-          padding: const EdgeInsets.all(8.0),
+          padding: const EdgeInsets.all(20.0),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               (!isUpdated)
-                  ? const InfoAlert(
-                      text:
-                          'Select individual load to update it\nto the free body diagram!')
+                  ? Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Image.asset(
+                          overhangAStart,
+                          width: 85,
+                          height: 85,
+                        ),
+                        Image.asset(
+                          spanABStart,
+                          width: 85,
+                          height: 85,
+                        ),
+                        Image.asset(
+                          spanBCStart,
+                          width: 85,
+                          height: 85,
+                        ),
+                        Image.asset(
+                          overhangCStart,
+                          width: 85,
+                          height: 85,
+                        ),
+                      ],
+                    )
                   : Column(
                       children: [
                         const Text('Free body diagram of the structure',
@@ -706,7 +754,7 @@ class _DashboardState extends State<Dashboard> {
                                         ],
                                       )
                                     : Container(),
-                                //Three image free body diagram awith Overhang C  
+                                //Three image free body diagram awith Overhang C
                                 (supportA == 'Fixed Support' &&
                                             supportC ==
                                                 'Simple Support with Overhang' ||
@@ -735,7 +783,7 @@ class _DashboardState extends State<Dashboard> {
                                         ],
                                       )
                                     : Container(),
-                                  //Three image free body diagram awith Overhang A
+                                //Three image free body diagram awith Overhang A
                                 (supportA == 'Simple Support with Overhang' &&
                                             supportC == 'Simple Support' ||
                                         supportA ==
@@ -763,9 +811,10 @@ class _DashboardState extends State<Dashboard> {
                                         ],
                                       )
                                     : Container(),
-                                    //Three image free body diagram awith Overhang A and C
-                                    (supportA == 'Simple Support with Overhang' &&
-                                            supportC == 'Simple Support with Overhang')
+                                //Three image free body diagram awith Overhang A and C
+                                (supportA == 'Simple Support with Overhang' &&
+                                        supportC ==
+                                            'Simple Support with Overhang')
                                     ? Row(
                                         mainAxisAlignment:
                                             MainAxisAlignment.center,
@@ -800,11 +849,15 @@ class _DashboardState extends State<Dashboard> {
                       ],
                     ),
               addVerticalSpace(10),
-              const Divider(),
               Expanded(
                 child: SingleChildScrollView(
                   child: Column(
                     children: [
+                      const Divider(
+                        color: Colors.blue, // Set the color to blue
+                        thickness:
+                            3, // Adjust the thickness of the line as needed
+                      ),
                       Card(
                         child: Padding(
                           padding: const EdgeInsets.all(20.0),
@@ -845,7 +898,11 @@ class _DashboardState extends State<Dashboard> {
                           ),
                         ),
                       ),
-                      addVerticalSpace(10),
+                      const Divider(
+                        color: Colors.blue, // Set the color to blue
+                        thickness:
+                            3, // Adjust the thickness of the line as needed
+                      ),
                       Card(
                         child: Padding(
                           padding: const EdgeInsets.all(20),
@@ -872,21 +929,19 @@ class _DashboardState extends State<Dashboard> {
                                   ? overhangAAndSpanABAndSpanBCAndOverhangC()
                                   : Container(),
                               supportA == 'Simple Support with Overhang' &&
-                                          supportC == 'Simple Support' 
+                                      supportC == 'Simple Support'
                                   ? overhangAAndSimpleSpanABAndSpanBC()
                                   : Container(),
-                              supportA =='Simple Support with Overhang' &&
-                                          supportC == 'Fixed Support'
+                              supportA == 'Simple Support with Overhang' &&
+                                      supportC == 'Fixed Support'
                                   ? overhangAAndFixedSpanABAndSpanBC()
                                   : Container(),
                               supportA == 'Simple Support' &&
-                                          supportC ==
-                                              'Simple Support with Overhang'
+                                      supportC == 'Simple Support with Overhang'
                                   ? simpleSpanABAndSpanBCAndOverhangC()
                                   : Container(),
                               supportA == 'Fixed Support' &&
-                                          supportC ==
-                                              'Simple Support with Overhang'
+                                      supportC == 'Simple Support with Overhang'
                                   ? fixedSpanABAndSpanBCAndOverhangC()
                                   : Container(),
                             ],
@@ -904,7 +959,7 @@ class _DashboardState extends State<Dashboard> {
       ),
       floatingActionButton: CustomFloatingActionButton(
         onPressed: () {
-         gotoDataInput();
+          gotoDataInput();
         },
       ),
     );

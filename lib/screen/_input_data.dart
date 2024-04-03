@@ -15,13 +15,25 @@ class InputData extends StatefulWidget {
   String loadInBC;
   String loadInOverhangAName;
   String loadInOverhangCName;
+  String supportA;
+  String supportC;
+  String loadABPath;
+  String loadBCPath;
+  String overhangAPath;
+  String overhangCPath;
 
   InputData(
       {super.key,
       required this.loadInAB,
       required this.loadInBC,
       required this.loadInOverhangAName,
-      required this.loadInOverhangCName});
+      required this.loadInOverhangCName,
+      required this.supportA,
+      required this.supportC,
+      required this.loadABPath,
+      required this.loadBCPath,
+      required this.overhangAPath,
+      required this.overhangCPath});
 
   @override
   _InputDataState createState() => _InputDataState();
@@ -41,7 +53,10 @@ class _InputDataState extends State<InputData> {
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Divider(),
+        const Divider(
+          color: Colors.blue, // Set the color to blue
+          thickness: 3, // Adjust the thickness of the line as needed
+        ),
         const Text(
           'Overhang A:',
           style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
@@ -56,7 +71,10 @@ class _InputDataState extends State<InputData> {
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Divider(),
+        const Divider(
+          color: Colors.blue, // Set the color to blue
+          thickness: 3, // Adjust the thickness of the line as needed
+        ),
         const Text(
           'Overhang C:',
           style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
@@ -1122,62 +1140,211 @@ class _InputDataState extends State<InputData> {
             ],
           ),
         ),
-        body: SingleChildScrollView(
-          child: Center(
-            child: Padding(
-              padding: const EdgeInsets.all(20.0),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  CustomDropdownText(
-                    label: 'Moment Unit:',
-                    items: momentUnit,
-                    initalValue: selectedMomentUnit,
-                    onChanged: (selectedItem) {
-                      setState(() {
-                        selectedMomentUnit = selectedItem!;
-                      });
-                    },
+        body: Center(
+          child: Padding(
+            padding: const EdgeInsets.all(20.0),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Column(
+                  children: [
+                    const Text('Free body diagram of the structure',
+                        style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                        )),
+                    Card(
+                      child: Padding(
+                        padding: const EdgeInsets.all(0),
+                        child: Column(
+                          children: [
+                            //Two image Free body diagram
+                            (widget.supportA == 'Fixed Support' &&
+                                        widget.supportC == 'Fixed Support' ||
+                                    widget.supportA == 'Simple Support' &&
+                                        widget.supportC == 'Simple Support' ||
+                                    widget.supportA == 'Fixed Support' &&
+                                        widget.supportC == 'Simple Support' ||
+                                    widget.supportA == 'Simple Support' &&
+                                        widget.supportC == 'Fixed Support')
+                                ? Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Image.asset(
+                                        widget.loadABPath,
+                                        width: 160,
+                                        height: 160,
+                                      ),
+                                      Image.asset(
+                                        widget.loadBCPath,
+                                        width: 160,
+                                        height: 160,
+                                      ),
+                                    ],
+                                  )
+                                : Container(),
+                            //Three image free body diagram awith Overhang C
+                            (widget.supportA == 'Fixed Support' &&
+                                        widget.supportC ==
+                                            'Simple Support with Overhang' ||
+                                    widget.supportA == 'Simple Support' &&
+                                        widget.supportC ==
+                                            'Simple Support with Overhang')
+                                ? Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Image.asset(
+                                        widget.loadABPath,
+                                        width: 110,
+                                        height: 110,
+                                      ),
+                                      Image.asset(
+                                        widget.loadBCPath,
+                                        width: 110,
+                                        height: 110,
+                                      ),
+                                      Image.asset(
+                                        widget.overhangCPath,
+                                        width: 110,
+                                        height: 110,
+                                      ),
+                                    ],
+                                  )
+                                : Container(),
+                            //Three image free body diagram awith Overhang A
+                            (widget.supportA ==
+                                            'Simple Support with Overhang' &&
+                                        widget.supportC == 'Simple Support' ||
+                                    widget.supportA ==
+                                            'Simple Support with Overhang' &&
+                                        widget.supportC == 'Fixed Support')
+                                ? Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Image.asset(
+                                        widget.overhangAPath,
+                                        width: 110,
+                                        height: 110,
+                                      ),
+                                      Image.asset(
+                                        widget.loadABPath,
+                                        width: 110,
+                                        height: 110,
+                                      ),
+                                      Image.asset(
+                                        widget.loadBCPath,
+                                        width: 110,
+                                        height: 110,
+                                      ),
+                                    ],
+                                  )
+                                : Container(),
+                            //Three image free body diagram awith Overhang A and C
+                            (widget.supportA ==
+                                        'Simple Support with Overhang' &&
+                                    widget.supportC ==
+                                        'Simple Support with Overhang')
+                                ? Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Image.asset(
+                                        widget.overhangAPath,
+                                        width: 85,
+                                        height: 85,
+                                      ),
+                                      Image.asset(
+                                        widget.loadABPath,
+                                        width: 85,
+                                        height: 85,
+                                      ),
+                                      Image.asset(
+                                        widget.loadBCPath,
+                                        width: 85,
+                                        height: 85,
+                                      ),
+                                      Image.asset(
+                                        widget.overhangCPath,
+                                        width: 85,
+                                        height: 85,
+                                      ),
+                                    ],
+                                  )
+                                : Container(),
+                          ],
+                        ),
+                      ),
+                    ),
+                    const Divider(
+                      color: Colors.blue, // Set the color to blue
+                      thickness:
+                          3, // Adjust the thickness of the line as needed
+                    ),
+                  ],
+                ),
+                Expanded(
+                  child: SingleChildScrollView(
+                    child: Column(
+                      children: [
+                        CustomDropdownText(
+                          label: 'Moment Unit:',
+                          items: momentUnit,
+                          initalValue: selectedMomentUnit,
+                          onChanged: (selectedItem) {
+                            setState(() {
+                              selectedMomentUnit = selectedItem!;
+                            });
+                          },
+                        ),
+                        if (widget.loadInOverhangAName != '') ...[overhangA()],
+                        if (loadInOverhangAMap
+                            .containsKey(widget.loadInOverhangAName)) ...[
+                          loadInOverhangAMap[widget.loadInOverhangAName]!(
+                              'OverhangA')
+                        ],
+                        addVerticalSpace(10),
+                        const Divider(
+                          color: Colors.blue, // Set the color to blue
+                          thickness:
+                              3, // Adjust the thickness of the line as needed
+                        ),
+                        const Text(
+                          'Span AB:',
+                          style: TextStyle(
+                              fontSize: 16, fontWeight: FontWeight.bold),
+                        ),
+                        addVerticalSpace(10),
+                        if (loadInABMap.containsKey(widget.loadInAB)) ...[
+                          loadInABMap[widget.loadInAB]!('AB')
+                        ],
+                        addVerticalSpace(10),
+                        const Divider(
+                          color: Colors.blue, // Set the color to blue
+                          thickness:
+                              3, // Adjust the thickness of the line as needed
+                        ),
+                        const Text(
+                          'Span BC:',
+                          style: TextStyle(
+                              fontSize: 16, fontWeight: FontWeight.bold),
+                        ),
+                        addVerticalSpace(10),
+                        if (loadInBCMap.containsKey(widget.loadInBC)) ...[
+                          loadInBCMap[widget.loadInBC]!('BC')
+                        ],
+                        addVerticalSpace(10),
+                        if (widget.loadInOverhangCName != '') ...[overhangC()],
+                        if (loadInOverhangCMap
+                            .containsKey(widget.loadInOverhangCName)) ...[
+                          loadInOverhangCMap[widget.loadInOverhangCName]!(
+                              'OverhangC')
+                        ],
+                        addVerticalSpace(10)
+                      ],
+                    ),
                   ),
-                  if (widget.loadInOverhangAName != '') ...[overhangA()],
-                  if (loadInOverhangAMap
-                      .containsKey(widget.loadInOverhangAName)) ...[
-                    loadInOverhangAMap[widget.loadInOverhangAName]!(
-                        'OverhangA')
-                  ],
-                  addVerticalSpace(10),
-                  const Divider(),
-                  const Text(
-                    'Span AB:',
-                    style:
-                        TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-                  ),
-                  addVerticalSpace(10),
-                  if (loadInABMap.containsKey(widget.loadInAB)) ...[
-                    loadInABMap[widget.loadInAB]!('AB')
-                  ],
-                  addVerticalSpace(10),
-                  const Divider(),
-                  const Text(
-                    'Span BC:',
-                    style:
-                        TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-                  ),
-                  addVerticalSpace(10),
-                  if (loadInBCMap.containsKey(widget.loadInBC)) ...[
-                    loadInBCMap[widget.loadInBC]!('BC')
-                  ],
-                  addVerticalSpace(10),
-                  if (widget.loadInOverhangCName != '') ...[overhangC()],
-                  if (loadInOverhangCMap
-                      .containsKey(widget.loadInOverhangCName)) ...[
-                    loadInOverhangCMap[widget.loadInOverhangCName]!(
-                        'OverhangC')
-                  ],
-                  addVerticalSpace(10)
-                ],
-              ),
+                )
+              ],
             ),
           ),
         ),

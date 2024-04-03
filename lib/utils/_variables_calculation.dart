@@ -25,7 +25,9 @@
   num cOBC1 = 0;
   num cOBC2 = 0;
 
-  num finalAnswer = 0;
+  num momentSupportA = 0;
+  num momentSupportB = 0;
+  num momentSupportC = 0;
   num loopEnd = 1;
   num counter1 = 0;
   num counter2 = 0;
