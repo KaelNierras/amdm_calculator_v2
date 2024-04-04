@@ -148,4 +148,7 @@
   //Moment BC Load Variable
   String momentOverhangCValue = '';
   String selectedMomentOverhangCUnit = '';
+
+  bool isToastShowing = false;
+
   

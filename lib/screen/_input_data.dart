@@ -65,20 +65,29 @@ class _InputDataState extends State<InputData> {
     );
   }
 
-  void showToasts(BuildContext context, String e) {
-    final snackBar = SnackBar(
-      content: Row(
-        children: [
-          const Icon(Icons.error, color: Colors.white),
-          const SizedBox(width: 10),
-          Expanded(child: Text(e)),
-        ],
-      ),
-      duration: const Duration(seconds: 2),
-      backgroundColor: Colors.red,
-    );
 
-    ScaffoldMessenger.of(context).showSnackBar(snackBar);
+  void showToasts(BuildContext context, String e) {
+    if (!isToastShowing) {
+      final snackBar = SnackBar(
+        content: Row(
+          children: [
+            const Icon(Icons.error, color: Colors.white),
+            const SizedBox(width: 10),
+            Expanded(child: Text(e)),
+          ],
+        ),
+        duration: const Duration(seconds: 2),
+        backgroundColor: Colors.red,
+      );
+
+      ScaffoldMessenger.of(context).showSnackBar(snackBar);
+
+      isToastShowing = true;
+
+      Future.delayed(const Duration(seconds: 2), () {
+        isToastShowing = false;
+      });
+    }
   }
 
   Widget overhangC() {
